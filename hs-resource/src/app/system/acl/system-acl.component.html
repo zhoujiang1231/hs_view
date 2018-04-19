@@ -1,0 +1,45 @@
+<div id="system-acl-area">
+  <app-page-header [title]="'ACL管理'"
+                   [rightButtons]="[{ title: '新建', action: 'add'}]"
+                   (tapRightBtn)="onClickBtnWithAction($event)"
+                   [permission]="isPermission"></app-page-header>
+  <div *ngIf="isPermission === 1" class="pt-3 table-container w-100">
+    <ngx-datatable class="material striped"
+                   [loadingIndicator]="loadingIndicator"
+                   [rows]="sysAclData"
+                   [headerHeight]="40"
+                   [footerHeight]="40"
+                   [rowHeight]="40"
+                   [columnMode]="'force'"
+                   [scrollbarH]="true"
+                   [limit]="params.pageSize">
+      <ngx-datatable-column [name]="'白名单ID'" [prop]="'id'"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'业务名称'" [prop]="'service.name'" [width]="300"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'IP地址'" [prop]="'ip'"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'平台名称'" [prop]="'domain.name'" [width]="300"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'描述'" [prop]="'description'" [width]="320"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'创建时间'" [width]="200">
+        <ng-template let-row="row" ngx-datatable-cell-template>{{row?.createTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column [name]="'操作'">
+        <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+        <span [matMenuTriggerFor]="menu" style="cursor: pointer">
+          <mat-icon class="md-24" style="font-size: 16px;">more_vert</mat-icon>
+        </span>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="operateButton(row, rowIndex)">删除</button>
+          </mat-menu>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-footer>
+        <ng-template ngx-datatable-footer-template>
+          <app-pagination [pageParams]="params" [comTotalCount]="totalCount"
+                          (limitChange)="getLimit($event)"
+                          (pageParamsChange)="reloadSysAclCount($event)"></app-pagination>
+        </ng-template>
+      </ngx-datatable-footer>
+    </ngx-datatable>
+  </div>
+  <app-loading *ngIf="isSpinner === 1" [top]="'258px'"></app-loading>
+  <app-empty-data *ngIf="isPermission === 0"></app-empty-data>
+</div>

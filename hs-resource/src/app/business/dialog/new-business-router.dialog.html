@@ -1,0 +1,168 @@
+<div id="business-router-dialog" class="redefine-dialog">
+  <form [formGroup]="targetForm" (ngSubmit)="add(data)">
+    <h1 class="dialog-head">{{data?.id ? '编辑' : '新建'}}路由</h1>
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field class="w-100">
+          <mat-select name="serviceId" [formControl]="targetForm.controls['serviceId']"
+                      [(ngModel)]="data.serviceId" placeholder="业务" required>
+            <mat-option *ngFor="let item of data?.businessListArr" [value]="item.id">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="targetForm.controls['serviceId'].touched && targetForm.controls['serviceId'].hasError('required')">
+            字段不能为空！
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field class="w-100">
+          <mat-select name="trunkGroupId" [formControl]="targetForm.controls['trunkGroupId']"
+                      [(ngModel)]="data.trunkGroupId" placeholder="中继组" required>
+            <mat-option *ngFor="let item of dockGroupData" [value]="item.id">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="targetForm.controls['trunkGroupId'].touched && targetForm.controls['trunkGroupId'].hasError('required')">
+            字段不能为空！
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field class="w-100">
+          <mat-select name="active" [formControl]="targetForm.controls['active']"
+                      [(ngModel)]="data.active" placeholder="是否激活" required>
+            <mat-option *ngFor="let item of [{name: '激活', value: 1}, {name: '未激活', value: 0}]" [value]="item.value">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="targetForm.controls['active'].touched && targetForm.controls['active'].hasError('required')">
+            字段不能为空！
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field class="w-100">
+          <input matInput type="text"
+                 name="priority" [formControl]="targetForm.controls['priority']"
+                 [(ngModel)]="data.priority"
+                 placeholder="优先级" required>
+          <mat-error
+            *ngIf="targetForm.controls['priority'].touched && targetForm.controls['priority'].hasError('required')">
+            字段不能为空！
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field class="w-100">
+          <input matInput type="text"
+                 name="telRegex" [formControl]="targetForm.controls['telRegex']"
+                 [(ngModel)]="data.telRegex"
+                 placeholder="被叫号码(多条数据用'|'分隔)">
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field class="w-100">
+          <input matInput type="text"
+                 name="clidRegex" [formControl]="targetForm.controls['clidRegex']"
+                 [(ngModel)]="data.clidRegex"
+                 placeholder="主叫号码(多条数据用'|'分隔)">
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="w-100">
+          <input matInput type="text"
+                 name="tags" [formControl]="targetForm.controls['tags']"
+                 [(ngModel)]="data.tags"
+                 placeholder="标签">
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="w-100">
+          <input matInput type="text"
+                 name="description" [formControl]="targetForm.controls['description']"
+                 [(ngModel)]="data.description"
+                 placeholder="描述">
+        </mat-form-field>
+      </div>
+      <div class="col-12">
+        <mat-form-field style="width: 100%">
+          <input matInput type="text"
+                 name="timeRegex" [formControl]="targetForm.controls['timeRegex']"
+                 [(ngModel)]="data.timeRegex"
+                 (focus)="hasCondition.time = 1;hasCondition.telAv = 0;hasCondition.clidAv = 0"
+                 placeholder="时间条件">
+          <button type="reset" mat-button *ngIf="data.timeRegex" matSuffix mat-icon-button aria-label="Clear" (click)="init('timeRegex')">
+            <mat-icon class="clear-icon">clear</mat-icon>
+          </button>
+        </mat-form-field>
+        <div *ngIf="hasCondition.time === 1" class="row easyUsed head-search-container">
+          <div class="col-12">
+            <section>
+              <mat-checkbox *ngFor="let item of [{name: '周日', value: 1}, {name: '周一', value: 2}, {name: '周二', value: 3},
+                          {name: '周三', value: 4}, {name: '周四', value: 5}, {name: '周五', value: 6}, {name: '周六', value: 7}]"
+                            [value]="item.value"
+                            (change)="checkboxChange($event)">{{item.name}}</mat-checkbox>
+            </section>
+          </div>
+          <div class="col-4 container-input">
+            <dl>
+              <dt style="text-align: left" class="p-0">开始时间:</dt>
+              <dd class="range-flatpickr pt-0">
+                <ng2-flatpickr [config]="startTimeOptions"></ng2-flatpickr>
+              </dd>
+            </dl>
+          </div>
+          <div class="col-4 container-input">
+            <dl>
+              <dt style="text-align: left" class="p-0">结束时间:</dt>
+              <dd  class="range-flatpickr pt-0">
+                <ng2-flatpickr [config]="endTimeOptions"></ng2-flatpickr>
+              </dd>
+            </dl>
+          </div>
+          <div class="col-4">
+            <mat-icon style="color: #3CB371" class="cancelMatIcon" (click)="saveCondition()">check_circle</mat-icon>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <mat-form-field style="width: 100%" [ngStyle]="{'padding-top': hasCondition.clidAv === 1 ? '15px' : '0' }">
+          <input matInput type="text"
+                 name="clidAv" [formControl]="targetForm.controls['clidAv']"
+                 [(ngModel)]="data.clidAv"
+                 (focus)="hasCondition.clidAv = 1;hasCondition.telAv = 0;hasCondition.time = 0"
+                 placeholder="主叫号码av条件">
+          <button type="reset" mat-button *ngIf="data.clidAv" matSuffix mat-icon-button aria-label="Clear" (click)="init('clidAv')">
+            <mat-icon class="clear-icon">clear</mat-icon>
+          </button>
+        </mat-form-field>
+        <app-mini-form *ngIf="hasCondition.clidAv === 1" (saveFormData)="saveAv($event, 'clidAv')"></app-mini-form>
+      </div>
+      <div class="col-12">
+        <mat-form-field style="width: 100%" [ngStyle]="{'padding-top': hasCondition.telAv === 1 ? '15px' : '0' }">
+          <input matInput type="text"
+                 name="telAv" [formControl]="targetForm.controls['telAv']"
+                 [(ngModel)]="data.telAv"
+                 (focus)="hasCondition.telAv = 1;hasCondition.clidAv = 0;hasCondition.time = 0"
+                 placeholder="被叫号码av条件">
+          <button type="reset" mat-button *ngIf="data.telAv" matSuffix mat-icon-button aria-label="Clear" (click)="init('telAv')">
+            <mat-icon class="clear-icon">clear</mat-icon>
+          </button>
+        </mat-form-field>
+        <app-mini-form *ngIf="hasCondition.telAv === 1" (saveFormData)="saveAv($event, 'telAv')"></app-mini-form>
+      </div>
+    </div>
+    <div class="dialog-bottom" style="clear:both">
+      <button mat-button type="button" class="cancel"
+              (click)="dialogRef.close('cancel')">取消</button>
+      <button mat-button type="submit" [disabled]="targetForm.invalid || disabled.value"
+              class="sure">确定</button>
+    </div>
+  </form>
+</div>
+
+

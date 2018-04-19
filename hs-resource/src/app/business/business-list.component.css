@@ -1,0 +1,7 @@
+#business-list-area {
+  height: 100%;
+  position: relative;
+}
+#business-list-area .table-container {
+  height: calc(100% - 130px);
+}

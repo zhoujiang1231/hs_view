@@ -1,0 +1,72 @@
+<div id="manage-search-area">
+  <app-page-header [title]="'实时统计查询'"></app-page-header>
+  <div>
+    <div class="row head-search-container">
+      <div class="col-3 container-input">
+        <dl>
+          <dt>统计类别:</dt>
+          <dd>
+            <mat-form-field class="right-input" floatPlaceholder="never">
+              <mat-select [(ngModel)]="params.searchType" placeholder="请选择" required>
+                <mat-option *ngFor="let item of selectArr" [value]="item.type">
+                  {{item.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-9">
+        <button mat-button class="search-button" (click)="search()">搜索</button>
+      </div>
+    </div>
+    <!--固定类统计-->
+    <div *ngIf="isPermission.fix === 1" class="fixed-area">
+      <!--<h3 class="page-header-title">固定类统计</h3>-->
+      <ngx-datatable class="material striped w-50"
+                     style="float: left"
+                     [loadingIndicator]="loadingIndicator.fix"
+                     [rows]="sysData.leftHalf"
+                     [headerHeight]="40"
+                     [footerHeight]="0"
+                     [rowHeight]="40"
+                     [columnMode]="'force'">
+        <ngx-datatable-column [name]="'统计名'" [prop]="'desc'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'统计值'" [prop]="'value'" [resizeable]="false"></ngx-datatable-column>
+      </ngx-datatable>
+      <ngx-datatable class="material striped w-50 secondTable"
+                     [loadingIndicator]="loadingIndicator.fix"
+                     [rows]="sysData.rightHalf"
+                     [headerHeight]="40"
+                     [footerHeight]="0"
+                     [rowHeight]="40"
+                     [columnMode]="'force'">
+        <ngx-datatable-column [name]="'统计名'" [prop]="'desc'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'统计值'" [prop]="'value'" [resizeable]="false"></ngx-datatable-column>
+      </ngx-datatable>
+      <app-loading *ngIf="spinner.fix === 1" [top]="'130px'"></app-loading>
+      <app-empty-data *ngIf="isPermission.fix === 0" [position]="true"></app-empty-data>
+    </div>
+    <!--产品级别统计-->
+    <div *ngIf="isPermission.active === 1" class="active-area">
+      <!--<h3 class="page-header-title">产品级别统计</h3>-->
+      <div class="row">
+        <div class="col-4" *ngFor="let target of targetList">
+          <h4>{{target?.name || '--'}}</h4>
+          <ngx-datatable class="material striped w-100"
+                         [loadingIndicator]="loadingIndicator.active"
+                         [rows]="target?.list"
+                         [headerHeight]="40"
+                         [footerHeight]="0"
+                         [rowHeight]="40"
+                         [columnMode]="'force'">
+            <ngx-datatable-column [name]="'统计名'" [prop]="'desc'"></ngx-datatable-column>
+            <ngx-datatable-column [name]="'统计值'" [prop]="'value'" [width]="80" [resizeable]="false"></ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+      <app-loading  *ngIf="spinner.active === 1" [top]="'130px'"></app-loading>
+      <app-empty-data *ngIf="isPermission.active === 0" [position]="true"></app-empty-data>
+    </div>
+  </div>
+</div>

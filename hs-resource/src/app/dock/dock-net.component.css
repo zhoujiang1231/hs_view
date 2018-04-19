@@ -1,0 +1,33 @@
+#system-dock-area {
+  height: 100%;
+  position: relative;
+}
+#system-dock-area .table-container {
+  height: calc(100% - 130px);
+}
+#system-dock-area .import-btn {
+  position: absolute;
+  top: 12px;
+  right: 140px;
+  z-index: 1;
+}
+#system-dock-area .import-btn button {
+  color: #fff;
+  min-width: 60px;
+  padding: 0 10px;
+  width: auto;
+  background-color: #0097d4;
+  line-height: 33px;
+  border-radius: 0;
+  margin-left: 10px;
+}
+#system-dock-area .import-btn .upload-input {
+  width: 76px;
+  height: 33px;
+  position: absolute;
+  left: 10px;
+  top: 0;
+  -moz-opacity: 0;
+  opacity: 0;
+  cursor: pointer;
+}

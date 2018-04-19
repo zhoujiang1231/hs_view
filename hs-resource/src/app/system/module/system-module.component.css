@@ -1,0 +1,7 @@
+#system-module-area {
+  height: 100%;
+  position: relative;
+}
+#system-module-area .table-container {
+  height: calc(100% - 70px);
+}

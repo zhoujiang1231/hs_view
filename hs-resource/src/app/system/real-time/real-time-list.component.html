@@ -1,0 +1,72 @@
+<div id="manage-list-area">
+  <app-page-header [title]="'实时统计管理'"
+                   [rightButtons]="[{ title: '新建', action: 'add'}]"
+                   (tapRightBtn)="onClickBtnWithAction($event)"
+                   [permission]="isPermission"></app-page-header>
+  <div class="h-100 position-relative">
+    <div class="row head-search-container">
+      <div class="col-3 container-input">
+        <dl>
+          <dt style="width: 84px"><span style="color: red">*&nbsp;</span>实时统计组:</dt>
+          <dd style="margin-left: 84px">
+            <mat-form-field class="right-input" floatPlaceholder="never">
+              <mat-select [(ngModel)]="params.statisticGroupId" placeholder="请选择" required>
+                <mat-option *ngFor="let item of sysTimeGroupData" [value]="item.id">
+                  {{item.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-9">
+        <button mat-button class="search-button" (click)="search()">搜索</button>
+      </div>
+    </div>
+    <div *ngIf="isPermission === 1" class="table-container w-100">
+      <ngx-datatable class="material striped"
+                     [loadingIndicator]="loadingIndicator"
+                     [rows]="sysTimeListData"
+                     [headerHeight]="40"
+                     [footerHeight]="40"
+                     [rowHeight]="40"
+                     [columnMode]="'force'"
+                     [scrollbarH]="true"
+                     [limit]="params.pageSize">
+        <ngx-datatable-column [name]="'实时统计组ID'" [prop]="'statisticGroupId'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'实时统计ID'" [prop]="'id'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'统计名'" [prop]="'name'" [width]="250"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'事件类型'" [prop]="'eventTypeName'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'显示名'" [prop]="'displayName'" [width]="250"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'统计值所需条件支持'" [prop]="'condition'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'增加的数值类型'" [prop]="'increaseTypeName'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'统计项增加的值'" [prop]="'increaseValue'" [width]="250"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'创建时间'" [width]="300">
+          <ng-template let-row="row" ngx-datatable-cell-template>{{row?.createTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [name]="'操作'">
+          <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+        <span [matMenuTriggerFor]="menu" style="cursor: pointer">
+          <mat-icon class="md-24" style="font-size: 16px;">more_vert</mat-icon>
+        </span>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item *ngFor="let item of [{value:0,name:'编辑'},{value:1,name:'删除'}]"
+                      [value]="item.value" (click)="operateButton(item.value, row, rowIndex)">{{item.name}}</button>
+            </mat-menu>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-footer>
+          <ng-template ngx-datatable-footer-template>
+            <app-pagination [pageParams]="params" [comTotalCount]="totalCount"
+                            (limitChange)="getLimit($event)"
+                            (pageParamsChange)="reloadSysTimeListCount($event)"></app-pagination>
+          </ng-template>
+        </ngx-datatable-footer>
+      </ngx-datatable>
+    </div>
+    <app-loading *ngIf="isSpinner === 1" [top]="'258px'"></app-loading>
+    <app-empty-data *ngIf="isPermission === 0"></app-empty-data>
+  </div>
+</div>
+
+

@@ -1,0 +1,7 @@
+#system-parameter-area {
+  height: 100%;
+  position: relative;
+}
+#system-parameter-area .table-container {
+  height: calc(100% - 70px);
+}

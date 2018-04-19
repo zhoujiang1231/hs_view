@@ -1,0 +1,7 @@
+#system-user-area {
+  height: 100%;
+  position: relative;
+}
+#system-user-area .table-container {
+  height: calc(100% - 70px);
+}

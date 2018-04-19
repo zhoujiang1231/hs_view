@@ -1,0 +1,31 @@
+@import "../../assets/less/variables";
+
+.index {
+  height: 100%;
+  .ec-body-container {
+    //若用margin-top,整体的高度会变大，超过100%，会有滚动条出现
+    height: 100%;
+    padding-top: @header-height;
+    .ec-body-content {
+      height: 100%;
+      display: flex;
+      .right-container {
+        height: 100%;
+        margin-left: @side-nav-width;
+        flex: 1;
+        min-width: 1000px;
+        //overflow-y: auto;
+        overflow-y: hidden;
+      }
+      .right_fold {
+        margin-left: 180px;
+        -webkit-transition: all 0.3s ease;
+      }
+      .right_full {
+        margin-left: 50px;
+        -webkit-transition: all 0.3s ease;
+      }
+    }
+  }
+
+}

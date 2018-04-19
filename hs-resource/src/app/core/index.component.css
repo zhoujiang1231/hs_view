@@ -1,0 +1,39 @@
+/*
+ * Material Colors
+ */
+/* Bootstrap Branding */
+/*
+ * Colors
+ */
+/*
+ * Blocks
+ */
+/*
+ * Font Icon Family
+ */
+.index {
+  height: 100%;
+}
+.index .ec-body-container {
+  height: 100%;
+  padding-top: 50px;
+}
+.index .ec-body-container .ec-body-content {
+  height: 100%;
+  display: flex;
+}
+.index .ec-body-container .ec-body-content .right-container {
+  height: 100%;
+  margin-left: 50px;
+  flex: 1;
+  min-width: 1000px;
+  overflow-y: hidden;
+}
+.index .ec-body-container .ec-body-content .right_fold {
+  margin-left: 180px;
+  -webkit-transition: all 0.3s ease;
+}
+.index .ec-body-container .ec-body-content .right_full {
+  margin-left: 50px;
+  -webkit-transition: all 0.3s ease;
+}

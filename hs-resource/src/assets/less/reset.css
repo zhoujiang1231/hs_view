@@ -1,0 +1,180 @@
+/*
+ * Material Colors
+ */
+/* Bootstrap Branding */
+/*
+ * Colors
+ */
+/*
+ * Blocks
+ */
+/*
+ * Font Icon Family
+ */
+/*
+ * CSS Transform - Scale and Rotate
+ */
+/*
+ * Pop-in Hover effects
+ */
+/*
+ * Scale 3d
+ */
+/*checkbox样式*/
+.mat-checkbox-layout .mat-checkbox-inner-container {
+  width: 16px ;
+  height: 16px ;
+}
+.mat-checkbox-background svg {
+  width: 16px;
+  height: 16px;
+}
+/*--end--*/
+.mat-dialog-container {
+  max-height: 600px !important;
+  overflow-y: auto !important;
+}
+button:focus {
+  outline: none;
+}
+.mat-form-field-underline {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+/**table样式重置**/
+ngx-datatable {
+  height: 100%;
+}
+ngx-datatable .visible {
+  height: 100%;
+}
+ngx-datatable .visible .datatable-header {
+  width: 100% !important;
+}
+ngx-datatable .visible .datatable-body {
+  height: calc(100% - 80px) !important;
+  width: 100% !important;
+}
+ngx-datatable .visible .datatable-footer app-pagination ul.pagination {
+  margin-bottom: 0;
+}
+/**table中 操作按钮 menu样式重置**/
+.cdk-overlay-container .mat-menu-panel {
+  min-width: 100px;
+}
+.cdk-overlay-container .mat-menu-panel .mat-menu-content {
+  padding: 0;
+}
+.cdk-overlay-container button.mat-menu-item {
+  height: 35px;
+  line-height: 35px;
+  font-size: 14px;
+  text-align: center;
+}
+/**ngx-datatable样式重置**/
+.ngx-datatable.material.striped .datatable-row-odd {
+  background: #F9FAFB !important;
+}
+.ngx-datatable.material {
+  box-shadow: none !important;
+  border-top: 1px solid #eceeef !important;
+}
+.ngx-datatable.material .datatable-header {
+  border-bottom: 1px solid #eceeef !important;
+  background: #F5F6FA !important;
+}
+.ngx-datatable.material .datatable-header .datatable-header-cell {
+  text-align: center !important;
+  color: #999999 !important;
+  font-weight: normal !important;
+}
+.ngx-datatable.material .datatable-header .resize-handle {
+  border-right: 1px solid #ddd;
+}
+.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {
+  text-align: center !important;
+  color: #58666E !important;
+  font-size: 12px !important;
+}
+.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell .datatable-body-cell-label:hover {
+  overflow-x: auto;
+}
+@media (min-width: 0px) {
+  .ngx-datatable.material .datatable-body .progress-linear .container {
+    max-width: none !important;
+  }
+}
+.ngx-datatable.material .datatable-footer {
+  color: #333333 !important;
+}
+.datatable-checkbox {
+  padding: 0 !important;
+}
+#divide-module .datatable-body-cell {
+  padding: 0 !important;
+  line-height: 40px;
+}
+#divide-module .datatable-body-cell-label:hover {
+  overflow: hidden;
+}
+/**end**/
+/*spinner颜色*/
+.mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: #ccc !important;
+}
+/**业务路由部分dialog中，易用性改进样式**/
+.easyUsed {
+  background-color: #DDDDDD;
+  border-radius: 5px;
+  margin-left: 0;
+  width: 100%;
+  padding-top: 5px;
+  margin-bottom: 10px;
+}
+/**分页布局样式**/
+.bottom-page {
+  height: 30px;
+}
+.bottom-page .total-page {
+  height: 30px;
+  line-height: 30px;
+  margin-right: 10px;
+  display: inline-block;
+  font-size: 12px;
+  color: #888;
+}
+.bottom-page pagination {
+  display: inline-block;
+  margin-right: 10px;
+}
+.bottom-page .right-page {
+  display: inline-block;
+}
+.bottom-page .right-page .go-page {
+  border: 1px solid #ddd;
+  text-align: center;
+  width: 36px;
+  height: 28px;
+}
+.bottom-page .right-page .go-button {
+  height: 28px;
+  line-height: 28px;
+  padding: 0 6px;
+  border: 1px solid #ddd;
+  min-width: 36px;
+  border-radius: 0;
+  margin-right: 10px;
+  vertical-align: bottom;
+}
+.bottom-page .right-page .go-button:hover {
+  background: #88B7E0;
+}
+.bottom-page .right-page .pageLimit {
+  min-width: 30px;
+  height: 28px;
+  line-height: 28px;
+  box-shadow: none;
+  border: 1px solid #ddd;
+  font-weight: normal;
+  padding: 0 10px;
+}

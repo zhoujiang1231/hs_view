@@ -1,0 +1,220 @@
+<div id="tool-phone-area">
+  <app-page-header [title]="'话单查询'"></app-page-header>
+  <div class="h-100 position-relative">
+    <div class="row head-search-container" style="height: 48px;">
+      <div class="col-4 container-input">
+        <dl>
+          <dt><span style="color: red;">*&nbsp;</span>请求时间:</dt>
+          <dd class="range-flatpickr">
+            <ng2-flatpickr [config]="startTimeOptions"></ng2-flatpickr>
+            <span>至</span>
+            <ng2-flatpickr [config]="endTimeOptions"></ng2-flatpickr>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-2 container-input">
+        <dl>
+          <dt>落地网关:</dt>
+          <dd>
+            <mat-form-field class="right-input" floatPlaceholder="never">
+              <mat-select [(ngModel)]="params.gatewayId" placeholder="请选择">
+                <mat-option  [value]="''">全部</mat-option>
+                <mat-option *ngFor="let item of gatewayIdArr" [value]="item.id">
+                  {{item.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-2 container-input">
+        <dl>
+          <dt>中继组:</dt>
+          <dd>
+            <mat-form-field class="right-input" floatPlaceholder="never">
+              <mat-select [(ngModel)]="params.trunkGroupId" placeholder="请选择">
+                <mat-option  [value]="''">全部</mat-option>
+                <mat-option *ngFor="let item of trunkGroupIdArr" [value]="item.id">
+                  {{item.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-2 container-input">
+        <dl>
+          <dt>业务:</dt>
+          <dd>
+            <mat-form-field class="right-input" floatPlaceholder="never">
+              <mat-select [(ngModel)]="params.serviceId" placeholder="请选择">
+                <mat-option  [value]="''">全部</mat-option>
+                <mat-option *ngFor="let item of businessIdArr" [value]="item.id">
+                  {{item.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-2 container-input">
+        <dl>
+          <dt style="width: 100px">请求时外显号码:</dt>
+          <dd style="margin-left: 100px">
+            <mat-form-field class="right-input" floatPlaceholder="never">
+              <input matInput placeholder="请输入" [(ngModel)]="params.beforeClid">
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div class="row head-search-container">
+      <div class="col-2 container-input">
+        <dl>
+          <dt style="width: 74px">所在地区号:</dt>
+          <dd style="margin-left: 74px">
+            <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+              <input matInput placeholder="请输入" [(ngModel)]="params.areacode">
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-2 container-input">
+        <dl>
+          <dt>callId:</dt>
+          <dd>
+            <mat-form-field class="right-input" floatPlaceholder="never">
+              <input matInput placeholder="请输入" [(ngModel)]="params.callId">
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-2 container-input">
+        <dl>
+          <dt>企业ID:</dt>
+          <dd>
+            <mat-form-field class="right-input" floatPlaceholder="never">
+              <input matInput placeholder="请输入" [(ngModel)]="stringParams.enterpriseId">
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-2 container-input">
+        <dl>
+          <dt>呼叫号码:</dt>
+          <dd>
+            <mat-form-field class="right-input" floatPlaceholder="never">
+              <input matInput placeholder="请输入" [(ngModel)]="params.tel">
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-2 container-input">
+        <dl>
+          <dt>发起IP:</dt>
+          <dd>
+            <mat-form-field class="right-input" floatPlaceholder="never">
+              <input matInput placeholder="请输入" [(ngModel)]="params.fromIp">
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-2">
+        <button mat-button class="search-button" (click)="search()">搜索</button>
+      </div>
+    </div>
+    <div *ngIf="isPermission === 1" class="table-container w-100">
+      <ngx-datatable class="material striped"
+                     [loadingIndicator]="loadingIndicator"
+                     [rows]="phoneNoteData"
+                     [headerHeight]="40"
+                     [footerHeight]="40"
+                     [rowHeight]="40"
+                     [columnMode]="'force'"
+                     [scrollbarH]="true"
+                     [limit]="params.pageSize">
+        <ngx-datatable-column [name]="'CallID'" [prop]="'callId'">
+          <ng-template let-row="row" let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+            <span class="linkSpan" (click)="operateButton(row)" >{{value}}</span>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [name]="'请求时间'" [width]="200">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row?.requestTime | microsecondFormat: 'YYYY-MM-DD HH:mm:ss.SSS'}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [name]="'路由出去时间'" [width]="200">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row?.routedTime | microsecondFormat: 'YYYY-MM-DD HH:mm:ss.SSS'}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [name]="'响铃时间'" [width]="200">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row?.ringTime | microsecondFormat: 'YYYY-MM-DD HH:mm:ss.SSS'}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [name]="'接通时间'" [width]="200">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row?.answerTime | microsecondFormat: 'YYYY-MM-DD HH:mm:ss.SSS'}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [name]="'结束时间'" [width]="200">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row?.endTime | microsecondFormat: 'YYYY-MM-DD HH:mm:ss.SSS'}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [name]="'呼叫区号'" [prop]="'areacode'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'带前缀呼叫号码'">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row?.beforePrefix}}{{row?.tel}}
+          </ng-template>
+        </ngx-datatable-column>
+        <!--<ngx-datatable-column [name]="'路由前的prefix'" [prop]="'beforePrefix'"></ngx-datatable-column>-->
+        <!--<ngx-datatable-column [name]="'呼叫号码'" [prop]="'tel'"></ngx-datatable-column>-->
+        <ngx-datatable-column [name]="'带前缀路由后号码'">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row?.afterPrefix}}{{row?.afterTel}}
+          </ng-template>
+        </ngx-datatable-column>
+        <!--<ngx-datatable-column [name]="'路由后的prefix'" [prop]="'afterPrefix'"></ngx-datatable-column>-->
+        <!--<ngx-datatable-column [name]="'路由后号码'" [prop]="'afterTel'"></ngx-datatable-column>-->
+        <ngx-datatable-column [name]="'呼叫类型'" [prop]="'callTypeName'">
+          <ng-template let-row="row" let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+            <span title="{{row.callType}}">{{value}}</span>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [name]="'接通分钟数'">
+          <ng-template let-row="row" ngx-datatable-cell-template>{{row?.duration | minuteFormat}}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [name]="'接通秒数'" [prop]="'durationSeconds'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'来源IP'" [prop]="'fromIp'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'对接网关IP'" [prop]="'gatewayIp'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'OpensipsIP'" [prop]="'opensipsIp'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'路由前的外显'" [prop]="'beforeClid'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'路由后的外显'" [prop]="'afterClid'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'运营商'" [prop]="'sp'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'状态'" [prop]="'statusName'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'SipCode'" [prop]="'sipCode'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'失败原因'" [prop]="'failCodeName'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'挂断原因'" [prop]="'endReasonName'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'业务ID'" [prop]="'serviceId'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'对接中继组ID'" [prop]="'trunkGroupId'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'对接网关ID'" [prop]="'gatewayId'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'企业ID'" [prop]="'enterpriseId'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'自定义项'" [prop]="'extraProp'" [width]="300"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'创建时间'">
+          <ng-template let-row="row" ngx-datatable-cell-template>{{row?.createTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-footer>
+          <ng-template ngx-datatable-footer-template>
+            <app-pagination [pageParams]="params" [comTotalCount]="totalCount"
+                            (limitChange)="getLimit($event)"
+                            (pageParamsChange)="reloadPhoneNoteCount($event)"></app-pagination>
+          </ng-template>
+        </ngx-datatable-footer>
+      </ngx-datatable>
+    </div>
+    <app-loading *ngIf="isSpinner === 1" [top]="'258px'"></app-loading>
+    <app-empty-data *ngIf="isPermission === 0"></app-empty-data>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="sideNavBar_full" [ngClass]="{sideNavBar_fold: !sideOpened}">
+  <div class="sideNavBar ps" [perfectScrollbar]="config">
+    <div class="side-menu-container">
+      <div class="side-inner">
+        <div class="sidebar-fold" (click)="foldSide()">
+          <mat-icon class="md-24">menu</mat-icon>
+        </div>
+        <div>
+          <!--首页-->
+          <ul>
+            <li>
+              <a routerLink="/index/home" routerLinkActive="active">
+                <mat-icon class="md-24">dashboard</mat-icon>
+                <span class="menu-title">首页</span>
+              </a>
+            </li>
+          </ul>
+          <!--其他菜单-->
+          <div *ngFor="let navTab of navTabs;let i=index;">
+            <span *ngIf="navTab.show">
+              <div class="sidebar-title" (click)="openMenu(i)">
+                <mat-icon *ngIf="sideOpened && !navTab.open" class="mat-24">
+                  chevron_right
+                </mat-icon>
+                <mat-icon *ngIf="sideOpened && navTab.open" class="mat-24">
+                  expand_more
+                </mat-icon>
+                <mat-icon *ngIf="!sideOpened && !navTab.open" class="mat-24" [matTooltip]="navTab.title"
+                          [matTooltipPosition]="'right'">
+                  chevron_right
+                </mat-icon>
+                <mat-icon *ngIf="!sideOpened && navTab.open" class="mat-24" [matTooltip]="navTab.title"
+                          [matTooltipPosition]="'right'">
+                  expand_more
+                </mat-icon>
+                <span>{{navTab.title}}</span>
+              </div>
+            </span>
+            <ul *ngIf="navTab.open">
+              <li *ngFor="let item of navTab.children">
+                <span *ngIf="item.show">
+                  <a routerLink="{{item.link}}" routerLinkActive="active">
+                    <div>
+                      <mat-icon *ngIf="!sideOpened" class="mat-24" [matTooltip]="item.name"
+                                [matTooltipPosition]="'right'">{{item.mat_icon}}</mat-icon>
+                      <mat-icon *ngIf="sideOpened" class="mat-24">{{item.mat_icon}}</mat-icon>
+                    </div>
+                    <span class="menu-title">
+                      {{item.name}}
+                    </span>
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+#manage-search-area {
+  height: 100%;
+}
+#manage-search-area > div {
+  height: calc(100% - 58px);
+  display: flex;
+  flex-direction: column;
+}
+#manage-search-area > div .fixed-area {
+  position: relative;
+}
+#manage-search-area > div .active-area {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+#manage-search-area > div .active-area div.row {
+  overflow-y: auto;
+}
+#manage-search-area > div .active-area div.row .col-4 h4 {
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}

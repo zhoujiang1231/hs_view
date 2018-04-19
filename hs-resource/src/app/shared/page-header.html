@@ -1,0 +1,20 @@
+<div id="page-header" class="d-flex align-items-center">
+  <h3 class="page-header-title mb-0">{{title}}</h3>
+  <span class="fill-remaining"></span>
+  <div *ngIf="permission === 1">
+    <div class="left-buttons" *ngIf="leftButtons?.length > 0">
+      <button mat-icon-button *ngFor="let reNew of leftButtons" (click)="clickRightBtn(reNew.action)">
+        <mat-icon>{{reNew.name}}</mat-icon>
+      </button>
+    </div>
+    <div class="right-buttons" *ngIf="rightButtons?.length > 0">
+      <button *ngFor="let button of rightButtons; let i = index" mat-button
+              (click)="clickRightBtn(button.action)">
+        <span>{{button.title}}</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+

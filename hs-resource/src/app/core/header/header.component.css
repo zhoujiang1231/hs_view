@@ -1,0 +1,65 @@
+/*
+ * Common header classes & IDs  Do not remove this
+ */
+/*
+ * CSS Transform - Scale and Rotate
+ */
+/*
+ * Pop-in Hover effects
+ */
+/*
+ * Scale 3d
+ */
+/*
+ * Material Colors
+ */
+/* Bootstrap Branding */
+/*
+ * Colors
+ */
+/*
+ * Blocks
+ */
+/*
+ * Font Icon Family
+ */
+#header {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+#header .head-content {
+  height: 50px;
+  padding: 0 10px;
+  line-height: 50px;
+  background: #373d41;
+}
+#header .organ-name {
+  color: #fff;
+  font-size: 1.7rem;
+  margin: 0 10px;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+}
+#header .logo-header {
+  width: 30px;
+  vertical-align: -10px;
+}
+#header .right-buttons {
+  float: right;
+}
+#header .right-buttons button {
+  margin-left: 10px;
+}
+#header .right-buttons button .mat-icon {
+  color: #fff;
+  font-size: 1.9rem;
+}
+#header .right-buttons .username {
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  font-size: 1.4rem;
+  color: #fff;
+}

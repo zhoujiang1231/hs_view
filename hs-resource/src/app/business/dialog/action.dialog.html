@@ -1,0 +1,61 @@
+<div class="redefine-dialog">
+  <form [formGroup]="targetForm" (ngSubmit)="save()">
+    <h1 class="dialog-head">action列表</h1>
+    <mat-icon class="add-icon" (click)="addAction()">add</mat-icon>
+    <div class="action-list">
+      <div class="table-card">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>action Id</th>
+              <th>路由Id</th>
+              <th>类型</th>
+              <th>属性</th>
+              <th>描述</th>
+              <th>创建时间</th>
+              <th style="text-align: center">操作</th>
+            </tr>
+          </thead>
+          <tbody dnd-sortable-container [sortableData]="routerAction">
+            <tr *ngFor="let action of routerAction;let i = index"
+                dnd-sortable
+                [sortableIndex]="i"
+                (onDropSuccess)="sortRuleSuccess()">
+              <td>{{action?.id}}</td>
+              <td>{{action?.routerId}}</td>
+              <td>{{action?.actionTypeName}}</td>
+              <td>{{action?.property}}</td>
+              <td>{{action?.description}}</td>
+              <td>{{action?.createTime | dateFormat: 'YYYY-MM-DD HH:mm:ss'}}</td>
+              <td style="text-align: center">
+                <span [matMenuTriggerFor]="menu" style="cursor: pointer">
+                  <mat-icon class="md-24" style="font-size: 16px;">more_vert</mat-icon>
+                </span>
+                <mat-menu #menu="matMenu">
+                <button mat-menu-item *ngFor="let item of [{value:0,name:'编辑'}, {value:1,name:'删除'}]"
+                  [value]="item.value" (click)="operateButton(item.value,action,i)">{{item.name}}</button>
+                </mat-menu>
+              </td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+          </tbody>
+        </table>
+        <app-pagination [pageParams]="params" [comTotalCount]="totalCount"
+                        (limitChange)="getLimit($event)"
+                        (pageParamsChange)="reloadRouterActionCount($event)"></app-pagination>
+      </div>
+    </div>
+    <div class="dialog-bottom mt-0">
+      <!--<button mat-button type="button" class="cancel" (click)="dialogRef.close('cancel')">取消</button>-->
+      <button mat-button type="submit" class="sure">保存列表顺序</button>
+    </div>
+  </form>
+</div>

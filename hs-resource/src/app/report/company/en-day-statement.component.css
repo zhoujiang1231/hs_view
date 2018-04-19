@@ -1,0 +1,8 @@
+#en-day-statement-area,
+#en-month-statement-area {
+  height: 100%;
+}
+#en-day-statement-area .table-container,
+#en-month-statement-area .table-container {
+  height: calc(100% - 130px);
+}

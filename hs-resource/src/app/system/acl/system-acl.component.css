@@ -1,0 +1,7 @@
+#system-acl-area {
+  height: 100%;
+  position: relative;
+}
+#system-acl-area .table-container {
+  height: calc(100% - 70px);
+}

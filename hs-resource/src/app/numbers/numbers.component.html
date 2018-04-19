@@ -1,0 +1,74 @@
+<div id="numbers-area">
+  <app-page-header [title]="'号码查询'"
+                   [rightButtons]="rightBtns"
+                   (tapRightBtn)="onClickBtnWithAction($event)"></app-page-header>
+  <div class="h-100 position-relative">
+    <!--查询模块-->
+    <div class="row head-search-container">
+      <div class="col-2 container-input">
+        <dl>
+          <dt>号码:</dt>
+          <dd>
+            <mat-form-field class="right-input" floatPlaceholder="never">
+              <input matInput placeholder="请输入" [(ngModel)]="params.number">
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-2 container-input">
+        <dl>
+          <dt>trunkId:</dt>
+          <dd>
+            <mat-form-field class="right-input" floatPlaceholder="never">
+              <input matInput placeholder="请输入" [(ngModel)]="params.trunkId">
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-2">
+        <button mat-button class="search-button" (click)="search()">搜索</button>
+      </div>
+      <div class="col-6 redis-col">
+        <mat-form-field floatPlaceholder="never">
+          <input matInput placeholder="请输入redis的key,回车查询..." [(ngModel)]="key" (keyup)="myKeyup($event)">
+        </mat-form-field>
+      </div>
+    </div>
+    <!--表格-->
+    <div *ngIf="isPermission === 1" class="table-container w-100">
+      <ngx-datatable class="material striped"
+                     [loadingIndicator]="loadingIndicator"
+                     [rows]="phoneNumberData"
+                     [headerHeight]="40"
+                     [footerHeight]="40"
+                     [rowHeight]="40"
+                     [columnMode]="'force'"
+                     [scrollbarH]="true"
+                     [limit]="params.pageSize">
+        <ngx-datatable-column [name]="'号码id'" [prop]="'id'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'trunkId'" [prop]="'trunkId'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'号码'" [prop]="'number'">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <span class="linkSpan" (click)="openDialog(row)">{{value}}</span>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [name]="'号码属性'" [prop]="'av'" [width]="550"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'更新时间'">
+          <ng-template let-row="row" ngx-datatable-cell-template>{{row?.updateTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [name]="'创建时间'">
+          <ng-template let-row="row" ngx-datatable-cell-template>{{row?.createTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-footer>
+          <ng-template ngx-datatable-footer-template>
+            <app-pagination [pageParams]="params" [comTotalCount]="totalCount"
+                            (limitChange)="getLimit($event)"
+                            (pageParamsChange)="reload($event)"></app-pagination>
+          </ng-template>
+        </ngx-datatable-footer>
+      </ngx-datatable>
+    </div>
+    <app-loading *ngIf="isSpinner === 1" [top]="'258px'"></app-loading>
+    <app-empty-data *ngIf="isPermission === 0"></app-empty-data>
+  </div>
+</div>

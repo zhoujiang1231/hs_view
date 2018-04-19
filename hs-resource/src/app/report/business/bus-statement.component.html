@@ -1,0 +1,4 @@
+<div id="second-menu-route" [ngClass]="{hidden_menu:isShow == false}">
+  <app-second-menu [title]="'业务报表'" [menu]="menu" (menuHide)="hideMenu($event)"></app-second-menu>
+  <router-outlet></router-outlet>
+</div>

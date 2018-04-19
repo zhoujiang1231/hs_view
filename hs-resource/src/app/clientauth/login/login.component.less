@@ -1,0 +1,178 @@
+.login{
+  /** 1、头部 **/
+  .login-topbar{
+    height: 222px; //60px;
+    overflow: hidden;
+    .logo {
+      background: url(../../../assets/images/logo-new.png);
+      width: 202px;
+      height: 80px !important;
+      position: absolute;
+      top: 36px;
+      left: 150px;
+      cursor: pointer;
+    }
+  }
+  /**2、body 部分**/
+  .bar {
+    height: 375px;
+    .center {
+      width: 980px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .barpic {
+      width: 550px;
+      height: 375px;
+    }
+    .login-body{
+      .right-login{
+        float: right;
+        width: 400px;
+        background-color: #ffffff;
+        padding:15px 25px;
+        position: absolute;
+        top:calc(~"50% - 80px");
+        right: 0;
+        transform: translateY(-50%);
+        .login-header{
+          font-size: 18px;
+          color: #373D41;
+          >div {
+            padding-top:15px;
+            padding-bottom:15px;
+            text-align: center;
+            background-color: rgb(247,247,247);
+            cursor: pointer;
+            font-size: 1.2rem;
+          }
+        }
+        .attendant-login{
+          .login-text-group{
+            margin-bottom: 20px;
+            .login-text {
+              background: #FFF;
+              border: 1px solid #D7D8D9;
+              height: 40px;
+              width: 100%;
+              line-height: 40px;
+              padding: 0 10px;
+              box-sizing: border-box;
+              outline: 0;
+              box-shadow: none;
+              &:focus{
+                background: #fff;
+                border: 1px solid #1194F6;
+              }
+            }
+            .code-input{
+              width: 68% !important;
+            }
+            img{
+              width: 28%;
+              margin-left: 2%;
+            }
+          }
+        }
+        .attendant-login{
+          padding-top: 15px;
+          form{
+            .sign-input{
+              width:100%;
+              input{
+                padding:3px 0 0;
+              }
+              .code-input{
+                position:relative;
+              }
+              .code{
+                position:absolute;
+                right:0;
+                bottom:0;
+                cursor:pointer;
+              }
+            }
+            mat-icon{
+              font-size:20px !important;
+              margin-top:-3px;
+              margin-right:5px;
+            }
+            .help{
+              text-align:left;
+              position: absolute;
+              margin-top: 0 !important;
+            }
+            .forget{
+              margin-bottom: 10px;
+              text-decoration:none;
+              display:block;
+              color:#1194F6;
+            }
+            .login-button{
+              cursor:pointer;
+              background:#1194F6;
+              margin-top: 5px;
+              margin-bottom:20px;
+              height: 40px;
+              color:#fff;
+              font-size:15px;
+              width: 100%;
+              text-align: center;
+              border-radius: 0;
+            }
+            .login-button:disabled{
+              opacity: .5;
+              cursor:default !important;
+            }
+          }
+        }
+      }
+    }
+  }
+  /**3、底部**/
+  .login-footer{
+    height: 100px;
+    padding-top: 1rem;
+    color: #9b9ea0;
+    font-size: 14px;
+    .right-img{
+      text-align: center;
+      mat-icon{
+        font-size: 4rem !important;
+        opacity: .6;
+        width: 40px !important;
+        height: 40px !important;
+      }
+      dl {
+        display: inline-block;
+        padding:0 25px;
+        dt {
+          a{
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+  /**4、底部文字**/
+  .bottom{
+    margin: 5px 0;
+    .center {
+      width: 1000px;
+      margin: 0 auto;
+      .clear {
+        clear: both;
+        height: 1px;
+        width: 100%;
+      }
+      .foot {
+        margin: 20px 0;
+        text-align: center;
+        color: #73777a;
+        font-size: 13px;
+        line-height: 24px;
+      }
+    }
+  }
+}
+

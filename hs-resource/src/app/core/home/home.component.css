@@ -1,0 +1,44 @@
+.home-container {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.home-container .ec-home {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 100%;
+}
+.home-container .ec-home .welcome {
+  margin: 0 auto;
+  position: relative;
+  font-size: 14px;
+  line-height: 20px;
+}
+.home-container .ec-home .welcome .welcome-content {
+  margin: 0 auto;
+  text-align: center;
+}
+.home-container .ec-home .welcome .welcome-content .welcome-head {
+  line-height: 34px;
+  font-weight: normal;
+  text-align: center;
+  margin: 10px 0;
+}
+.home-container .ec-home .welcome .welcome-content > p {
+  text-align: center;
+  margin-top: 30px;
+  word-break: break-all;
+}
+.home-container .ec-home .welcome .bottom {
+  margin-top: 60px;
+  text-align: center;
+}
+.home-container .ec-home .welcome .bottom button {
+  background: #0290B0;
+  color: #fff;
+  line-height: 38px;
+  min-width: 135px;
+}

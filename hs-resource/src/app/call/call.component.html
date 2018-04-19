@@ -1,0 +1,145 @@
+<div id="call-area">
+  <app-page-header [title]="'呼叫测试'"></app-page-header>
+  <div class="h-100 position-relative">
+    <form [formGroup]="targetForm" (ngSubmit)="reload()">
+      <div class="row body-search-container">
+        <div class="col-12 container-input">
+          <dl>
+            <dt>主叫号码:</dt>
+            <dd>
+              <mat-form-field class="right-input" floatPlaceholder="never">
+                <input matInput name="to" [formControl]="targetForm.controls['to']"
+                       placeholder="请输入" [(ngModel)]="params.to" required>
+                <mat-error
+                  *ngIf="targetForm.controls['to'].touched && targetForm.controls['to'].hasError('required')">
+                  字段不能为空！
+                </mat-error>
+              </mat-form-field>
+            </dd>
+          </dl>
+        </div>
+        <div class="col-12 container-input">
+          <dl>
+            <dt>被叫号码:</dt>
+            <dd>
+              <mat-form-field class="right-input" floatPlaceholder="never">
+                <input matInput name="from" [formControl]="targetForm.controls['from']"
+                       placeholder="请输入" [(ngModel)]="params.from" required>
+                <mat-error
+                  *ngIf="targetForm.controls['from'].touched && targetForm.controls['from'].hasError('required')">
+                  字段不能为空！
+                </mat-error>
+              </mat-form-field>
+            </dd>
+          </dl>
+        </div>
+        <div class="col-12 container-input">
+          <dl>
+            <dt>内网地址:</dt>
+            <dd>
+              <mat-form-field class="right-input" floatPlaceholder="never">
+                <mat-select name="url" [formControl]="targetForm.controls['url']"
+                            [(ngModel)]="params.url" placeholder="请输入" required>
+                  <mat-option *ngFor="let item of urlsArr" [value]="item">
+                    {{item}}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="targetForm.controls['url'].touched && targetForm.controls['url'].hasError('required')">
+                  字段不能为空！
+                </mat-error>
+              </mat-form-field>
+            </dd>
+          </dl>
+        </div>
+        <div class="col-12 container-input">
+          <dl>
+            <dt>信令超时时间(ms):</dt>
+            <dd>
+              <mat-form-field class="right-input" floatPlaceholder="never">
+                <input matInput name="timeout" [formControl]="targetForm.controls['timeout']"
+                       placeholder="请输入" [(ngModel)]="params.timeout" required>
+                <mat-error
+                  *ngIf="targetForm.controls['timeout'].touched && targetForm.controls['timeout'].hasError('required')">
+                  字段不能为空！
+                </mat-error>
+              </mat-form-field>
+            </dd>
+          </dl>
+        </div>
+        <div class="col-12 container-input">
+          <dl>
+            <dt>headers:</dt>
+            <dd>
+              <div class="row headers-row">
+                <div class="col-6">
+                  <mat-form-field class="header-input">
+                    <input matInput name="name1" [formControl]="targetForm.controls['name1']"
+                           placeholder="name1" [(ngModel)]="params.name1" required>
+                    <mat-error
+                      *ngIf="targetForm.controls['name1'].touched && targetForm.controls['name1'].hasError('required')">
+                      字段不能为空！
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-6">
+                  <mat-form-field class="header-input">
+                    <input matInput name="value1" [formControl]="targetForm.controls['value1']"
+                           placeholder="value1" [(ngModel)]="params.value1" required>
+                    <mat-error
+                      *ngIf="targetForm.controls['value1'].touched && targetForm.controls['value1'].hasError('required')">
+                      字段不能为空！
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-6">
+                  <mat-form-field class="header-input">
+                    <input matInput name="name2" [formControl]="targetForm.controls['name2']"
+                           placeholder="name2" [(ngModel)]="params.name2" required>
+                    <mat-error
+                      *ngIf="targetForm.controls['name2'].touched && targetForm.controls['name2'].hasError('required')">
+                      字段不能为空！
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-6">
+                  <mat-form-field class="header-input">
+                    <input matInput name="value2" [formControl]="targetForm.controls['value2']"
+                           placeholder="value2" [(ngModel)]="params.value2" required>
+                    <mat-error
+                      *ngIf="targetForm.controls['value2'].touched && targetForm.controls['value2'].hasError('required')">
+                      字段不能为空！
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-6">
+                  <mat-form-field class="header-input">
+                    <input matInput name="name3" [formControl]="targetForm.controls['name3']"
+                           placeholder="name3" [(ngModel)]="params.name3" required>
+                    <mat-error
+                      *ngIf="targetForm.controls['name3'].touched && targetForm.controls['name3'].hasError('required')">
+                      字段不能为空！
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-6">
+                  <mat-form-field class="header-input">
+                    <input matInput name="value3" [formControl]="targetForm.controls['value3']"
+                           placeholder="value3" [(ngModel)]="params.value3" required>
+                    <mat-error
+                      *ngIf="targetForm.controls['value3'].touched && targetForm.controls['value3'].hasError('required')">
+                      字段不能为空！
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </dd>
+          </dl>
+        </div>
+        <div class="col-12 text-center">
+          <button mat-button type="submit" class="search-button" [disabled]="targetForm.invalid || disabled.value">呼叫</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

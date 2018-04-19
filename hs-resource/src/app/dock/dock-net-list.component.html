@@ -1,0 +1,46 @@
+<div id="system-docks-area">
+  <app-page-header [title]="'对接中继组'"
+                   [rightButtons]="[{ title: '新建', action: 'add'}]"
+                   (tapRightBtn)="onClickBtnWithAction($event)"></app-page-header>
+  <div *ngIf="isPermission === 1" class="pt-3 table-container w-100">
+    <ngx-datatable class="material striped"
+                   [loadingIndicator]="loadingIndicator"
+                   [rows]="dockGroupData"
+                   [headerHeight]="40"
+                   [footerHeight]="40"
+                   [rowHeight]="40"
+                   [columnMode]="'force'"
+                   [scrollbarH]="true"
+                   [limit]="params.pageSize">
+      <ngx-datatable-column [name]="'中继组ID'" [prop]="'id'"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'中继组名'" [prop]="'name'" [width]="150"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'物理位置'" [prop]="'location'" [width]="250"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'描述'" [prop]="'description'" [width]="300"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'是否激活'" [prop]="'activeName'"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'最大并发数'" [prop]="'maxCalls'"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'创建时间'" [width]="300">
+        <ng-template let-row="row" ngx-datatable-cell-template>{{row?.createTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column [name]="'操作'">
+        <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+        <span [matMenuTriggerFor]="menu" style="cursor: pointer">
+          <mat-icon class="md-24" style="font-size: 16px;">more_vert</mat-icon>
+        </span>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item *ngFor="let item of [{value:0,name:'编辑'},{value:1,name:'删除'},{value: 2, name:'该中继组下所有网关'}]"
+                    [value]="item.value" (click)="operateButton(item.value, row, rowIndex)">{{item.name}}</button>
+          </mat-menu>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-footer>
+        <ng-template ngx-datatable-footer-template>
+          <app-pagination [pageParams]="params" [comTotalCount]="totalCount"
+                          (limitChange)="getLimit($event)"
+                          (pageParamsChange)="reload($event)"></app-pagination>
+        </ng-template>
+      </ngx-datatable-footer>
+    </ngx-datatable>
+  </div>
+  <app-loading  *ngIf="isSpinner === 1" [top]="'258px'"></app-loading>
+  <app-empty-data *ngIf="isPermission === 0"></app-empty-data>
+</div>

@@ -1,0 +1,26 @@
+<div class="second-menu" [ngClass]="{hidden:isShow==false}" [style.left]="leftArr.mleft">
+  <div class="head">
+    <span>{{title}}</span>
+  </div>
+  <ul class="menu-list">
+    <li *ngFor="let item of menu" [ngClass]="{active:item.choosed == true}">
+      <a routerLink="{{item.link}}" (click)="chooseItem(item)">{{item.name}}</a>
+    </li>
+  </ul>
+</div>
+<div class="navbar-col ng-scope" [ngClass]="{hiddenNav:isShow == false}" [style.left]="leftArr.sleft"
+     (click)="isShowMenu()">
+  <div class="navbar-bg"></div>
+  <div class="navbar-col-inner">
+    <!--<div class="hidden"></div>-->
+    <mat-icon class="nav-icon">format_indent_decrease</mat-icon>
+  </div>
+</div>
+<!--[ngClass]="{showNev:isShow === false}"-->
+<div class="navbar-col-show ng-scope" [style.left]="isShow == false ? leftArr.mleft: '0px'" (click)="isShowMenu()">
+  <div class="navbar-open-bg"></div>
+  <div class="navbar-col-inner">
+    <!--<div class="hidden"></div>-->
+    <mat-icon class="nav-icon">format_indent_increase</mat-icon>
+  </div>
+</div>

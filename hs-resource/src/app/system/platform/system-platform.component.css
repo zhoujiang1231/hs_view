@@ -1,0 +1,7 @@
+#system-platform-area {
+  height: 100%;
+  position: relative;
+}
+#system-platform-area .table-container {
+  height: calc(100% - 70px);
+}
