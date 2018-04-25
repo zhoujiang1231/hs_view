@@ -12,8 +12,7 @@ import appAlert from '../../utils/alert'
 })
 
 export class HeaderComponent {
-  user: any = LocalStorage.get('user')
-  appName: any = LocalStorage.get('appName')
+  private user = LocalStorage.get('user')
 
   constructor(private router: Router,
               private connectionService: ConnectionService) {
@@ -21,11 +20,10 @@ export class HeaderComponent {
 
 
   exit() {
-    // console.log('exit_user', this.user)
-    const path = '/api/logout'
-    this.connectionService.post(path)
+    const path = '/user/logout'
+    this.connectionService.get(path)
       .then(res => {
-        if (res.data.status === 0) {
+        if (res.data.result === '0') {
           this.connectionService.logout()
           this.router.navigate(['/signin'])
           localStorage.clear()

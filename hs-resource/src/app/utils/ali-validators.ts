@@ -44,7 +44,7 @@ function phone(control: FormControl) {
     return e
   }
   const telPattern = /^0\d{2,3}-?\d{7,8}$/
-  const phonePattern = /^1[3458][0-9]\d{8}$/
+  const phonePattern = /^1[3456789][0-9]\d{8}$/
   if (!telPattern.test(input) && !phonePattern.test(input)) {
     return e
   }

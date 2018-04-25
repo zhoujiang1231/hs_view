@@ -73,7 +73,7 @@ export default {
     actionFailed: function (action = '删除', y?, n?) {
       return swal({
         type: 'error',
-        title: `${action}失败，请稍后重试!`,
+        title: `${action}`,
         showConfirmButton: false,
         timer: 2000
       }).then(yes(y), no(n))
@@ -81,7 +81,7 @@ export default {
     actionSuccess: function (action = '删除', y?, n?) {
       return swal({
         type: 'success',
-        title: `${action}成功!`,
+        title: `${action}`,
         showConfirmButton: false,
         timer: 2000
       }).then(yes(y), no(n))

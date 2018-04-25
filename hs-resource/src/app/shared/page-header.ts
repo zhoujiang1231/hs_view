@@ -24,4 +24,5 @@ export class PageHeaderComponent implements OnInit {
   clickRightBtn(action: string) {
     this.tapRightBtn.emit(action)
   }
+
 }

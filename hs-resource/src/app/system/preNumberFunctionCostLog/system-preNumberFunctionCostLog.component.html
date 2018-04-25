@@ -1,0 +1,33 @@
+<div id="system-preNumberFunctionCostLog-area">
+    <app-page-header [title]="'预扣费-号码功能费详情'"
+                     [rightButtons]="[{ title: '导出'}]"
+                     (tapRightBtn)="export()"></app-page-header>
+    <div class="h-100 position-relative">
+        <div *ngIf="isPermission === 1" class="table-container w-100">
+            <ngx-datatable class="material striped"
+                           [rows]="sysPreNumberFunctionCostLogData"
+                           [headerHeight]="40"
+                           [footerHeight]="40"
+                           [rowHeight]="40"
+                           [columnMode]="'force'"
+                           [scrollbarH]="true"
+                           [limit]="params.limit">
+                <ngx-datatable-column [name]="'号码'" [prop]="'number'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'地区'" [prop]="'area'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'起始月份'" [prop]="'startMonth'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'单价'" [prop]="'unitCost'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'消费'" [prop]="'totalCost'"></ngx-datatable-column>
+                <ngx-datatable-footer>
+                    <ng-template ngx-datatable-footer-template>
+                        <app-pagination [pageParams]="params" [comTotalCount]="totalCount"
+                                        (limitChange)="getLimit($event)"
+                                        (pageParamsChange)="reloadPreNumberFunctionCostLogData($event)"></app-pagination>
+                    </ng-template>
+                </ngx-datatable-footer>
+            </ngx-datatable>
+            <iframe [src]="downiframe" width="0" height="0" style="display: none;"></iframe>
+        </div>
+        <app-loading *ngIf="isSpinner === 1" [top]="'258px'"></app-loading>
+        <app-empty-data *ngIf="isPermission === 0"></app-empty-data>
+    </div>
+</div>

@@ -1,6 +1,5 @@
 import {Component, OnInit, Input, ViewEncapsulation} from '@angular/core'
 import {Router} from '@angular/router'
-import {HashLocationStrategy, LocationStrategy} from '@angular/common'
 
 @Component({
   selector: 'app-index',
@@ -12,12 +11,9 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common'
     'index.component.less'
   ],
   encapsulation: ViewEncapsulation.None,
-  // providers: [
-  //   Location, {
-  //     provide: LocationStrategy,
-  //     useClass: HashLocationStrategy
-  //   }
-  // ],
+  providers: [
+    Location,
+  ],
 })
 
 export class IndexComponent implements OnInit {

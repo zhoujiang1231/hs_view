@@ -1,0 +1,107 @@
+<div id="system-preDeductLog-area">
+  <app-page-header [title]="'预消费日志'"></app-page-header>
+  <div class="h-100 position-relative">
+    <div class="row head-search-container">
+      <div class="col-3 container-input">
+        <dl>
+          <dt>企业全称:</dt>
+          <dd>
+            <!--<mat-form-field class="right-input" [floatPlaceholder]="'never'">
+              <mat-select [(ngModel)]="params.accountId" placeholder="请选择">
+                <mat-option *ngFor="let item of customerDate" [value]="item?.id">
+                  {{item?.fullName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>-->
+            <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+              <input matInput
+                     [(ngModel)]="accountName"
+                     [typeahead]="customerDate"
+                     typeaheadOptionField="fullName"
+                     (typeaheadOnSelect)="typeaheadOnSelect($event)"
+                     (typeaheadOnBlur) = "typeaheadOnBlur($event)"
+                     [typeaheadOptionsLimit]="customerDate.length"
+                     [typeaheadMinLength]="0"
+                     [typeaheadScrollable]="true"
+                     [typeaheadOptionsInScrollableView]="10"
+                     placeholder="请选择"
+                     class="form-control">
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-2 container-input">
+        <dl>
+          <dt>企业简称:</dt>
+          <dd>
+            <!--<mat-form-field class="right-input" [floatPlaceholder]="'never'">
+              <mat-select [(ngModel)]="params.accountId" placeholder="请选择">
+                <mat-option *ngFor="let item of customerShortName" [value]="item?.id">
+                  {{item?.shortName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>-->
+            <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+              <input matInput
+                     [(ngModel)]="accountShortName"
+                     [typeahead]="customerShortName"
+                     typeaheadOptionField="shortName"
+                     (typeaheadOnSelect)="typeaheadOnSelect($event)"
+                     (typeaheadOnBlur) = "typeaheadOnBlur($event)"
+                     [typeaheadOptionsLimit]="customerShortName.length"
+                     [typeaheadMinLength]="0"
+                     [typeaheadScrollable]="true"
+                     placeholder="请选择"
+                     [typeaheadOptionsInScrollableView]="10"
+                     class="form-control">
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-3">
+        <button mat-button class="search-button" (click)="search()">搜索</button>
+        <button *ngIf="type==11||type==4||type==5" mat-button class="search-button" (click)="exportAll()">导出全部企业</button>
+      </div>
+    </div>
+    <div *ngIf="isPermission === 1" class="table-container w-100">
+      <ngx-datatable class="material striped"
+                     [rows]="sysPreDeductLogData"
+                     [headerHeight]="40"
+                     [footerHeight]="40"
+                     [rowHeight]="40"
+                     [columnMode]="'force'"
+                     [scrollbarH]="true"
+                     [limit]="params.limit">
+        <ngx-datatable-column [name]="'操作日期'" [prop]="'createTime'" >
+          <ng-template let-row="row" ngx-datatable-cell-template>{{row?.createTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [name]="'企业名称'" [prop]="'vlinkAccountFullName'" ></ngx-datatable-column>
+        <ngx-datatable-column [name]="'操作类型'" [prop]="'operateTypeDesc'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'操作金额'" [prop]="'opearteMoney'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'实际消费'" [prop]="'realCost'" ></ngx-datatable-column>
+        <ngx-datatable-column [name]="'企业低消'" [prop]="'minCost'" ></ngx-datatable-column>
+        <ngx-datatable-column [name]="'折扣'" [prop]="'rebate'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'操作前余额'" [prop]="'previousMoney'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'操作后余额'" [prop]="'currentMoney'" ></ngx-datatable-column>
+        <ngx-datatable-column [name]="'详情'">
+          <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+            <div [ngSwitch]="row.operateType">
+              <span *ngSwitchCase="4" class="linkSpan" (click)="getDetail(row)">查看</span>
+              <span *ngSwitchDefault></span>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-footer>
+          <ng-template ngx-datatable-footer-template>
+            <app-pagination [pageParams]="params" [comTotalCount]="totalCount"
+                            (limitChange)="getLimit($event)"
+                            (pageParamsChange)="reloadPaylogsData($event)"></app-pagination>
+          </ng-template>
+        </ngx-datatable-footer>
+      </ngx-datatable>
+      <iframe [src]="downiframe" width="0" height="0" style="display: none;"></iframe>
+    </div>
+    <app-loading  *ngIf="isSpinner === 1" [top]="'258px'"></app-loading>
+    <app-empty-data *ngIf="isPermission === 0"></app-empty-data>
+  </div>
+</div>

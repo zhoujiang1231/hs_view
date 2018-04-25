@@ -6,99 +6,92 @@ import appAlert from '../../utils/alert'
 
 @Injectable()
 export class SysUserService {
-  @observable sysUserData: any[] = []
+  /*@observable sysUserData: any[] = []
+  @observable userAppData: any[] = []*/
+  constructor(private connectionService: ConnectionService) {
 
-  constructor(private connectionService: ConnectionService) {}
-
-  /**新增用户：post**/
-  addSysUser(data, dialogRef, disabled?) {
-    const path = '/api/system/users'
-    this.connectionService.post(path, data)
-      .then(res => {
-        console.log('新增用户', res)
-        if (res.data.status === 0) {
-          if (res.data.permission === 0) {
-            dialogRef.close('success')
-            appAlert.common.actionSuccess('新增用户')
-          } else if (res.data.permission === -1) {
-            disabled.value = false
-            appAlert.common.confirmWarning('很抱歉，您没有新增用户的权限！')
-          }
-        } else {
-          console.log(res.data.msg)
-          disabled.value = false
-          appAlert.common.actionFailed('新增用户')
-        }
-      }).catch(err => {
-      disabled.value = false
-      appAlert.common.actionFailed('新增用户')
-    })
   }
 
-  /**删除用户：delete**/
-  deleteSysUser(id) {
-    const path = '/api/system/users/' + id
-    const configsObservable = Observable.fromPromise(this.connectionService.delete(path))
-    configsObservable.subscribe(res => {
-        if (res.data.status === 0) {
-          if (res.data.permission === 0) {
-            appAlert.common.actionSuccess('删除用户')
-          } else if (res.data.permission === -1) {
-            appAlert.common.confirmWarning('很抱歉，您没有删除该用户的权限！')
-          }
-        } else {
-          console.log(res.data.msg)
-          appAlert.common.actionFailed('删除用户')
-        }
-      }, err => {
-      appAlert.common.actionFailed('删除用户')
-    })
-    return configsObservable
-  }
-
-  /**修改用户\修改密码：put**/
-  operateSysUser(path, data, dialogRef?: any, disabled?: any) {
-    this.connectionService.put(path, data)
-      .then(res => {
-        console.log('修改', res)
-        if (res.data.status === 0) {
-          if (res.data.permission === 0) {
-            if (dialogRef) {
-              dialogRef.close('success')
+    /**删除直销经理：delete**/
+    deleteAccount(id) {
+        const path = '/vlinkAccount/' + id
+        const configsObservable = Observable.fromPromise(this.connectionService.delete(path))
+        configsObservable.subscribe(res => {
+            console.log(res)
+            if (res.data.result === '0') {
+                appAlert.common.actionSuccess('删除账号成功')
+            } else {
+                console.log(res.data.description)
+                appAlert.common.actionFailed(res.data.description)
             }
-            appAlert.common.actionSuccess('修改')
-          } else if (res.data.permission === -1) {
-            if (disabled) {disabled.value = false}
-            appAlert.common.confirmWarning('很抱歉，您没有编辑该用户信息的权限！')
-          }
-        } else {
-          if (disabled) {disabled.value = false}
-          console.log(res.data.msg)
-          appAlert.common.actionFailed('修改')
-        }
-      }).catch(err => {
-      if (disabled) {disabled.value = false}
-      appAlert.common.actionFailed('修改')
-    })
-  }
+        }, err => {
+            appAlert.common.actionFailed('删除账号失败')
+        })
+        return configsObservable
+    }
 
-  /**获取用户列表：get**/
-  reloadSysUser(params) {
-    const path = '/api/system/users'
-    const configsObservable = Observable.fromPromise(this.connectionService.get(path, {params: params}))
+  /**获取客户列表：get**/
+  reloadSysUser() {
+    const path = '/vlinkAccounts'
+    const configsObservable = Observable.fromPromise(this.connectionService.get(path, null))
     configsObservable.subscribe((page: any) => {
-      console.log('获取用户列表', page.data.msg, page.data.status)
-      if (page.data.status === 0) {
-        if (page.data.permission === 0) {/*请求数据"成功"*/
-          this.sysUserData.length = 0
-          this.sysUserData.push(...page.data.result)
-        }
+      /*console.log(page)
+      console.log('获取用户列表', page.data.list, page.data.result)*/
+      if (page.data.result === '0') {
+        // if (page.data.permission === 0) {/*请求数据"成功"*/
+          /*this.sysUserData.length = 0
+          this.sysUserData.push(...page.data.list)*/
+       // }
       } else {
-        this.connectionService.isLoginByResult(page.data.msg, '用户列表')
+        this.connectionService.isLoginByResult(page.data.description, '客户列表')
       }
     }, err => {
-      appAlert.common.actionFailed('请求"用户列表"')
+      appAlert.common.actionFailed('请求"客户列表"')
     })
     return configsObservable
   }
+
+    /**获取客户简称列表：get**/
+    reloadCustomerShortName() {
+        const path = '/vlinkAccount/shortName'
+        const configsObservable = Observable.fromPromise(this.connectionService.get(path, null))
+        configsObservable.subscribe((page: any) => {
+            /*console.log(page)
+            console.log('获取用户列表', page.data.list, page.data.result)*/
+        }, err => {
+        })
+        return configsObservable
+    }
+
+    /**获取用户对应应用列表：get**/
+    reloadUserApp(params) {
+        const path = '/vlinkAccount/vlinkApps'
+        const configsObservable = Observable.fromPromise(this.connectionService.get(path, {params : params}))
+        configsObservable.subscribe((page: any) => {
+            if (page.data.result === '0') {
+                // if (page.data.permission === 0) {/*请求数据"成功"*/
+                /*this.userAppData.length = 0
+                this.userAppData.push(...page.data.list)*/
+                // }
+            } else {
+                this.connectionService.isLoginByResult(page.data.description, '应用列表')
+            }
+        }, err => {
+            appAlert.common.actionFailed('请求"应用列表"')
+        })
+        return configsObservable
+    }
+
+    /*扣费*/
+    createCostLog(data){
+        const path = '/customerDeductLog'
+        this.connectionService.post(path,data)
+    }
+
+    /*预扣费*/
+    preDeductLog(data){
+        const path = '/preDeductLog'
+        this.connectionService.post(path,data)
+    }
+
 }

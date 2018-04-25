@@ -8,26 +8,21 @@ import {AppRoutingModule} from './app-routing.module'
 import {CoreModule} from './core/core.module'
 import { PaginationModule } from 'ngx-bootstrap'
 import {IndexComponent} from './core/index.component'
-// import 'hammerjs'
+import 'hammerjs'
 import 'rxjs'
-import {AlertInfoModule} from './alertInfo/alertInfo.module'
-import {BusinessModule} from './business/business.module'
 import {SystemModule} from './system/system.module'
-import {ToolModule} from './tool/tool.module'
-import {DockModule} from './dock/dock.module'
-import {ReportModule} from './report/report.module';
-import {DailyModule} from './daily/daily.module'
-import {PhoneModule} from './phone/phone.module'
+import {CallRecordModule} from './callRecord/callRecord.module'
+import {CdrDetailModule} from './cdrDetail/cdrDetail.module'
 import {ClientAuthModule} from './clientauth/clientauth.module'
-import {PhoneNumberModule} from './numbers/numbers.module'
-import {CallModule} from './call/call.modue'
+import {HashLocationStrategy, LocationStrategy} from '@angular/common'
+
 // import '@angular/material/@angular/material.js'
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent
+    IndexComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,20 +31,18 @@ import {CallModule} from './call/call.modue'
     MobxAngularModule,
     PaginationModule.forRoot(),
     CoreModule,
-    DailyModule,
-    AlertInfoModule,
-    BusinessModule,
+    CallRecordModule,
+    CdrDetailModule,
     SystemModule,
-    DockModule,
-    ToolModule,
-    PhoneModule,
-    ReportModule,
-    PhoneNumberModule,
-    CallModule,
+    AppRoutingModule,
     ClientAuthModule,
-    AppRoutingModule
   ],
-  providers: [],
+  providers: [
+      {
+          provide: LocationStrategy,
+          useClass: HashLocationStrategy
+      }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

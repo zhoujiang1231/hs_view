@@ -13,11 +13,10 @@ import { PaginationModule } from 'ngx-bootstrap'
 import {PageHeaderComponent} from './page-header'
 import {NgxDatatableModule} from '@swimlane/ngx-datatable'
 import {PaginationComponent} from './pagination/pagination.component'
+import {Ng2FlatpickrComponent} from 'ng2-flatpickr/ng2-flatpickr'
 import {EmptyPermissionComponent} from './empty-data.component'
 import {LoadingComponent} from './loading.component'
-import { Ng2FlatpickrModule } from 'ng2-flatpickr'
-import {MiniFormComponent} from './mini-form'
-import {PageComponent} from './pagination/page.component'
+
 
 @NgModule({
   imports: [
@@ -28,7 +27,6 @@ import {PageComponent} from './pagination/page.component'
     FileUploadModule,
     PaginationModule.forRoot(),
     NgxDatatableModule,
-    Ng2FlatpickrModule,
     AppRoutingModule
   ],
   declarations: [
@@ -39,10 +37,9 @@ import {PageComponent} from './pagination/page.component'
     SecondFormatPipe,
     MicrosecondFormatPipe,
     PaginationComponent,
-    PageComponent,
+    Ng2FlatpickrComponent,
     EmptyPermissionComponent,
     LoadingComponent,
-    MiniFormComponent,
   ],
   exports: [
     SecondMenuComponent,
@@ -52,16 +49,14 @@ import {PageComponent} from './pagination/page.component'
     SecondFormatPipe,
     MicrosecondFormatPipe,
     PaginationComponent,
-    PageComponent,
     CustomizeMaterialModule,
-    Ng2FlatpickrModule,
     FormsModule,
     ReactiveFormsModule,
     FileUploadModule,
     NgxDatatableModule,
+    Ng2FlatpickrComponent,
     EmptyPermissionComponent,
     LoadingComponent,
-    MiniFormComponent,
   ],
 })
 

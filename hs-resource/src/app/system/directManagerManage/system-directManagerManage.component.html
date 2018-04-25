@@ -1,0 +1,72 @@
+<div id="system-directManagerManage-area">
+  <app-page-header [title]="'直销经理管理'"
+                   [rightButtons]="[{ title: '新建', action: 'add'}]"
+                   (tapRightBtn)="onClickBtnWithAction($event)"
+                   [permission]="isPermission"></app-page-header>
+  <div class="h-100 position-relative">
+    <div class="row head-search-container">
+      <div class="col-2 container-input">
+        <dl>
+          <dt>直销经理:</dt>
+          <dd>
+            <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+              <input matInput placeholder="请输入" [(ngModel)]="params.fullName">
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-2 container-input">
+        <dl>
+          <dt>所属部门:</dt>
+          <dd>
+            <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+              <mat-select [(ngModel)]="params.parentId" placeholder="请选择">
+                <mat-option *ngFor="let item of departMentArr" [value]="item?.id">
+                  {{item?.fullName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-3">
+        <button mat-button class="search-button" (click)="search()">搜索</button>
+      </div>
+    </div>
+    <div *ngIf="isPermission === 1" class="table-container w-100">
+      <ngx-datatable class="material striped"
+                     [rows]="directManagerData"
+                     [headerHeight]="40"
+                     [footerHeight]="40"
+                     [rowHeight]="40"
+                     [columnMode]="'force'"
+                     [scrollbarH]="true"
+                     [limit]="params.limit">
+        <ngx-datatable-column [name]="'直销经理名称'" [prop]="'fullName'" ></ngx-datatable-column>
+        <ngx-datatable-column [name]="'所属部门'" [prop]="'parentName'" ></ngx-datatable-column>
+        <ngx-datatable-column [name]="'企业数'" [prop]="'customerNum'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'应用数'" [prop]="'appNum'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'操作'">
+          <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+        <span [matMenuTriggerFor]="menu" style="cursor: pointer">
+          <mat-icon class="md-24" style="font-size: 16px;">more_vert</mat-icon>
+        </span>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item *ngFor="let item of [{name:'编辑',value:0},{name:'删除',value:1}]"
+                      [value]="item.value" (click)="operateButton(item.value, row)">{{item.name}}</button>
+            </mat-menu>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-footer>
+          <ng-template ngx-datatable-footer-template>
+            <app-pagination [pageParams]="params" [comTotalCount]="totalCount"
+                            (limitChange)="getLimit($event)"
+                            (pageParamsChange)="reloadDirectManagerManage($event)"></app-pagination>
+          </ng-template>
+        </ngx-datatable-footer>
+      </ngx-datatable>
+    </div>
+    <app-loading  *ngIf="isSpinner === 1" [top]="'258px'"></app-loading>
+    <app-empty-data *ngIf="isPermission === 0"></app-empty-data>
+  </div>
+</div>

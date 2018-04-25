@@ -1,0 +1,7 @@
+#system-customerManage-area {
+  height: 100%;
+  position: relative;
+}
+#system-customerManage-area .table-container {
+  height: calc(100% - 70px);z
+}

@@ -12,7 +12,7 @@ export class AuthorResolver implements Resolve<any> {
 
   /**根据请求"角色列表"接口，判断是否登录**/
   resolve() {
-    const path = '/api/system/roles'
+    /*const path = '/api/system/roles'
     this.connectionService.get(path)// 此处get返回的是promise对象，用then...catch处理数据
       .then(res => {
         if (res.data.status === 0) {// 请求成功，是登录状态
@@ -28,6 +28,6 @@ export class AuthorResolver implements Resolve<any> {
         this.connectionService.logout()
         this.router.navigate(['/signin'])
         localStorage.clear()
-      })
+      })*/
   }
 }

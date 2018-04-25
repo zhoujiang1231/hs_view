@@ -1,6 +1,0 @@
-#alertInfo-area {
-  height: 100%;
-}
-#alertInfo-area .table-container {
-  height: calc(100% - 130px);
-}

@@ -1,0 +1,48 @@
+<div id="system-operationLog-area">
+  <app-page-header [title]="'操作日志'"></app-page-header>
+  <div class="h-100 position-relative">
+    <div class="row head-search-container">
+      <div class="col-6 container-input">
+        <dl>
+          <dt>查询时间:</dt>
+          <dd  class="range-flatpickr">
+            <ng2-flatpickr [config]="startTimeOptions"></ng2-flatpickr>
+            至
+            <ng2-flatpickr [config]="endTimeOptions"></ng2-flatpickr>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-3">
+        <button mat-button class="search-button" (click)="search()">搜索</button>
+      </div>
+    </div>
+    <div *ngIf="isPermission === 1" class="table-container w-100">
+      <ngx-datatable class="material striped"
+                     [rows]="sysOperationLogData"
+                     [headerHeight]="40"
+                     [footerHeight]="40"
+                     [rowHeight]="40"
+                     [columnMode]="'force'"
+                     [scrollbarH]="true"
+                     [limit]="params.limit">
+        <ngx-datatable-column [name]="'操作日期'" [prop]="'operation_date'">
+          <ng-template let-row="row" ngx-datatable-cell-template>{{row?.operation_date | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [name]="'操作者'" [prop]="'operater_name'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'操作企业'" [prop]="'operation_account'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'操作应用'" [prop]="'operation_app_name'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'具体操作'" [prop]="'operation_type'"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'操作内容'" [prop]="'operation_context'"></ngx-datatable-column>
+        <ngx-datatable-footer>
+          <ng-template ngx-datatable-footer-template>
+            <app-pagination [pageParams]="params" [comTotalCount]="totalCount"
+                            (limitChange)="getLimit($event)"
+                            (pageParamsChange)="reloadPaylogsData($event)"></app-pagination>
+          </ng-template>
+        </ngx-datatable-footer>
+      </ngx-datatable>
+    </div>
+    <app-loading  *ngIf="isSpinner === 1" [top]="'258px'"></app-loading>
+    <app-empty-data *ngIf="isPermission === 0"></app-empty-data>
+  </div>
+</div>

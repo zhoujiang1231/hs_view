@@ -1,0 +1,31 @@
+<div id="system-appDeductDetailLog-area">
+    <app-page-header [title]="'应用账单详情'"></app-page-header>
+    <div class="h-100 position-relative">
+        <div *ngIf="isPermission === 1" class="table-container w-100">
+            <ngx-datatable class="material striped"
+                           [rows]="sysAppDeductDetailLogData"
+                           [headerHeight]="40"
+                           [rowHeight]="40"
+                           [columnMode]="'force'"
+                           [scrollbarH]="true"
+                           [limit]="params.limit">
+                <ngx-datatable-column [name]="'计费类型'" [prop]="'costTypeDesc'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'条件'" [prop]="'condition'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'计费数量'" [prop]="'amount'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'单价'" [prop]="'unitCost'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'费用'" [prop]="'totalCost'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'扣费详情'">
+                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template >
+                        <div [ngSwitch]="row.costType">
+                        <span *ngSwitchCase="'in'" class="linkSpan" (click)="getInDetail(row)">查看</span>
+                        <span *ngSwitchCase="'number_function'" class="linkSpan" (click)="getNumberFunctionDetail(row)">查看</span>
+                        <span *ngSwitchDefault>-</span>
+                        </div>
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+        </div>
+        <app-loading *ngIf="isSpinner === 1" [top]="'258px'"></app-loading>
+        <app-empty-data *ngIf="isPermission === 0"></app-empty-data>
+    </div>
+</div>

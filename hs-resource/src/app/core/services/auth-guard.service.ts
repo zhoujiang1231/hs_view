@@ -7,11 +7,14 @@ import {
   CanActivateChild
 } from '@angular/router'
 import {ConnectionService} from './connection.service'
+import {DataService} from "./data.service";
+import {LocalStorage} from "./localstorage.service";
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(private router: Router,
-              private connectionService: ConnectionService) {
+              private connectionService: ConnectionService,
+              private dataService:DataService) {
 
   }
 
@@ -26,8 +29,9 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   }
 
   checkLogin(url: string): boolean {
-    if (this.connectionService.isLogin) {
-      return true
+    if (LocalStorage.get('user')) {
+        this.dataService.changRolePermission()
+        return true
     } else {
       this.router.navigate(['/signin'])
       localStorage.clear()

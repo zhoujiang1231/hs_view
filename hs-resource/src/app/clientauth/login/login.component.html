@@ -1,107 +1,7 @@
-<!--<div class="login clear-float">-->
-  <!--<div class="login-top">-->
-    <!--<div class="login-topbar">-->
-      <!--<img src="../../../assets/images/logo.svg" height="56"/>-->
-      <!--<span><mat-icon matPrefix>phone</mat-icon>400-686-9009</span>-->
-    <!--</div>-->
-    <!--<div class="login-body clear-float">-->
-      <!--<div class="right-login clear-float">-->
-        <!--<div class="login-header">系统管理员登录</div>-->
-        <!--&lt;!&ndash;管理员登录&ndash;&gt;-->
-        <!--<div class="attendant-login">-->
-          <!--<form #form="ngForm" (ngSubmit)="login(form.value)" role="form">-->
-            <!--<div class="login-text-group">-->
-              <!--<input class="login-text"-->
-                     <!--placeholder="用户账号"-->
-                     <!--required-->
-                     <!--name="username"-->
-                     <!--[(ngModel)]="user.username"-->
-                     <!--#username="ngModel"-->
-                     <!--autocorrect="off" autocapitalize="off"-->
-                     <!--(keyup)="isWrite('username')">-->
-            <!--<div *ngIf="!(username.valid || username.pristine || !isWriteObj.username)" class="help alert alert-danger">-->
-              <!--用户账号必填!-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--<div class="login-text-group">-->
-            <!--<input class="login-text"-->
-                     <!--type="password"-->
-                     <!--placeholder="密码"-->
-                     <!--required-->
-                     <!--name="password"-->
-                     <!--[(ngModel)]="user.password"-->
-                     <!--#password="ngModel"-->
-                     <!--autocorrect="off" autocapitalize="off"-->
-                     <!--(keyup)="isWrite('password')">-->
-            <!--<div *ngIf="!(password.valid || password.pristine || !isWriteObj.password)" class="help alert alert-danger">-->
-              <!--密码必填！-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--<div class="login-text-group">-->
-            <!--<input class="code-input login-text"-->
-                     <!--type="text"-->
-                     <!--placeholder="验证码"-->
-                     <!--required-->
-                     <!--name="securityCode"-->
-                     <!--[(ngModel)]="user.securityCode"-->
-                     <!--#securityCode="ngModel"-->
-                     <!--autocorrect="off" autocapitalize="off"-->
-                     <!--(keyup)="isWrite('securityCode')">-->
-              <!--<img (click)="getCode()" class="code" [src]="codePath" [matTooltip]="'点击重新获取验证码'">-->
-            <!--<div *ngIf="!(securityCode.valid || securityCode.pristine || !isWriteObj.securityCode)" class="help alert alert-danger">-->
-              <!--验证码必填！-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--<button mat-button type="submit" [disabled]="!form.form.valid||trimCode()" class="login-button">-->
-              <!--登录-->
-            <!--</button>-->
-          <!--</form>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--<div class="login-footer clear-float">-->
-    <!--<div class="right-img">-->
-      <!--<dl>-->
-        <!--<dt>-->
-          <!--<a href="http://wiki.cticloud.cn">-->
-            <!--<mat-icon>folder</mat-icon>-->
-          <!--</a>-->
-        <!--</dt>-->
-        <!--<dd>接口文档</dd>-->
-      <!--</dl>-->
-      <!--<dl>-->
-        <!--<dt>-->
-          <!--<a href="http://www.aws-partner-directory.com/PartnerDirectory/PartnerDetail?Name=%E5%8C%97%E4%BA%AC%E5%A4%A9%E6%B6%A6%E8%9E%8D%E9%80%9A%E7%A7%91%E6%8A%80%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8">-->
-            <!--<img src="../../../assets/images/amazon.png" height="70" width="136"/>-->
-          <!--</a>-->
-        <!--</dt>-->
-        <!--<dd>AWS高级技术合作伙伴</dd>-->
-      <!--</dl>-->
-      <!--<dl>-->
-        <!--<dt>-->
-          <!--<a href="http://www.kexinyun.org/">-->
-            <!--<img src="../../../assets/images/trucs.jpg" height="70" width="70"/>-->
-          <!--</a>-->
-        <!--</dt>-->
-        <!--<dd>可信云</dd>-->
-      <!--</dl>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--<div class="bottom">-->
-    <!--<div class="center">-->
-      <!--<div class="clear"></div>-->
-      <!--<div class="foot">-->
-        <!--全国呼叫中心运营许可证：B2-20070013 京ICP备06029233号 北京市公安局西城分局备案号：110102001636<br> 版权所有：北京天润融通科技股份有限公司-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
-
 <div class="login">
   <!--1、头部-->
   <div class="login-topbar"  style="background: #10c4bb">
-    <a><div class="logo"></div></a>
+    <a href ='http://www.ti-net.com.cn' ><div class="logo"></div></a>
   </div>
   <!--2、body 部分-->
   <div class="bar" style="background: #10c4bb;">
@@ -109,20 +9,32 @@
       <div class="barpic" style="background: url(../../../assets/images/default-new.png) no-repeat;"></div>
       <div class="login-body">
         <div class="right-login">
-          <div class="login-header">系统管理员登录</div>
+          <div class="login-header">用户登录</div>
           <!--管理员登录-->
           <div class="attendant-login">
             <form #form="ngForm" (ngSubmit)="login(form.value)" role="form">
               <div class="login-text-group">
+                <mat-select name="userType" [(ngModel)]="user.userType" placeholder="请选择用户类型">
+                  <mat-option
+                          *ngFor="let item of [{name:'管理员',value:'0'},{name:'教师',value:'1'},{name:'学生',value:'2'}]"
+                          [value]="item?.value">
+                    {{item?.name}}
+                  </mat-option>
+                </mat-select>
+                <div *ngIf="!(userType.valid || userType.pristine || !isWriteObj.userType)" class="help alert alert-danger">
+                  请选择用户类型!
+                </div>
+              </div>
+              <div class="login-text-group">
                 <input class="login-text"
                        placeholder="用户账号"
                        required
-                       name="username"
-                       [(ngModel)]="user.username"
-                       #username="ngModel"
+                       name="userName"
+                       [(ngModel)]="user.userName"
+                       #userName="ngModel"
                        autocorrect="off" autocapitalize="off"
-                       (keyup)="isWrite('username')">
-                <div *ngIf="!(username.valid || username.pristine || !isWriteObj.username)" class="help alert alert-danger">
+                       (keyup)="isWrite('userName')">
+                <div *ngIf="!(userName.valid || userName.pristine || !isWriteObj.userName)" class="help alert alert-danger">
                   用户账号必填!
                 </div>
               </div>
@@ -165,48 +77,7 @@
     </div>
   </div>
   <!--3、底部-->
-  <div class="login-footer">
-    <div class="right-img">
-      <dl>
-        <dt>
-          <img src="../../../assets/images/login_phone-new.png"/>
-        </dt>
-        <dd>400-686-9009</dd>
-      </dl>
-      <dl>
-        <dt>
-          <a href="http://wiki.cticloud.cn" target="_Blank">
-            <img src="../../../assets/images/login_help-new.png"/>
-          </a>
-        </dt>
-        <dd>帮助中心</dd>
-      </dl>
-      <dl>
-        <dt>
-          <a href="http://www.aws-partner-directory.com/PartnerDirectory/PartnerDetail?Name=%E5%8C%97%E4%BA%AC%E5%A4%A9%E6%B6%A6%E8%9E%8D%E9%80%9A%E7%A7%91%E6%8A%80%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8" target="_Blank">
-            <img src="../../../assets/images/amazon-new.png" height="70" width="136"/>
-          </a>
-        </dt>
-        <dd>AWS高级技术合作伙伴</dd>
-      </dl>
-      <dl>
-        <dt>
-          <a href="http://www.kexinyun.org/" target="_Blank">
-            <img src="../../../assets/images/login_kxy-new.png"/>
-          </a>
-        </dt>
-        <dd>可信云</dd>
-      </dl>
-    </div>
-  </div>
-  <!--4、底部文字-->
-  <div class="bottom">
-    <div class="center">
-      <div class="clear"></div>
-      <div class="foot">
-        全国呼叫中心运营许可证：B2-20070013 京ICP备06029233号 北京市公安局西城分局备案号：110102001636<br> 版权所有：北京天润融通科技股份有限公司
-      </div>
-    </div>
+  <div class="login-footer" style="background: #666f7b;">
   </div>
 </div>
 

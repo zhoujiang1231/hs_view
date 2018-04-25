@@ -1,7 +1,0 @@
-#system-demo-area {
-  height: 100%;
-  position: relative;
-}
-#system-demo-area .table-container {
-  height: calc(100% - 70px);
-}

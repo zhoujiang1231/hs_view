@@ -1,5 +1,6 @@
 /*
- * Common header classes & IDs  Do not remove this
+ * Common header classes & IDs
+ * Do not remove this
  */
 @import "../../../assets/less/mixin.less";
 @import "../../../assets/less/variables";
@@ -7,8 +8,8 @@
 #header {
   z-index: 999;
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   width: 100%;
   .head-content {
     height: @header-height;
@@ -22,25 +23,181 @@
     margin: 0 10px;
     text-shadow: 1px 1px rgba(0, 0, 0, .1);
   }
+  .organ-menu-button {
+    padding: 0 50px;
+  }
   .logo-header {
     width: 30px;
     vertical-align: -10px;
   }
   .right-buttons {
+    //display: flex;
     float: right;
     button {
       margin-left: 10px;
-      .mat-icon {
-        color: #fff;
-        font-size: 1.9rem;
-      }
     }
-    .username {
-      display: inline-block;
-      height: 40px;
-      line-height: 40px;
-      font-size: 1.4rem;
-      color: #fff;
+    .mat-icon-button {
+      &:hover {
+        background: transparent;
+      }
     }
   }
 }
+
+/*
+ * Material Background Colors
+ */
+
+.bgm-blue {
+  background-color: #2196f3 !important;
+}
+
+.bgm-sky {
+  background-color: #2196f3 !important;
+}
+
+//.c-blue {
+//  color: #2196f3 !important;
+//}
+.bgm-purple {
+  background-color: #9c27b0 !important;
+}
+
+.bgm-theme1 {
+  background-color: #9c27b0 !important;
+}
+
+//.c-purple {
+//  color: #9c27b0 !important;
+//}
+
+.bgm-sea {
+  background-color: #00bcd4 !important;
+}
+
+.bgm-cyan {
+  background-color: #00bcd4 !important;
+}
+
+.c-cyan {
+  color: #00bcd4 !important;
+}
+
+.bgm-teal {
+  background-color: #009688 !important;
+}
+
+.bgm-theme2 {
+  background-color: #009688 !important;
+}
+
+//.c-teal {
+//  color: #009688 !important;
+//}
+.bgm-default {
+  background-color: #26303B !important;
+}
+
+.c-default {
+  color: #26303B !important;
+}
+
+.bgm-orange {
+  background-color: #ff9800 !important;
+}
+
+.bgm-theme3 {
+  background-color: #ff9800 !important;
+}
+
+.skin-switch {
+  padding: 10px 0 0 0;
+  text-align: center;
+}
+
+.logo {
+  height: 30px !important;
+  line-height: 30px;
+  font-size: 3rem !important;
+  margin-right: 15px;
+}
+
+.ss-skin {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  margin: 2px 5px;
+  &:hover {
+    .opacity(0.8);
+  }
+}
+
+.status {
+  float: right;
+  font-size: 1.2rem;
+  margin-left: 30px;
+  color: #ff9800;
+}
+
+// 修改bootstrap下来框默认样式
+.dropdown-toggle::after {
+  border: none;
+  margin: 0;
+}
+
+.dropdown-menu {
+  left: 70px;
+  top: 50px;
+  min-width: 12rem;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12);
+  border: none;
+  border-radius: 0;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  background-color: #eee;
+  color: #000;
+}
+
+// Dividers (basically an hr) within the dropdown
+.divider {
+  .nav-divider(@dropdown-divider-bg);
+}
+
+.fill-remaining {
+  flex: 1 1 auto;
+}
+
+.username {
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.set {
+  cursor: pointer;
+  margin-right: 20px;
+  .username
+}
+
+.right-buttons {
+  .mat-icon {
+    color: #fff;
+    font-size: 1.9rem;
+  }
+}
+
+.tsw-inner {
+  position: relative;
+  padding: 15px;
+  max-width: 700px;
+  display: block;
+  margin: 0 auto;
+}
+
+
+

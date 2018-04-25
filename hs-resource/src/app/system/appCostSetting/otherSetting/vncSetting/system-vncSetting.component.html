@@ -1,0 +1,88 @@
+<div id="system-vncSetting-area">
+    <div>
+        <span class="linkSpan" (click)="appSettingTo('/index/appCostSetting/inSetting')">呼入资费</span>
+        <span class="linkSpan" (click)="appSettingTo('/index/appCostSetting/inBridgeSetting')">呼入转接资费</span>
+        <span class="linkSpan" (click)="appSettingTo('/index/appCostSetting/outSetting')">外呼资费</span>
+        <span class="linkSpan" (click)="appSettingTo('/index/appCostSetting/outBridgeSetting')">外呼转接资费</span>
+        <span class="linkSpan" (click)="appSettingTo('/index/appCostSetting/messageSetting')">短信资费</span>
+        <span class="linkSpan" (click)="appSettingTo('/index/appCostSetting/ussdSetting')">USSD资费</span>
+        <span class="linkSpan" (click)="appSettingTo('/index/appCostSetting/vncSetting')">VNC资费</span>
+        <span class="linkSpan" (click)="appSettingTo('/index/appCostSetting/otherSetting')">其他资费设置</span>
+    </div>
+    <app-page-header [title]="'VNC资费'"></app-page-header>
+    <div class="w-100">
+        <span>客户</span>
+        <span>{{appIdAndName.appId}}</span>
+        <span>{{appIdAndName.appName}}</span>
+    </div>
+    <div class="h-100 position-relative">
+        <div class="row head-search-container">
+            <div class="col-2 container-input">
+                <dl>
+                    <dt>VNC</dt>
+                </dl>
+            </div>
+            <div class="col-2 container-input">
+                <dl>
+                    <dt>开始分钟数</dt>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                            <input matInput [(ngModel)]="addVncParams.vncStartAmount">
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-2 container-input">
+                <dl>
+                    <dt>结束分钟数</dt>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                            <input matInput [(ngModel)]="addVncParams.vncEndAmount">
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-2 container-input">
+                <dl>
+                    <dt>单价</dt>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                            <input matInput [(ngModel)]="addVncParams.vncUnitCost">
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-1 container-input">
+                <button mat-button class="search-button" (click)="addVncSetting()">添加</button>
+            </div>
+        </div>
+        <ngx-datatable class="material striped"
+                       [rows]="vncSettingData"
+                       [headerHeight]="40"
+                       [rowHeight]="40"
+                       [columnMode]="'force'"
+                       [scrollbarH]="true">
+            <ngx-datatable-column [name]="'开始分钟数'">
+                <ng-template let-row="row" let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+                    <input (change)="vncStartChange($event,row)" matInput type="text" value="{{row.remark.split(',')[0]}}">
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column [name]="'结束分钟数'">
+                <ng-template let-row="row" let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+                    <input (change)="vncEndChange($event,row)" matInput type="text" value="{{row.remark.split(',')[1]}}">
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column [name]="'单价'">
+                <ng-template let-row="row" let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+                    <input (change)="vncunitCostChange($event,row)" matInput type="text" value="{{row.value}}">
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span class="linkSpan" (click)="updateVnc(row)">修改</span>
+                    <span class="linkSpan" (click)="deleteVnc(row)">删除</span>
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+    </div>
+</div>

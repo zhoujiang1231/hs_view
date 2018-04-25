@@ -11,8 +11,16 @@ export class ConnectionService {
   private instance = axios.create({
     baseURL: ConstantService.HOST,
     withCredentials: true,
-    headers: {}
+    headers: {
+    }
   })
+    private instanceUploadFile = axios.create({
+        baseURL: ConstantService.HOST,
+        withCredentials: true,
+        headers: {
+          'Content-Type':'multipart/form-data',
+          'Accept':'application/json'}
+    })
 
   constructor(private router: Router) {
     this.isLogin = true
@@ -65,6 +73,15 @@ export class ConnectionService {
     }
   }
 
+    postUpload(path: string, data?: any) {
+        if (data) {
+            return this.instanceUploadFile.post(path, data)
+        } else {
+            return this.instanceUploadFile.post(path)
+        }
+    }
+
+
   login() {
     this.isLogin = true
   }
@@ -75,24 +92,14 @@ export class ConnectionService {
 
   /**根据返回的错误提示，判断是否未登录**/
   isLoginByResult(msg, note) {
-    if (msg.includes('未登录')) {
-      this.logout()
-      this.router.navigate(['/signin'])
-      localStorage.clear()
-    } else {
-      console.log(msg)
-      appAlert.common.actionFailed(`请求"${note}"`)
+    if(msg) {
+        if (msg.includes('当前无用户登录')) {
+            this.logout()
+            this.router.navigate(['/signin'])
+            localStorage.clear()
+        } else {
+            appAlert.common.actionFailed(msg)
+        }
     }
-  }
-
-  /**创建a标签，实现点击下载**/
-  createA(url, filename) {
-    const eleLink: any = document.createElement('a')
-    eleLink.download = filename
-    eleLink.style.display = 'none'
-    eleLink.href = url
-    document.body.appendChild(eleLink)
-    eleLink.click()
-    document.body.removeChild(eleLink)
   }
 }

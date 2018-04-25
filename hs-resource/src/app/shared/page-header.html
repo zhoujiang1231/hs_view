@@ -3,13 +3,16 @@
   <span class="fill-remaining"></span>
   <div *ngIf="permission === 1">
     <div class="left-buttons" *ngIf="leftButtons?.length > 0">
-      <button mat-icon-button *ngFor="let reNew of leftButtons" (click)="clickRightBtn(reNew.action)">
-        <mat-icon>{{reNew.name}}</mat-icon>
-      </button>
+    <span *ngFor="let reNew of leftButtons" (click)="clickRightBtn(reNew.action)">
+      <mat-icon>{{reNew.name}}</mat-icon>
+    </span>
     </div>
     <div class="right-buttons" *ngIf="rightButtons?.length > 0">
       <button *ngFor="let button of rightButtons; let i = index" mat-button
               (click)="clickRightBtn(button.action)">
+        <!--<svg class="svg-size-16 fill-adadad">-->
+        <!--<use attr.xlink:href="{{button.icon}}"/>-->
+        <!--</svg>-->
         <span>{{button.title}}</span>
       </button>
     </div>

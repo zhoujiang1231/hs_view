@@ -1,12 +1,135 @@
-<div class="container-padding-top home-container" id="ec-home-area" style="height: 100%">
-  <div class="justify-content-between ec-home">
-    <div class="welcome">
-      <div class="welcome-content">
-        <h1 class="welcome-head">{{appName}}首页</h1>
-        <p>欢迎</p>
-      </div>
+<div id="ec-home-area">
+    <app-page-header [title]="'账号信息'"
+                     [rightButtons]="[{title: '扣费', action: 'createCostLog'},{title:'预扣费',action:'preCreateCostLog'}]"
+                     (tapRightBtn)="onClickBtnWithAction($event)"
+                     [permission]="isPermission">
+    </app-page-header>
+    <div class="h-100 position-relative">
+        <div class="row head-search-container">
+            <div class="col-2 container-input">
+            </div>
+            <div class="col-2 container-input">
+                <dl>
+                    <dt>用户名:</dt>
+                </dl>
+            </div>
+            <div class="col-4 container-input">
+                <dl>
+                    <dt>{{user.accountName}}</dt>
+                </dl>
+            </div>
+            <div class="col-4 container-input">
+            </div>
+            <div class="col-2 container-input">
+            </div>
+            <div class="col-2 container-input">
+                <dl>
+                    <dt>手机号:</dt>
+                </dl>
+            </div>
+            <div class="col-4 container-input">
+                <dl>
+                    <dt>{{user.mobile}}</dt>
+                </dl>
+            </div>
+            <div class="col-4 container-input">
+            </div>
+            <div class="col-2 container-input">
+            </div>
+            <div class="col-2 container-input">
+                <dl>
+                    <dt>邮箱地址:</dt>
+                </dl>
+            </div>
+            <div class="col-4 container-input">
+                <dl>
+                    <dt>{{user.email}}</dt>
+                </dl>
+            </div>
+            <div class="col-4 container-input">
+            </div>
+            <div class="col-2 container-input">
+            </div>
+            <div class="col-2 container-input">
+                <dl>
+                    <dt>姓名:</dt>
+                </dl>
+            </div>
+            <div class="col-4 container-input">
+                <dl>
+                    <dt>{{user.principal}}</dt>
+                </dl>
+            </div>
+            <div class="col-4 container-input">
+            </div>
+            <div class="col-2 container-input">
+            </div>
+            <div class="col-2 container-input" [ngSwitch]="user.type">
+                <dl>
+                    <dt *ngSwitchCase="'11'">管理员名称:</dt>
+                    <dt *ngSwitchCase="'4'">直销部门名称:</dt>
+                    <dt *ngSwitchCase="'5'">直销经理名称:</dt>
+                    <dt *ngSwitchDefault>企业名称:</dt>
+                </dl>
+            </div>
+            <div class="col-4 container-input">
+                <dl>
+                    <dt>{{user.fullName}}</dt>
+                </dl>
+            </div>
+            <div class="col-4 container-input">
+            </div>
+            <div class="col-2 container-input" *ngIf="user.type==3">
+            </div>
+            <div class="col-2 container-input"  *ngIf="user.type==3">
+                <dl>
+                    <dt>应用数量:</dt>
+                </dl>
+            </div>
+            <div class="col-4 container-input" *ngIf="user.type==3">
+                <dl>
+                    <dt>{{vlinkAppData.length}}</dt>
+                </dl>
+            </div>
+            <div class="col-4 container-input" *ngIf="user.type==3">
+            </div>
+            <div class="col-2 container-input" *ngIf="user.type==3">
+            </div>
+            <div class="col-2 container-input"  *ngIf="user.type==3">
+                <dl>
+                    <dt>账户余额:</dt>
+                </dl>
+            </div>
+            <div class="col-4 container-input" *ngIf="user.type==3">
+                <dl>
+                    <dt>{{user.currentMoney}}元</dt>
+                </dl>
+            </div>
+            <div class="col-4 container-input" *ngIf="user.type==3">
+            </div>
+        </div>
+        <!--<div *ngIf="isCustomer == 1" class="table-container w-100">
+            <div class="col-2 container-input">
+                <dl>
+                    <dt>应用管理</dt>
+                </dl>
+            </div>
+            <ngx-datatable class="material striped"
+                           [rows]="vlinkAppData"
+                           [headerHeight]="40"
+                           [rowHeight]="40"
+                           [columnMode]="'force'"
+                           [scrollbarH]="true">
+                <ngx-datatable-column [name]="'应用名称'" [prop]="'appName'" ></ngx-datatable-column>
+                <ngx-datatable-column [name]="'创建时间'" [prop]="'createTime'" >
+                    <ng-template let-row="row" ngx-datatable-cell-template>{{row?.createTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column [name]="'今日呼叫量'" [prop]="'webCallTotal'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'今日接通量'" [prop]="'answeredCount'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'今日接通率'" [prop]="'answerRate'"></ngx-datatable-column>
+            </ngx-datatable>
+        </div>-->
     </div>
-  </div>
 </div>
 
 

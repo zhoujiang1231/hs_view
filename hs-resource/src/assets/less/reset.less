@@ -1,4 +1,126 @@
 @import "./mixin";
+/*select框长度*/
+.select-80px{
+  .mat-select{
+    width:80px !important;
+  }
+}
+.select-80px{
+  .mat-select{
+    .mat-select-trigger{
+      width:80px !important;
+      min-width:80px !important;
+    }
+  }
+}
+
+.select-120px{
+  .mat-select{
+    width:120px !important;
+  }
+}
+.select-120px{
+  .mat-select{
+    .mat-select-trigger{
+      width:120px !important;
+      min-width:120px !important;
+    }
+  }
+}
+/*------end------*/
+
+.search_label{
+  font-weight: normal;
+  font-size:13px;
+  color: #999;
+  display:inline-block;
+  position:relative;
+  top:5px;
+}
+.addKey{
+  float:right;
+  margin-top:4px;
+}
+
+/*按钮的大小*/
+.add-button{
+  height:30px !important;
+  width:30px !important;
+  padding-right:2px !important;
+  outline:none !important;
+  line-height:30px !important;
+  .inner-icon{
+    height:20px;
+    width:20px;
+    font-size:20px;
+    line-height:19px !important;
+    color:#333 !important;
+    margin-left:3px;
+  }
+}
+.add-button:hover{
+  background:#ccc;
+}
+/*------end------*/
+
+/*头部样式*/
+.main-content{
+  padding:0 20px;
+}
+.manage-head{
+  border-bottom:1px solid #DDD;
+  padding:16px 0;
+  min-height:70px;
+  font-size:12px;
+  >h5{
+    margin-top:8px;
+    margin-bottom:8px;
+    display:inline-block;
+    text-indent: 8px;
+    border-left:2px solid #88B7E0;
+    vertical-align:top;
+    font-size:15px !important;
+  }
+}
+/*------end------*/
+
+/*分页布局样式*/
+.bottom-page{
+  min-height:36px;
+  margin-bottom:16px;
+  .pageLimit{
+    min-width: 36px !important;
+    padding: 0 10px !important;
+    line-height: 34px !important;
+    font-weight: normal !important;
+    box-shadow: none !important;
+    border:1px solid #ddd !important;
+  }
+  .page-item{
+    .active {
+      background-color: #607794;
+      border-color: #607794;
+    }
+  }
+  .pagination-sm{
+    .page-link {
+      padding: 8px 10px;
+      font-size: 0.875rem;
+
+    }
+  }
+  .pagination{
+    float: right;
+  }
+  .skip{
+    display:inline-block;
+    margin-right:8px;
+    button{
+      height: 34px !important;
+    }
+  }
+}
+/*------end------*/
 
 /*checkbox样式*/
 .mat-checkbox-layout  {
@@ -11,7 +133,29 @@
   width: 16px;
   height: 16px;
 }
-/*--end--*/
+/*------end------*/
+
+/*select框样式*/
+.role-select{
+  .mat-select-trigger{
+    font-size:12px;
+  }
+  .mat-select-underline{
+    height:0px !important;
+  }
+}
+.select-font{
+  .mat-select-trigger{
+    font-size:13px;
+  }
+}
+.depart-select{
+  .mat-select-trigger{
+    font-size:13px;
+    width:303px !important;
+  }
+}
+/*-----end----*/
 
 .mat-dialog-container{
   max-height:600px !important;
@@ -22,8 +166,102 @@ button:focus{
   outline:none;
 }
 
+
+/*select框样式*/
+.search-select{
+  .mat-form-field{
+    width:100%;
+  }
+}
 .mat-form-field-underline{
   background-color:rgba(0,0,0,.12);
+}
+/*------end------*/
+
+/*模态框表单样式*/
+.info-block{
+  //margin-top:30px;
+  height:58px;
+  .block-item{
+    .block-label{
+      float:left;
+      width:145px;
+      text-align:right;
+      font-size:14px;
+      position:relative;
+      top:4px;
+    }
+  }
+  .block-select{
+    width:55%;
+    display:inline-block;
+    margin-left:10px;
+    margin-top:-6px;
+    .block-select-field{
+      width:100%;
+    }
+  }
+  .block-radio{
+    width:55%;
+    display:inline-block;
+    margin-left:10px;
+    margin-top:5px;
+    .mat-radio-button{
+      margin-right:10px;
+    }
+  }
+  .block-textarea{
+    width:55%;
+    height:60px;
+    padding:5px 10px;
+    margin-left:10px;
+  }
+  .block-input{
+    width:55%;
+    height:28px;
+    line-height:30px;
+    border:none;
+    font-weight:normal;
+    border-bottom:1px solid rgba(0,0,0,.12);
+  }
+  .block-input:focus{
+    outline:none;
+  }
+}
+/*--------end---------*/
+
+.label {
+  display: inline-block !important;
+  padding: 0;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1;
+  color: #777 !important;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
+.page-item.active .page-link{
+  background-color:#0275d8;
+  border-color:#0275d8;
+}
+
+/**入场 timePicker样式修改**/
+#enter-list-area{
+  timepicker{
+    margin-top: -10px;
+    width: 120px;
+    tr:first-child .btn{
+      padding: 0;
+      vertical-align: bottom;
+    }
+    tr:last-child .btn{
+      padding: 0;
+      vertical-align: top;
+    }
+  }
 }
 
 /**table样式重置**/
@@ -88,7 +326,7 @@ ngx-datatable{
       color: #58666E !important;
       font-size: 12px !important;
       .datatable-body-cell-label:hover{
-        overflow-x: auto;//使单元格内容溢出则滚动
+       overflow-x: auto;//使单元格内容溢出则滚动
       }
     }
     .progress-linear .container{
@@ -104,75 +342,12 @@ ngx-datatable{
 .datatable-checkbox{
   padding: 0 !important;
 }
-#divide-module{
-  .datatable-body-cell{
-    padding: 0 !important;
-    line-height: 40px;
-  }
-  .datatable-body-cell-label:hover{
-    overflow: hidden;
-  }
-}
 /**end**/
 
-/*spinner颜色*/
+//spinner颜色
 .mat-progress-spinner circle, .mat-spinner circle {
   stroke: #ccc !important
 }
-
-/**业务路由部分dialog中，易用性改进样式**/
-.easyUsed {
-  background-color: #DDDDDD;
-  border-radius: 5px;
-  margin-left: 0;
-  width: 100%;
-  padding-top: 5px;
-  margin-bottom: 10px;
-}
-/**分页布局样式**/
-.bottom-page{
-  height:30px; //
-  .total-page {
-    height: 30px;
-    line-height: 30px;
-    margin-right: 10px;
-    display: inline-block;
-    font-size: 12px;
-    color: #888;
-  }
-  pagination{
-    display: inline-block;
-    margin-right: 10px;
-  }
-  .right-page{
-    display: inline-block;
-    .go-page {
-      border: 1px solid #ddd;
-      text-align: center;
-      width: 36px;
-      height: 28px;
-    }
-    .go-button {
-      height: 28px;
-      line-height: 28px;
-      padding: 0 6px;
-      border: 1px solid #ddd;
-      min-width: 36px;
-      border-radius: 0;
-      margin-right: 10px;
-      vertical-align: bottom;
-    }
-    .go-button:hover {
-      background: @app-amber; //#f7b45a;
-    }
-    .pageLimit{
-      min-width:30px;
-      height: 28px;
-      line-height: 28px;
-      box-shadow: none;
-      border:1px solid #ddd;
-      font-weight:normal;
-      padding: 0 10px;
-    }
-  }
-}
+//.progress{
+//  height: 0.9rem;
+//}

@@ -1,7 +1,0 @@
-#report-operate-area {
-  height: 100%;
-  position: relative;
-}
-#report-operate-area .table-container {
-  height: calc(100% - 130px);
-}

@@ -1,7 +1,0 @@
-#system-role-area {
-  height: 100%;
-  position: relative;
-}
-#system-role-area .table-container {
-  height: calc(100% - 70px);
-}

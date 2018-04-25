@@ -148,22 +148,3 @@
 .login .login-footer .right-img dl dt a {
   color: #ffffff;
 }
-.login .bottom {
-  margin: 5px 0;
-}
-.login .bottom .center {
-  width: 1000px;
-  margin: 0 auto;
-}
-.login .bottom .center .clear {
-  clear: both;
-  height: 1px;
-  width: 100%;
-}
-.login .bottom .center .foot {
-  margin: 20px 0;
-  text-align: center;
-  color: #73777a;
-  font-size: 13px;
-  line-height: 24px;
-}

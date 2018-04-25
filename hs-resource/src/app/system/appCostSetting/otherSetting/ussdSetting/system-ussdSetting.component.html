@@ -1,0 +1,88 @@
+<div id="system-ussdSetting-area">
+    <div>
+        <span class="linkSpan" (click)="appSettingTo('/index/appCostSetting/inSetting')">呼入资费</span>
+        <span class="linkSpan" (click)="appSettingTo('/index/appCostSetting/inBridgeSetting')">呼入转接资费</span>
+        <span class="linkSpan" (click)="appSettingTo('/index/appCostSetting/outSetting')">外呼资费</span>
+        <span class="linkSpan" (click)="appSettingTo('/index/appCostSetting/outBridgeSetting')">外呼转接资费</span>
+        <span class="linkSpan" (click)="appSettingTo('/index/appCostSetting/messageSetting')">短信资费</span>
+        <span class="linkSpan" (click)="appSettingTo('/index/appCostSetting/ussdSetting')">USSD资费</span>
+        <span class="linkSpan" (click)="appSettingTo('/index/appCostSetting/vncSetting')">VNC资费</span>
+        <span class="linkSpan" (click)="appSettingTo('/index/appCostSetting/otherSetting')">其他资费设置</span>
+    </div>
+    <app-page-header [title]="'USSD资费'"></app-page-header>
+    <div class="w-100">
+        <span>客户</span>
+        <span>{{appIdAndName.appId}}</span>
+        <span>{{appIdAndName.appName}}</span>
+    </div>
+    <div class="h-100 position-relative">
+        <div class="row head-search-container">
+            <div class="col-1 container-input">
+                <dl>
+                    <dt>USSD</dt>
+                </dl>
+            </div>
+            <div class="col-2 container-input">
+                <dl>
+                    <dt>开始条数</dt>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                            <input matInput [(ngModel)]="addUssdParams.ussdStartAmount">
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-2 container-input">
+                <dl>
+                    <dt>结束条数</dt>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                            <input matInput [(ngModel)]="addUssdParams.ussdEndAmount">
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-2 container-input">
+                <dl>
+                    <dt>单价</dt>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                            <input matInput [(ngModel)]="addUssdParams.ussdUnitCost">
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-1 container-input">
+                <button mat-button class="search-button" (click)="addUssdSetting()">添加</button>
+            </div>
+        </div>
+        <ngx-datatable class="material striped"
+                       [rows]="ussdSettingData"
+                       [headerHeight]="40"
+                       [rowHeight]="40"
+                       [columnMode]="'force'"
+                       [scrollbarH]="true">
+            <ngx-datatable-column [name]="'开始条数'">
+                <ng-template let-row="row" let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+                    <input (change)="ussdStartChange($event,row)" matInput type="text" value="{{row.remark.split(',')[0]}}">
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column [name]="'结束条数'">
+                <ng-template let-row="row" let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+                    <input (change)="ussdEndChange($event,row)" matInput type="text" value="{{row.remark.split(',')[1]}}">
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column [name]="'单价'">
+                <ng-template let-row="row" let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+                    <input (change)="ussdunitCostChange($event,row)" matInput type="text" value="{{row.value}}">
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <span class="linkSpan" (click)="updateUssd(row)">修改</span>
+                    <span class="linkSpan" (click)="deleteUssd(row)">删除</span>
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+    </div>
+</div>

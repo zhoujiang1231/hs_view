@@ -36,7 +36,7 @@ export class UploaderService {
       authTokenHeader: 'Authorization', // auth验证token的请求头--string
       headers: [{name: 'accept', value: 'application/json'}], // 上传文件的请求头参数--Array<headers>
       removeAfterUpload: true, // 是否在上传完成后从队列中移除--boolean
-      maxFileSize: 5 * 1024 * 1024 // 最大可上传文件的大小--number
+      maxFileSize: 5 * 1024 * 1024, // 最大可上传文件的大小--number
     })
     uploader.onBeforeUploadItem = (item) => {
       item.withCredentials = false

@@ -18,8 +18,13 @@ import {AppHomeComponent} from './app-home.component'
 import {UploaderService} from './services/uploader.service'
 import {SharedModule} from '../shared/shared.module'
 import {HomeComponent} from './home/home.component'
-import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar'
-import {ScrollBarProvider} from '../providers'
+import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar'
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  /*swipePropagation: false,*/
+  wheelPropagation: false
+}
+
 
 @NgModule({
   imports: [
@@ -53,7 +58,10 @@ import {ScrollBarProvider} from '../providers'
     DataService,
     UploaderService,
     AuthGuard,
-    ScrollBarProvider
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
   ],
 })
 

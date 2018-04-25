@@ -1,0 +1,178 @@
+<div id="system-enterpriseFirmMessage-area">
+    <div>
+            <span class="linkSpan"
+                  (click)="customerManageTo('/index/customerManage/enterpriseBasicMessage')">企业基本信息</span>
+        <span class="linkSpan"
+              (click)="customerManageTo('/index/customerManage/enterpriseFirmMessage')">企业业务信息</span>
+        <span class="linkSpan"
+              (click)="customerManageTo('/index/customerManage/enterpriseAppManager')">企业应用管理</span>
+    </div>
+    <app-page-header [title]="'企业业务信息'"
+                     [rightButtons]="[{ title: '修改', action: 'add'}]"
+                     (tapRightBtn)="updateEnterpriseFirmMessage()"></app-page-header>
+    <div class="h-100 position-relative">
+        <div class="row head-search-container">
+            <div class="col-6 container-input">
+                <dl>
+                    <dt>企业简称</dt>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                        <input matInput [(ngModel)]="sysEnterpriseFirmMessageData.shortName">
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-6 container-input"></div>
+            <div class="col-6 container-input">
+                <dl>
+                    <dt>企业登录名</dt>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                            <input matInput [(ngModel)]="sysEnterpriseFirmMessageData.accountName">
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-6 container-input"></div>
+            <div class="col-6 container-input">
+                <dl>
+                    <dt>企业登录密码</dt>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                            <input matInput [(ngModel)]="sysEnterpriseFirmMessageData.accountPwd">
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-6 container-input"></div>
+            <div class="col-6 container-input">
+                <dl>
+                    <dt>企业状态</dt>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                            <mat-select [(ngModel)]="sysEnterpriseFirmMessageData.status">
+                                <mat-option
+                                        *ngFor="let item of [{name:'暂停',value:2},{name:'注销',value:4},{name:'上线',value:5},{name:'测试',value:6}]"
+                                        [value]="item?.value">
+                                    {{item?.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-6 container-input">
+            </div>
+            <div class="col-3 container-input">
+                <dl>
+                    <dt>创建时间</dt>
+                    <dd>
+                        <span>{{sysEnterpriseFirmMessageData.createTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</span>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-3 container-input">
+                <dl>
+                    <dt>上线时间</dt>
+                    <dd>
+                        <span>{{sysEnterpriseFirmMessageData.uptime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</span>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-6 container-input">
+            </div>
+            <div class="col-2 container-input">
+                <dl>
+                    <dt>所属销售</dt>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                            <mat-select [(ngModel)]="sysEnterpriseFirmMessageData.parentParentId" (change)="changDirectMent()">
+                                <mat-option
+                                        *ngFor="let item of directDepartmentData"
+                                        [value]="item?.id">
+                                    {{item?.fullName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-2 container-input">
+                <dl>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                            <mat-select [(ngModel)]="sysEnterpriseFirmMessageData.parentId">
+                                <mat-option
+                                        *ngFor="let item of directManagerData"
+                                        [value]="item?.id">
+                                    {{item?.fullName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-6 container-input">
+            </div>
+            <div class="col-6 container-input">
+                <dl>
+                    <dt>版本等级</dt>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                            <mat-select [(ngModel)]="sysEnterpriseFirmMessageData.level">
+                                <mat-option *ngFor="let item of  [{name:'普通版',value:1},{name:'高级版',value:2}]" [value]="item?.value">
+                                    {{item?.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-6 container-input">
+            </div>
+            <div class="col-3 container-input">
+                <dl>
+                    <dt>企业月低消</dt>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                            <input matInput [(ngModel)]="sysEnterpriseFirmMessageData.minCost">
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-3 container-input">
+                <dl>
+                    <dt>开始时间</dt>
+                    <dd>
+                        <ng2-flatpickr [config]="startTimeOptions"></ng2-flatpickr>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-6 container-input"></div>
+            <div class="col-6 container-input">
+                <dl>
+                    <dt>本月折扣</dt>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                            <input matInput [(ngModel)]="sysEnterpriseFirmMessageData.rebate">
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-6 container-input"></div>
+            <div class="col-6 container-input">
+                <dl>
+                    <dt>企业当前月低消</dt>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                            <input matInput readonly [(ngModel)]="sysEnterpriseFirmMessageData.currentMinCost">
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-3 container-input">
+                <button mat-button class="search-button" (click)="getCurrentMinCost()">查看</button>
+            </div>
+        </div>
+    </div>
+</div>

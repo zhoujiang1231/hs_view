@@ -3,10 +3,10 @@
     <a routerLink="/index/home" routerLinkActive="active">
       <img class="logo-header" src="../../../assets/images/logo_header.svg">
     </a>
-    <span class="organ-name">{{appName}}</span>
+    <span class="organ-name">vlink-data</span>
     <span class="fill-remaining"></span>
-    <div class="right-buttons">
-      <span class="username">welcome,&nbsp;{{user?.username}}</span>
+    <div class="right-buttons" >
+      <span class="username">welcome,&nbsp;{{user?.accountName}}</span>
       <button mat-icon-button (click)="exit()" [matTooltip]="'退出'" style="width:57px;">
         <mat-icon>exit_to_app</mat-icon>
       </button>

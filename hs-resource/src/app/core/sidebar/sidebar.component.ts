@@ -36,8 +36,8 @@ export class SideComponent implements OnInit {
     // Debug.log('activeIndex', activeIndex)
     // 滚动到activeTab，40为每个主tab的高度
     this.scrollBar.scrollTo(0, (activeIndex + 1) * 40, 500)
-    // console.log(this.navTabs)
-    // let activeTab = this.navTabs.find((tab: any) => tab.children.find(it => this.router.url.indexOf(it.link) !== -1))
+    // console.log(this.navTabsAdmin)
+    // let activeTab = this.navTabsAdmin.find((tab: any) => tab.children.find(it => this.router.url.indexOf(it.link) !== -1))
     let activeTab = this.navTabs[activeIndex]
     if (activeTab && activeTab.show) {
       activeTab.open = true
@@ -73,16 +73,6 @@ export class SideComponent implements OnInit {
     }
   }
 
-  // changeActive(navTabs, item) {
-  //   item.choosed = true
-  //   navTabs.forEach((navTab) => {
-  //     navTab.children.forEach((nav) => {
-  //       if (nav.name !== item.name) {
-  //         nav.choosed = false
-  //       }
-  //     })
-  //   })
-  // }
 }
 
 

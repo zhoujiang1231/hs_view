@@ -1,9 +1,0 @@
-#business-day-area,
-#business-month-area {
-  height: 100%;
-  min-width: 1050px;
-}
-#business-day-area .table-container,
-#business-month-area .table-container {
-  height: calc(100% - 130px);
-}

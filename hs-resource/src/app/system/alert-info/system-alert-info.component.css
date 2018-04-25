@@ -1,7 +1,0 @@
-#system-alert-area {
-  height: 100%;
-  position: relative;
-}
-#system-alert-area .table-container {
-  height: calc(100% - 70px);
-}
