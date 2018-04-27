@@ -91,9 +91,9 @@ export class ConnectionService {
   }
 
   /**根据返回的错误提示，判断是否未登录**/
-  isLoginByResult(msg, note) {
-    if(msg) {
-        if (msg.includes('当前无用户登录')) {
+  isLoginByResult(result, msg) {
+    if(result) {
+        if (result == '10') {
             this.logout()
             this.router.navigate(['/signin'])
             localStorage.clear()

@@ -1,0 +1,44 @@
+<div id="system-studentList-area">
+    <app-page-header [title]="'学生列表'"
+                     [rightButtons]="[{ title: '新建', action: 'add'}]"
+                     (tapRightBtn)="addStudent()"
+                     [permission]="isPermission"></app-page-header>
+    <div class="h-100 position-relative">
+        <div *ngIf="isPermission === 1" class="table-container w-100">
+            <ngx-datatable class="material striped"
+                           [rows]="studentListData"
+                           [headerHeight]="40"
+                           [footerHeight]="40"
+                           [rowHeight]="40"
+                           [columnMode]="'force'"
+                           [scrollbarH]="true"
+                           [limit]="params.limit">
+                <ngx-datatable-column [name]="'学号'" [prop]="'stuId'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'姓名'" [prop]="'stuName'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'性别'" [prop]="'stuSexDec'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'邮箱'" [prop]="'stuEmail'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'地址'" [prop]="'stuAddress'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'电话'" [prop]="'stuTel'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'身份证'" [prop]="'stuIdcard'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'院系'" [prop]="'stuDepart'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'创建时间'" [prop]="'creatTime'">
+                    <ng-template let-row="row" ngx-datatable-cell-template>{{row?.creatTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column [name]="'操作'">
+                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template >
+                        <span  class="linkSpan" (click)="deleteStudent(row)">删除</span>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-footer>
+                    <ng-template ngx-datatable-footer-template>
+                        <app-pagination [pageParams]="params" [comTotalCount]="totalCount"
+                                        (limitChange)="getLimit($event)"
+                                        (pageParamsChange)="reloadStudentListData()"></app-pagination>
+                    </ng-template>
+                </ngx-datatable-footer>
+            </ngx-datatable>
+        </div>
+        <app-loading *ngIf="isSpinner === 1" [top]="'258px'"></app-loading>
+        <app-empty-data *ngIf="isPermission === 0"></app-empty-data>
+    </div>
+</div>

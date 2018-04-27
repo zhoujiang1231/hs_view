@@ -49,9 +49,9 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['/index'])
                     if (res.data.data) {
                         const user = res.data.data
+                        user.userName = params.userName
                         LocalStorage.set('user', user)
-                        LocalStorage.set('type', user.type)
-                        LocalStorage.set('operator', user.fullName)
+                        LocalStorage.set('userType', user.userType)
                         this.dataService.changRolePermission()
                     } else {// ：已登录状态，请先登出
                         appAlert.login.failed(res.data.msg)

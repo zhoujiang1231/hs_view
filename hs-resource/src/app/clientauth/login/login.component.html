@@ -21,7 +21,7 @@
                     {{item?.name}}
                   </mat-option>
                 </mat-select>
-                <div *ngIf="!(userType.valid || userType.pristine || !isWriteObj.userType)" class="help alert alert-danger">
+                <div *ngIf="!(user.userType)" class="help alert alert-danger">
                   请选择用户类型!
                 </div>
               </div>

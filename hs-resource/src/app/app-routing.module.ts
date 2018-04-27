@@ -11,8 +11,6 @@ import {RouterComponent} from './core/router.component'
 import {SystemDirectDepartmentManageComponent} from './system/directDepartmentManage/system-directDepartmentManage.component'
 import {DirectManagerComponent} from './system/directManagerManage/system-directManagerManage.component'
 import {SystemCustomerManage} from './system/customerManage/system-customerManage.component'
-import {CallRecordsRouterComponent} from './callRecord/callRecords/callRecords.component'
-import {CallRecordsCdrObComponent} from './callRecord/callRecords/callRecordsCdrOb.component'
 import {CdrIbComponent} from './cdrDetail/cdrIb/cdrIb.component'
 import {CdrObComponent} from './cdrDetail/cdrOb/cdrOb.component'
 import {HomeComponent} from './core/home/home.component'
@@ -34,7 +32,7 @@ import {SysteminBridgeSettingComponent} from "./system/appCostSetting/inBridgeSe
 import {SystemoutSettingComponent} from "./system/appCostSetting/outSetting/system-outSetting.component";
 import {SystemoutBridgeSettingComponent} from "./system/appCostSetting/outBridgeSetting/system-outBridgeSetting.component";
 import {SystemDeductTableComponent} from "./system/deductTable/system-deductTable.component";
-import {SystemAppDeductDetailLogComponent} from "./system/appDeductDetailLog/system-appDeductDetailLog.component";
+import {SystemStudentListComponent} from "./system/studentList/system-studentList.component";
 import {SystemNumberInCostLogComponent} from "./system/numberInCostLog/system-numberInCostLog.component";
 import {SystemNumberFunctionCostLogComponent} from "./system/numberFunctionCostLog/system-numberFunctionCostLog.component";
 import {SystemPreAppDeductLogComponent} from "./system/preAppDeductLog/system-preAppDeductLog.component";
@@ -44,6 +42,10 @@ import {SystemPreNumberInCostLogComponent} from "./system/preNumberInCostLog/sys
 import {SystemMessageSettingComponent} from "./system/appCostSetting/otherSetting/messageSetting/system-messageSetting.component";
 import {SystemUssdSettingComponent} from "./system/appCostSetting/otherSetting/ussdSetting/system-ussdSetting.component";
 import {SystemVncSettingComponent} from "./system/appCostSetting/otherSetting/vncSetting/system-vncSetting.component";
+import {SystemTeacherListComponent} from "./system/teacherList/system-teacherList.component";
+import {SystemCourseListComponent} from "./system/courseList/system-courseList.component";
+import {SystemAccountInfoComponent} from "./system/account/info/system-accountInfo.component";
+import {SystemAccountPswComponent} from "./system/account/psw/system-accountPsw.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/signin', pathMatch: 'full'},
@@ -54,13 +56,24 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: 'home', component: HomeComponent},
-      {path: 'callRecords', component: RouterComponent,
+      {path: '', component: RouterComponent,
           children: [
-              {path: '', redirectTo: 'cdrIb', pathMatch: 'full'},
-              {path: 'cdrIb', component: CallRecordsRouterComponent},
-              {path: 'cdrOb', component: CallRecordsCdrObComponent}
+              {path: '', redirectTo: 'teacher', pathMatch: 'full'},
+              {path: 'teacher', component: SystemTeacherListComponent},
           ]
       },
+      {path: '', component: RouterComponent,
+          children: [
+              {path: '', redirectTo: 'student', pathMatch: 'full'},
+              {path: 'student', component: SystemStudentListComponent},
+          ]
+      },
+        {path: '', component: RouterComponent,
+            children: [
+                {path: '', redirectTo: 'course', pathMatch: 'full'},
+                {path: 'course', component: SystemCourseListComponent},
+            ]
+        },
       {path: '', component: RouterComponent,
        children: [
          {path: '', redirectTo: 'directDepartmentManage', pathMatch: 'full'},
@@ -87,7 +100,7 @@ const routes: Routes = [
          {path: 'numberCostSetting/numberFunctionSetting', component: SystemNumberFunctionSettingComponent},
          {path: 'numberCostSetting/appFunctionSetting', component: SystemAppFunctionSettingComponent},
          {path: 'paylogs/deductTable', component: SystemDeductTableComponent},
-         {path: 'paylogs/appDeductDetailLoge', component: SystemAppDeductDetailLogComponent},
+         {path: 'paylogs/appDeductDetailLoge', component: SystemStudentListComponent},
          {path: 'paylogs/numberInCostLog', component: SystemNumberInCostLogComponent},
          {path: 'paylogs/numberFunctionCostLog', component: SystemNumberFunctionCostLogComponent},
          {path: 'preDeductLog/preAppDeductLog', component: SystemPreAppDeductLogComponent},
@@ -103,6 +116,13 @@ const routes: Routes = [
           {path: 'cdrOb', component: CdrObComponent}
         ]
       },
+        {path: 'account', component: RouterComponent,
+            children: [
+                {path: '', redirectTo: 'info', pathMatch: 'full'},
+                {path: 'info', component: SystemAccountInfoComponent},
+                {path: 'psw', component: SystemAccountPswComponent}
+            ]
+        },
     ]
   },
   {

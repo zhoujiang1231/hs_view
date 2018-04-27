@@ -11,18 +11,15 @@ export class DataService{
 
     changRolePermission(){
 
-        let type = new Number(LocalStorage.get('type'))
-        if (type == 11) {
+        let type = new Number(LocalStorage.get('userType'))
+        if (type == 0) {
             this.navTabs = ConstantService.navTabs
         }
-        if (type == 3) {
-            this.navTabs = ConstantService.navTabsCustomer
+        if (type == 1) {
+            this.navTabs = ConstantService.navTabsTeacher
         }
-        if (type == 4) {
-            this.navTabs = ConstantService.navTabsDepartment
-        }
-        if (type == 5) {
-            this.navTabs = ConstantService.navTabsDirectManager
+        if (type == 2) {
+            this.navTabs = ConstantService.navTabsStudent
         }
     }
     /**
@@ -68,8 +65,6 @@ export class DataService{
             navs.push(navTab)
         })
         Object.assign(this.navTabs, navs)
-        // Object.assign(this.navTabsAdmin,ConstantService.navTabsAdmin);
-
     }
 
 }

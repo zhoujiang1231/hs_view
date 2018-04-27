@@ -1,0 +1,106 @@
+<div id="system-accountInfo-area">
+    <app-page-header [title]="'个人信息'"
+                     [rightButtons]="[{ title: '修改'}]"
+                     (tapRightBtn)="updateInfo()"
+                     [permission]="isPermission"></app-page-header>
+    <div class="h-100 position-relative">
+        <div *ngIf="isPermission == 1" class="table-container w-100">
+            <div class="row head-search-container">
+                <div class="col-6 container-input">
+                    <dl>
+                        <dt>姓名</dt>
+                        <dd>
+                            <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                                <input matInput [(ngModel)]="studentInfo.stuName">
+                            </mat-form-field>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-6 container-input"></div>
+                <div class="col-6 container-input">
+                    <dl>
+                        <dt>院系</dt>
+                        <dd>
+                            <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                                <input matInput [(ngModel)]="studentInfo.stuDepart">
+                            </mat-form-field>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-6 container-input"></div>
+                <div class="col-6 container-input">
+                    <dl>
+                        <dt>身份证</dt>
+                        <dd>
+                            <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                                <input matInput [(ngModel)]="studentInfo.stuIdcard">
+                            </mat-form-field>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-6 container-input"></div>
+                <div class="col-6 container-input">
+                    <dl>
+                        <dt>性别</dt>
+                        <dd>
+                            <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                                <mat-select [(ngModel)]="studentInfo.stuSex">
+                                    <mat-option
+                                            *ngFor="let item of [{name:'男',value:0},{name:'女',value:1}]"
+                                            [value]="item?.value">
+                                        {{item?.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-6 container-input">
+                </div>
+                <div class="col-6 container-input">
+                    <dl>
+                        <dt>邮箱</dt>
+                        <dd>
+                            <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                                <input matInput [(ngModel)]="studentInfo.stuEmail">
+                            </mat-form-field>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-6 container-input"></div>
+                <div class="col-6 container-input">
+                    <dl>
+                        <dt>手机号</dt>
+                        <dd>
+                            <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                                <input matInput [(ngModel)]="studentInfo.stuTel">
+                            </mat-form-field>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-6 container-input"></div>
+                <div class="col-6 container-input">
+                    <dl>
+                        <dt>住址</dt>
+                        <dd>
+                            <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                                <input matInput [(ngModel)]="studentInfo.stuAddress">
+                            </mat-form-field>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-6 container-input"></div>
+                <div class="col-3 container-input">
+                    <dl>
+                        <dt>创建时间</dt>
+                        <dd>
+                            <span>{{studentInfo.creatTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</span>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-6 container-input">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,6 +14,7 @@ import {SystemModule} from './system/system.module'
 import {CallRecordModule} from './callRecord/callRecord.module'
 import {CdrDetailModule} from './cdrDetail/cdrDetail.module'
 import {ClientAuthModule} from './clientauth/clientauth.module'
+import {AccountModule} from "./system/account/account.module";
 import {HashLocationStrategy, LocationStrategy} from '@angular/common'
 
 // import '@angular/material/@angular/material.js'
@@ -36,6 +37,7 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common'
     SystemModule,
     AppRoutingModule,
     ClientAuthModule,
+    AccountModule,
   ],
   providers: [
       {

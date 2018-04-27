@@ -55,8 +55,8 @@ import {SysAppFunctionSettingService} from "./numberCostSetting/appFunctionSetti
 import {CreateCostLogDialogComponent} from "./user/createCostLog.dialog";
 import {SysDeductTableService} from "./deductTable/sys-deductTable.service";
 import {SystemDeductTableComponent} from "./deductTable/system-deductTable.component";
-import {SystemAppDeductDetailLogComponent} from "./appDeductDetailLog/system-appDeductDetailLog.component";
-import {SysAppDeductDetailLogService} from "./appDeductDetailLog/sys-appDeductDetailLog.service";
+import {SystemStudentListComponent} from "./studentList/system-studentList.component";
+import {SysStudentListService} from "./studentList/sys-studentList.service";
 import {SystemNumberFunctionCostLogComponent} from "./numberFunctionCostLog/system-numberFunctionCostLog.component";
 import {SystemNumberInCostLogComponent} from "./numberInCostLog/system-numberInCostLog.component";
 import {SysNumberFunctionCostLogService} from "./numberFunctionCostLog/sys-numberFunctionCostLog.service";
@@ -74,6 +74,13 @@ import {SystemUssdSettingComponent} from "./appCostSetting/otherSetting/ussdSett
 import {SystemVncSettingComponent} from "./appCostSetting/otherSetting/vncSetting/system-vncSetting.component";
 import {EditInMinCostSettingDialogComponent} from "./numberCostSetting/inMinCostSetting/edit-inMinCostSetting.dialog";
 import {SysBasicFileListDialogComponent} from "./enterpriseBasicMessage/sys-basicFileList.dialog";
+import {SysStudentListDialogComponent} from "./studentList/sys-student.dialog";
+import {SysTeacherListDialogComponent} from "./teacherList/sys-teacher.dialog";
+import {SysTeacherListService} from "./teacherList/sys-teacherList.service";
+import {SystemTeacherListComponent} from "./teacherList/system-teacherList.component";
+import {SysCourseListDialogComponent} from "./courseList/sys-course.dialog";
+import {SysCourseListService} from "./courseList/sys-courseList.service";
+import {SystemCourseListComponent} from "./courseList/system-courseList.component";
 
 @NgModule({
   imports: [
@@ -115,7 +122,7 @@ import {SysBasicFileListDialogComponent} from "./enterpriseBasicMessage/sys-basi
     SystemAppFunctionSettingComponent,
     CreateCostLogDialogComponent,
     SystemDeductTableComponent,
-    SystemAppDeductDetailLogComponent,
+    SystemStudentListComponent,
     SystemNumberFunctionCostLogComponent,
     SystemNumberInCostLogComponent,
     SystemPreAppDeductLogComponent,
@@ -127,6 +134,11 @@ import {SysBasicFileListDialogComponent} from "./enterpriseBasicMessage/sys-basi
     SystemVncSettingComponent,
     EditInMinCostSettingDialogComponent,
     SysBasicFileListDialogComponent,
+    SysStudentListDialogComponent,
+    SysTeacherListDialogComponent,
+    SystemTeacherListComponent,
+    SysCourseListDialogComponent,
+    SystemCourseListComponent,
   ],
   entryComponents: [
     NewDirectDepartmentManageDialogComponent,
@@ -139,6 +151,9 @@ import {SysBasicFileListDialogComponent} from "./enterpriseBasicMessage/sys-basi
     CreateCostLogDialogComponent,
     EditInMinCostSettingDialogComponent,
     SysBasicFileListDialogComponent,
+    SysStudentListDialogComponent,
+    SysTeacherListDialogComponent,
+    SysCourseListDialogComponent,
   ],
   exports: [],
   providers: [
@@ -163,13 +178,15 @@ import {SysBasicFileListDialogComponent} from "./enterpriseBasicMessage/sys-basi
     SysNumberFunctionSettingService,
     SysAppFunctionSettingService,
     SysDeductTableService,
-    SysAppDeductDetailLogService,
+    SysStudentListService,
     SysNumberFunctionCostLogService,
     SysNumberInCostLogService,
     SysPreAppDeductLogService,
     SysPreAppDeductDetailLogService,
     SysPreNumberInCostLogService,
     SysPreNumberFunctionCostLogService,
+    SysTeacherListService,
+    SysCourseListService,
   ]
 })
 

@@ -79,28 +79,22 @@ export class PaginationComponent {
   @Output() pageParamsChange = new EventEmitter /*指定跳转页后所传递的参数（new）*/
   @Output() limitChange = new EventEmitter()
   jumpPage: number = null /*input中输入的将跳转的页码*/
-  limit = 10
+  limit = 20
 
   constructor(private swalService: SwalService) {
   }
 
   /**点击跳转到指定页；当点击 pagination某个页面时，重新加载页面数据*/
   listPageChange(page) {
-    // console.log(page)// {page: 2, itemsPerPage: 10}
     if (this.comTotalCount > 0) {
         this.pageParams.currentPageNo = page.page
       this.pageParams.start = (page.page-1)*page.itemsPerPage
-      // if (this.pageParams.export) {
-      //   delete this.pageParams.export
-      // }
       this.pageParamsChange.emit(this.pageParams)
     }
   }
 
   /**回车 加载指定页数据**/
   myKeyup(event: any, jumpPage) {
-     // console.log('event', event)
-     // console.log('jumpPage', parseInt(jumpPage, 10))
     if (event ? event.keyCode : event.which === 13) {
       if (Number.isInteger(parseInt(jumpPage, 10)) && parseInt(jumpPage, 10) > 0) {
         this.listPageChange(jumpPage)
