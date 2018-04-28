@@ -1,8 +1,5 @@
-<div id="system-courseList-area">
-    <app-page-header [title]="'课程列表'"
-                     [rightButtons]="[{ title: '新建', action: 'add'}]"
-                     (tapRightBtn)="addCourse()"
-                     [permission]="isPermission"></app-page-header>
+<div id="system-teacherCourseList-area">
+    <app-page-header [title]="'课程管理'"></app-page-header>
     <div class="h-100 position-relative">
         <div  class="table-container w-100">
             <ngx-datatable class="material striped"
@@ -13,12 +10,6 @@
                            [columnMode]="'force'"
                            [scrollbarH]="true"
                            [limit]="params.limit">
-                <ngx-datatable-column *ngIf="isStudent == 1" [name]="'选课状态'">
-                    <ng-template let-row="row" ngx-datatable-cell-template>
-                        <input *ngIf="courseChecked(row.cId)" (click)="choseCourse($event,row)" type="checkbox" class="container-input" checked/>
-                        <input *ngIf="courseUnChecked(row.cId)" (click)="choseCourse($event,row)" type="checkbox" class="container-input"/>
-                    </ng-template>
-                </ngx-datatable-column>
                 <ngx-datatable-column [name]="'编号'" [prop]="'cId'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'名称'" [prop]="'cName'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'教师'" [prop]="'cTeacher'"></ngx-datatable-column>
@@ -30,9 +21,15 @@
                 <ngx-datatable-column [name]="'创建时间'" [prop]="'createTime'">
                     <ng-template let-row="row" ngx-datatable-cell-template>{{row?.createTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column *ngIf="isPermission == 1" [name]="'操作'">
-                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template >
-                        <span  class="linkSpan" (click)="deleteCourse(row)">删除</span>
+                <ngx-datatable-column [name]="'操作'">
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+        <span [matMenuTriggerFor]="menu" style="cursor: pointer">
+          <mat-icon class="md-24" style="font-size: 16px;">more_vert</mat-icon>
+        </span>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item *ngFor="let item of [{name:'修改',value:0},{name:'删除',value:1}]"
+                                    [value]="item.value" (click)="operateButton(item.value, row)">{{item.name}}</button>
+                        </mat-menu>
                     </ng-template>
                 </ngx-datatable-column>
                 <ngx-datatable-footer>

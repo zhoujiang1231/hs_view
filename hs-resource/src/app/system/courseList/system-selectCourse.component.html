@@ -1,24 +1,15 @@
-<div id="system-courseList-area">
-    <app-page-header [title]="'课程列表'"
-                     [rightButtons]="[{ title: '新建', action: 'add'}]"
-                     (tapRightBtn)="addCourse()"
-                     [permission]="isPermission"></app-page-header>
+<div id="system-selectCouse-area">
+    <app-page-header [title]="'已选课程'"></app-page-header>
     <div class="h-100 position-relative">
-        <div  class="table-container w-100">
+        <div *ngIf="isPermission === 1" class="table-container w-100">
             <ngx-datatable class="material striped"
-                           [rows]="courseListData"
+                           [rows]="selectCourseData"
                            [headerHeight]="40"
                            [footerHeight]="40"
                            [rowHeight]="40"
                            [columnMode]="'force'"
                            [scrollbarH]="true"
                            [limit]="params.limit">
-                <ngx-datatable-column *ngIf="isStudent == 1" [name]="'选课状态'">
-                    <ng-template let-row="row" ngx-datatable-cell-template>
-                        <input *ngIf="courseChecked(row.cId)" (click)="choseCourse($event,row)" type="checkbox" class="container-input" checked/>
-                        <input *ngIf="courseUnChecked(row.cId)" (click)="choseCourse($event,row)" type="checkbox" class="container-input"/>
-                    </ng-template>
-                </ngx-datatable-column>
                 <ngx-datatable-column [name]="'编号'" [prop]="'cId'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'名称'" [prop]="'cName'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'教师'" [prop]="'cTeacher'"></ngx-datatable-column>
@@ -30,7 +21,7 @@
                 <ngx-datatable-column [name]="'创建时间'" [prop]="'createTime'">
                     <ng-template let-row="row" ngx-datatable-cell-template>{{row?.createTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column *ngIf="isPermission == 1" [name]="'操作'">
+                <ngx-datatable-column [name]="'操作'">
                     <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template >
                         <span  class="linkSpan" (click)="deleteCourse(row)">删除</span>
                     </ng-template>
@@ -39,7 +30,7 @@
                     <ng-template ngx-datatable-footer-template>
                         <app-pagination [pageParams]="params" [comTotalCount]="totalCount"
                                         (limitChange)="getLimit($event)"
-                                        (pageParamsChange)="reloadCourseListData()"></app-pagination>
+                                        (pageParamsChange)="reloadSelectCousrseData()"></app-pagination>
                     </ng-template>
                 </ngx-datatable-footer>
             </ngx-datatable>

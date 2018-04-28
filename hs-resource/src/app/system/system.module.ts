@@ -81,6 +81,10 @@ import {SystemTeacherListComponent} from "./teacherList/system-teacherList.compo
 import {SysCourseListDialogComponent} from "./courseList/sys-course.dialog";
 import {SysCourseListService} from "./courseList/sys-courseList.service";
 import {SystemCourseListComponent} from "./courseList/system-courseList.component";
+import {SystemSelectCourseComponent} from "./courseList/system-selectCourse.component";
+import {SystemTeacherCourseListComponent} from "./teacherCourseList/system-teacherCourseList.component";
+import {SysTeacherCourseDialogComponent} from "./teacherCourseList/sys-teacherCourse.dialog";
+import {SysTeacherCourseListService} from "./teacherCourseList/sys-teacherCourseList.service";
 
 @NgModule({
   imports: [
@@ -139,6 +143,9 @@ import {SystemCourseListComponent} from "./courseList/system-courseList.componen
     SystemTeacherListComponent,
     SysCourseListDialogComponent,
     SystemCourseListComponent,
+    SystemSelectCourseComponent,
+    SysTeacherCourseDialogComponent,
+    SystemTeacherCourseListComponent,
   ],
   entryComponents: [
     NewDirectDepartmentManageDialogComponent,
@@ -154,6 +161,7 @@ import {SystemCourseListComponent} from "./courseList/system-courseList.componen
     SysStudentListDialogComponent,
     SysTeacherListDialogComponent,
     SysCourseListDialogComponent,
+    SysTeacherCourseDialogComponent,
   ],
   exports: [],
   providers: [
@@ -187,6 +195,7 @@ import {SystemCourseListComponent} from "./courseList/system-courseList.componen
     SysPreNumberFunctionCostLogService,
     SysTeacherListService,
     SysCourseListService,
+    SysTeacherCourseListService,
   ]
 })
 

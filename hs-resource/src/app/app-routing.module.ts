@@ -46,6 +46,8 @@ import {SystemTeacherListComponent} from "./system/teacherList/system-teacherLis
 import {SystemCourseListComponent} from "./system/courseList/system-courseList.component";
 import {SystemAccountInfoComponent} from "./system/account/info/system-accountInfo.component";
 import {SystemAccountPswComponent} from "./system/account/psw/system-accountPsw.component";
+import {SystemSelectCourseComponent} from "./system/courseList/system-selectCourse.component";
+import {SystemTeacherCourseListComponent} from "./system/teacherCourseList/system-teacherCourseList.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/signin', pathMatch: 'full'},
@@ -72,6 +74,8 @@ const routes: Routes = [
             children: [
                 {path: '', redirectTo: 'course', pathMatch: 'full'},
                 {path: 'course', component: SystemCourseListComponent},
+                {path: 'selectCourse', component: SystemSelectCourseComponent},
+                {path: 'teacherCourse', component: SystemTeacherCourseListComponent},
             ]
         },
       {path: '', component: RouterComponent,

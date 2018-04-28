@@ -1,18 +1,18 @@
 import {Component, OnInit} from '@angular/core'
 import {MatDialog} from '@angular/material'
 import appAlert from '../../utils/alert'
-import {SysCourseListService} from "./sys-courseList.service";
+import {SysTeacherCourseListService} from "./sys-teacherCourseList.service";
 import {LocalStorage} from "../../core/services/localstorage.service";
 import {Router} from "@angular/router";
-import {SysCourseListDialogComponent} from "./sys-course.dialog";
+import {SysTeacherCourseDialogComponent} from "./sys-teacherCourse.dialog";
 
 @Component({
-    selector: 'app-system-courseList',
-    templateUrl: 'system-courseList.component.html',
-    styleUrls: ['system-courseList.component.less']
+    selector: 'app-system-teacherCourseList',
+    templateUrl: 'system-teacherCourseList.component.html',
+    styleUrls: ['system-teacherCourseList.component.less']
 })
 
-export class SystemCourseListComponent implements OnInit {
+export class SystemTeacherCourseListComponent implements OnInit {
     courseListData: any[] = []
     params: any = {start:1,limit:20}
     totalCount
@@ -27,21 +27,21 @@ export class SystemCourseListComponent implements OnInit {
 
     constructor(private router: Router,
                 public _dialog: MatDialog,
-                private courseListService: SysCourseListService) {
+                private courseListService: SysTeacherCourseListService) {
     }
 
     ngOnInit() {
         if(LocalStorage.get('userType')){
             this.userType = LocalStorage.get('userType')
         }
-        if(this.userType ==0 || this.userType ==1){
+        if(this.userType!='2'){
             this.isPermission =1
         }
-        if(this.userType == 2){
+        this.reloadCourseListData()
+        if(this.userType == '2'){
             this.user = LocalStorage.get('user')
             this.isStudent = 1
         }
-        this.reloadCourseListData()
     }
 
 
@@ -76,69 +76,15 @@ export class SystemCourseListComponent implements OnInit {
         })
     }
 
-    /**选课**/
-    choseCourse(element,row){
-        /**获取点击后的checked**/
-        let checkTarget = element.srcElement.checked
-        let checkOld
-        let cId = row.cId
-        /**选课**/
-        if(checkTarget){
-            checkOld = false;
-            if(row.cChosed>=row.cTotal){
-                appAlert.common.actionFailed('该课程人数已满!')
-                element.srcElement.checked = checkOld
-                return
-            }
-            this.courseListService.choseCourse({cId:cId})
-                .subscribe(res => {
-                    if(res.data.result == '0'){
-                        LocalStorage.set('user',res.data.data)
-                        this.user = LocalStorage.get('user')
-                        this.reloadCourseListData()
-                    }
-                    else{
-                        element.srcElement.checked = checkOld
-                    }
-                }, err => {
-                    element.srcElement.checked = checkOld
-                })
-        }/**取消选课**/
-        else{
-            checkOld = true;
-            this.courseListService.unchoseCourse({cId:cId})
-                .subscribe(res => {
-                    if(res.data.result == '0'){
-                        LocalStorage.set('user',res.data.data)
-                        this.user = LocalStorage.get('user')
-                        this.reloadCourseListData()
-                    }
-                    else{
-                        element.srcElement.checked = checkOld
-                    }
-                }, err => {
-                    element.srcElement.checked = checkOld
-                })
-        }
-    }
+    operateButton(value,row){
+        /**修改**/
+        if(value == 0){
 
-    courseChecked(cId){
-        let flag = false;
-        this.user.lc.forEach(item =>{
-            if(cId == item.cId){
-                flag = true;
-            }
-        })
-        return flag;
-    }
-    courseUnChecked(cId){
-        let flag = true;
-        this.user.lc.forEach(item =>{
-            if(cId == item.cId){
-                flag = false;
-            }
-        })
-        return flag;
+        }
+        /**删除**/
+        if(value == 1){
+
+        }
     }
 
     /**修改每页展示的数据条数pageSize**/
@@ -164,8 +110,8 @@ export class SystemCourseListComponent implements OnInit {
 
     /**打开 新建dialog**/
     newDialog() {
-        const config = SysCourseListDialogComponent.config
-        let dialogRef = this._dialog.open(SysCourseListDialogComponent, config)
+        const config = SysTeacherCourseDialogComponent.config
+        let dialogRef = this._dialog.open(SysTeacherCourseDialogComponent, config)
         dialogRef.afterClosed().subscribe((result: any) => {
             if (result && result !== 'cancel') {
                 console.log('确定', result)

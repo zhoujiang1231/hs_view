@@ -3,21 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="b43f1ce8-92ce-40aa-b8f6-211dd8eb6394" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs-resource/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs-resource/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hs-resource/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs-resource/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs-resource/src/app/clientauth/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/clientauth/login/login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs-resource/src/app/clientauth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/clientauth/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs-resource/src/app/core/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/core/header/header.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs-resource/src/app/core/services/connection.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/core/services/connection.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hs-resource/src/app/core/services/constant.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/core/services/constant.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs-resource/src/app/core/services/data.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/core/services/data.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs-resource/src/app/shared/pagination/pagination.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/shared/pagination/pagination.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs-resource/src/app/system/appDeductDetailLog/sys-appDeductDetailLog.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/system/studentList/sys-studentList.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs-resource/src/app/system/appDeductDetailLog/system-appDeductDetailLog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/system/studentList/system-studentList.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs-resource/src/app/system/appDeductDetailLog/system-appDeductDetailLog.component.less" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/system/studentList/system-studentList.component.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs-resource/src/app/system/appDeductDetailLog/system-appDeductDetailLog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/system/studentList/system-studentList.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hs-resource/src/app/system/account/sys-account.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/system/account/sys-account.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hs-resource/src/app/system/courseList/sys-courseList.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/system/courseList/sys-courseList.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-courseList.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-courseList.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-courseList.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-courseList.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hs-resource/src/app/system/studentList/sys-studentList.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/system/studentList/sys-studentList.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hs-resource/src/app/system/system.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hs-resource/src/app/system/system.module.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -32,52 +24,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="system-accountInfo.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/account/info/system-accountInfo.component.html">
+      <file leaf-file-name="system-courseList.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-courseList.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="3" column="40" lean-forward="true" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
+            <state relative-caret-position="135">
+              <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sys-student.dialog.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/studentList/sys-student.dialog.ts">
+      <file leaf-file-name="system-courseList.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-courseList.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="72" column="91" selection-start-line="72" selection-start-column="81" selection-end-line="72" selection-end-column="91" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="system-accountInfo.component.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/account/info/system-accountInfo.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="837">
-              <caret line="31" column="58" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
+            <state relative-caret-position="147">
+              <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="constant.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hs-resource/src/app/core/services/constant.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3132">
-              <caret line="116" column="17" selection-start-line="116" selection-start-column="17" selection-end-line="116" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sys-account.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/account/sys-account.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="55" column="20" lean-forward="true" selection-start-line="55" selection-start-column="20" selection-end-line="55" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,10 +75,7 @@
         <option value="$PROJECT_DIR$/hs-resource/src/app/system/teacherList/system-teacherList.component.less" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/system/teacherList/system-teacherList.component.ts" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-courseList.component.less" />
-        <option value="$PROJECT_DIR$/hs-resource/src/app/system/system.module.ts" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/system/teacherList/sys-teacherList.service.ts" />
-        <option value="$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-courseList.component.ts" />
-        <option value="$PROJECT_DIR$/hs-resource/src/app/system/courseList/sys-courseList.service.ts" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/clientauth/login/login.component.html" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/core/header/header.component.ts" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/core/header/header.component.html" />
@@ -125,22 +84,35 @@
         <option value="$PROJECT_DIR$/hs-resource/src/app/system/account/info/system-accountInfo.component.less" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/system/account/psw/system-accountPsw.component.less" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/clientauth/login/login.component.ts" />
-        <option value="$PROJECT_DIR$/hs-resource/src/app/app-routing.module.ts" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/system/teacherList/sys-teacher.dialog.ts" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/system/studentList/system-studentList.component.ts" />
-        <option value="$PROJECT_DIR$/hs-resource/src/app/system/studentList/sys-studentList.service.ts" />
-        <option value="$PROJECT_DIR$/hs-resource/src/app/core/services/connection.service.ts" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/core/services/data.service.ts" />
-        <option value="$PROJECT_DIR$/hs-resource/src/app/core/services/constant.service.ts" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/system/account/psw/system-accountPsw.component.html" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/system/courseList/sys-course.dialog.ts" />
-        <option value="$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-courseList.component.html" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/system/studentList/system-studentList.component.html" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/system/teacherList/system-teacherList.component.html" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/system/account/psw/system-accountPsw.component.ts" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/system/account/sys-account.service.ts" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/system/account/info/system-accountInfo.component.html" />
         <option value="$PROJECT_DIR$/hs-resource/src/app/system/account/info/system-accountInfo.component.ts" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/core/services/connection.service.ts" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/system/noticeManage/sys-noticeManage.dialog.ts" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/system/noticeManage/system-noticeManage.component.html" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-selectCourse.component.html" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-selectCourse.component.less" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-selectCourse.component.ts" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/system/studentList/sys-studentList.service.ts" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/system/courseList/sys-courseList.service.ts" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/system/teacherCourseList/sys-teacherCourseList.service.ts" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/system/teacherCourseList/system-teacherCourseList.component.less" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/system/teacherCourseList/system-teacherCourseList.component.html" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/system/teacherCourseList/sys-teacherCourse.dialog.ts" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/system/teacherCourseList/system-teacherCourseList.component.ts" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/system/system.module.ts" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/app-routing.module.ts" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/core/services/constant.service.ts" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-courseList.component.ts" />
+        <option value="$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-courseList.component.html" />
       </list>
     </option>
   </component>
@@ -172,6 +144,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -203,7 +176,7 @@
               <item name="hs-resource" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hs_view" type="b2602c69:ProjectViewProjectNode" />
@@ -211,14 +184,13 @@
               <item name="hs-resource" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="courseList" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -236,15 +208,16 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/hs-resource/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\work\hs_view\hs-resource\src\app\system\teacherCourseList" />
+      <recent name="D:\work\hs_view\hs-resource\src\app\system" />
+      <recent name="D:\work\hs_view\hs-resource\src\app\system\courseList" />
+      <recent name="D:\work\hs_view\hs-resource\src\app\system\account" />
+      <recent name="D:\work\hs_view\hs-resource\src\app\system\account\psw" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\work\hs_view\hs-resource\src\app\system\account" />
       <recent name="D:\work\hs_view\hs-resource\src\app\system\account\info" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\work\hs_view\hs-resource\src\app\system\account" />
-      <recent name="D:\work\hs_view\hs-resource\src\app\system\account\psw" />
-      <recent name="D:\work\hs_view\hs-resource\src\app\system" />
-      <recent name="D:\work\hs_view\hs-resource\src\app\system\studentList" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -276,56 +249,37 @@
       <workItem from="1524640357653" duration="5000" />
       <workItem from="1524727343165" duration="1745000" />
       <workItem from="1524731244514" duration="3560000" />
-      <workItem from="1524793793045" duration="18837000" />
+      <workItem from="1524793793045" duration="21600000" />
+      <workItem from="1524881176734" duration="17337000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47745000" />
+    <option name="totallyTimeSpent" value="67845000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1448" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TypeScript" order="7" weight="0.32971507" />
+      <window_info anchor="bottom" id="TypeScript" order="11" weight="0.32971507" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2496474" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32971507" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3283582" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32971507" />
-    </layout>
-    <layout-to-restore>
-      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32971507" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32971507" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2496474" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="TypeScript" order="8" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3283582" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32971507" />
       <window_info id="Favorites" order="2" side_tool="true" />
-    </layout-to-restore>
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -334,125 +288,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/customerManage/system-customerManage.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2511">
-          <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/callRecord/callRecord.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/customerManage/sys-customerManage.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="46" column="54" lean-forward="true" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/core/header/header.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/core/header/header.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="14" column="14" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/account/sys-course.dialog.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/system.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-87">
-          <caret line="86" column="10" selection-start-line="86" selection-start-column="10" selection-end-line="86" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="891">
-          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/account/info/system-accountInfo.component.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/account/psw/system-accountPsw.component.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" selection-start-column="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/app-routing.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="122" column="66" selection-start-line="122" selection-start-column="66" selection-end-line="122" selection-end-column="66" />
-          <folding>
-            <element signature="e#47#85#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/enterpriseFirmMessage/new-enterpriseFirmMessage.dialog.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-81">
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/teacherList/sys-teacher.dialog.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="20" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/clientauth/login/login.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-783">
-          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/clientauth/login/login.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="50" column="16" lean-forward="true" selection-start-line="50" selection-start-column="16" selection-end-line="52" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/callRecord/callRecords/callRecords.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="195" column="25" selection-start-line="195" selection-end-line="196" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/teacherList/system-teacherList.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="516">
@@ -467,27 +302,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/studentList/sys-studentList.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="15" column="77" selection-start-line="15" selection-start-column="77" selection-end-line="15" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/studentList/system-studentList.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="41" column="46" lean-forward="true" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/account/account.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -495,13 +313,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="29" column="11" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/courseList/sys-course.dialog.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -514,20 +325,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hs-resource/src/app/core/services/auth-guard.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-852">
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-852" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hs-resource/src/app/module/customize-material.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1176">
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-1176" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hs-resource/src/app/resolver/author.resolver.ts">
@@ -573,11 +376,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hs-resource/src/app/shared/second-menu/second-menu.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-324">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-324" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hs-resource/src/app/utils/ali-util.ts">
@@ -616,13 +415,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-courseList.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/account/psw/system-accountPsw.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
@@ -634,26 +426,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="45" column="40" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/courseList/sys-courseList.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-courseList.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="78" column="42" lean-forward="true" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="42" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>
@@ -676,7 +448,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/studentList/sys-student.dialog.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
+        <state relative-caret-position="1836">
           <caret line="72" column="91" selection-start-line="72" selection-start-column="81" selection-end-line="72" selection-end-column="91" />
         </state>
       </provider>
@@ -684,28 +456,14 @@
     <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/account/info/system-accountInfo.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
-          <caret line="3" column="40" lean-forward="true" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/core/services/connection.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2457">
-          <caret line="96" column="25" lean-forward="true" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/core/services/constant.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3132">
-          <caret line="116" column="17" selection-start-line="116" selection-start-column="17" selection-end-line="116" selection-end-column="17" />
+          <caret line="3" column="40" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/account/sys-account.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="55" column="20" lean-forward="true" selection-start-line="55" selection-start-column="20" selection-end-line="55" selection-end-column="20" />
+        <state relative-caret-position="1377">
+          <caret line="55" column="20" selection-start-line="55" selection-start-column="20" selection-end-line="55" selection-end-column="20" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
@@ -714,11 +472,196 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/account/info/system-accountInfo.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="837">
+        <state relative-caret-position="702">
           <caret line="31" column="58" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/noticeManage/sys-noticeManage.dialog.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/noticeManage/system-noticeManage.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="37" column="38" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-selectCourse.component.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="19" selection-start-column="19" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/teacherCourseList/sys-course.dialog.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/user/createCostLog.dialog.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-selectCourse.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="821">
+          <caret line="87" column="17" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-selectCourse.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/enterpriseAppManager/system-enterpriseAppManager.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="177" column="47" selection-start-line="177" selection-start-column="37" selection-end-line="177" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/studentList/system-studentList.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="41" column="46" lean-forward="true" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/courseList/sys-course.dialog.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="130" column="38" lean-forward="true" selection-start-line="130" selection-start-column="38" selection-end-line="130" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/studentList/sys-studentList.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/courseList/sys-courseList.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="73" column="16" lean-forward="true" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/teacherCourseList/system-teacherCourseList.component.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/enterpriseAppManager/system-enterpriseAppManager.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="126" column="20" selection-start-line="126" selection-start-column="20" selection-end-line="134" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/teacherCourseList/sys-teacherCourseList.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/teacherCourseList/system-teacherCourseList.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="30" column="92" selection-start-line="30" selection-start-column="92" selection-end-line="30" selection-end-column="92" />
+          <folding>
+            <element signature="n#style#0;n#mat-icon#0;n#span#0;n#ng-template#0;n#ngx-datatable-column#9;n#ngx-datatable#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/teacherCourseList/sys-teacherCourse.dialog.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3159">
+          <caret line="117" column="27" lean-forward="true" selection-start-line="117" selection-start-column="27" selection-end-line="117" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/system.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="84" column="28" selection-start-line="84" selection-start-column="28" selection-end-line="84" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/app-routing.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="77" column="37" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="37" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#47#85#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/core/services/connection.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="97" column="45" lean-forward="true" selection-start-line="97" selection-start-column="12" selection-end-line="97" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/teacherCourseList/system-teacherCourseList.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1944">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/core/services/constant.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="145" column="18" lean-forward="true" selection-start-line="145" selection-start-column="18" selection-end-line="145" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-courseList.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs-resource/src/app/system/courseList/system-courseList.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
         </state>
       </provider>
     </entry>

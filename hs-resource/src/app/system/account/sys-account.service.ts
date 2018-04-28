@@ -17,8 +17,8 @@ export class SysAccountService {
     configsObservable.subscribe((page: any) => {
       if (page.data.result === '0') {
         //if (page.data.permission === 0) {/*请求数据"成功"*/
-      /*    this.courseListData.length = 0
-          this.courseListData.push(...page.data.list)*/
+      /*    this.selectCourseData.length = 0
+          this.selectCourseData.push(...page.data.list)*/
         //}
       } else {
         this.connectionService.isLoginByResult(page.data.result, page.data.msg)

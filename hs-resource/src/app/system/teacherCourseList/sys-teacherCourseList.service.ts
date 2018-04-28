@@ -5,7 +5,7 @@ import appAlert from '../../utils/alert'
 import {ConnectionService} from '../../core/services/connection.service'
 
 @Injectable()
-export class SysCourseListService {
+export class SysTeacherCourseListService {
 
   constructor(private connectionService: ConnectionService) {
   }

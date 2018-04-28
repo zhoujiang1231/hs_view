@@ -5,32 +5,34 @@ import appAlert from '../../utils/alert'
 import {ConnectionService} from '../../core/services/connection.service'
 
 @Injectable()
-export class SysStudentListService {
+export class SysNoticeManageService {
 
   constructor(private connectionService: ConnectionService) {
   }
 
-  /**获取学生列表：get**/
-  reloadStudentListData(params) {
-    const path = '/student/getAllStudent'
+  /**获取课程列表：get**/
+  reloadCourseListData(params) {
+    const path = '/course/getAllCourse'
     const configsObservable = Observable.fromPromise(this.connectionService.get(path, {params: params}))
     configsObservable.subscribe((page: any) => {
-        console.log(page.data)
       if (page.data.result == '0') {
+        //if (page.data.permission === 0) {/*请求数据"成功"*/
+      /*    this.selectCourseData.length = 0
+          this.selectCourseData.push(...page.data.list)*/
+        //}
       } else {
-          if(page.data.result == '10') {
-              this.connectionService.isLoginByResult(page.data.result, page.data.msg)
-          }
+          console.log(page.data)
+        this.connectionService.isLoginByResult(page.data.result, page.data.msg)
       }
     }, err => {
-      appAlert.common.actionFailed('获取学生列表"')
+      appAlert.common.actionFailed('课程列表')
     })
     return configsObservable
   }
 
-    /**删除学生：post**/
-    deleteStudent(id) {
-        const path = '/student/deleteStudent/' + id
+    /**删除课程：post**/
+    deleteCourse(id) {
+        const path = '/course/deleteCourse/'+id
         const configsObservable = Observable.fromPromise(this.connectionService.delete(path))
         configsObservable.subscribe(res => {
             if (res.data.result === '0') {
@@ -45,9 +47,10 @@ export class SysStudentListService {
         return configsObservable
     }
 
-    /*添加学生：post**/
-    addStudent(params, dialogRef, disabled?) {
-        const path = '/student/addStudent'
+    /*添加课程：post**/
+    addCourse(params, dialogRef, disabled?) {
+        const path = '/course/addCourse'
+        console.log(params)
         const configsObservable = Observable.fromPromise(this.connectionService.post(path,params))
         configsObservable.subscribe(res => {
             if (res.data.result === '0') {
@@ -55,6 +58,7 @@ export class SysStudentListService {
                 appAlert.common.actionSuccess('添加成功')
             } else {
                 if (disabled) {disabled.value = false}
+                console.log(res.data.description)
                 appAlert.common.actionFailed(res.data.msg)
             }
         }, err => {

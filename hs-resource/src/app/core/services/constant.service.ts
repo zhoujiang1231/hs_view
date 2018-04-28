@@ -116,38 +116,20 @@ export class ConstantService {
 
     static navTabsTeacher: any[] = [
         {
-            title: '教师管理', icon: '', mat_icon: '', link: 'teacher', open: false, mark: 'check_in', show: true,
-            children: [
-                {
-                    name: '教师列表',
-                    link: '/index/teacher',
-                    mat_icon: 'featured_play_list',
-                    choosed: false,
-                    mark: 'check_in',
-                    show: true
-                },
-            ]
-        },
-        {
-            title: '学生管理', icon: '', mat_icon: '', link: 'student', open: false, mark: 'check_in', show: true,
-            children: [
-                {
-                    name: '学生列表',
-                    link: '/index/student',
-                    mat_icon: 'flip_to_front',
-                    choosed: false,
-                    mark: 'check_in',
-                    show: true
-                },
-            ]
-        },
-        {
             title: '课程管理', icon: '', mat_icon: '', link: 'course', open: false, mark: 'check_in', show: true,
             children: [
                 {
                     name: '课程列表',
                     link: '/index/course',
                     mat_icon: 'tv',
+                    choosed: false,
+                    mark: 'check_in',
+                    show: true
+                },
+                {
+                    name: '课程管理',
+                    link: '/index/teacherCourse',
+                    mat_icon: 'dashboard',
                     choosed: false,
                     mark: 'check_in',
                     show: true
@@ -227,38 +209,20 @@ export class ConstantService {
 
     static navTabsStudent = [
         {
-            title: '教师管理', icon: '', mat_icon: '', link: 'teacher', open: false, mark: 'check_in', show: true,
-            children: [
-                {
-                    name: '教师列表',
-                    link: '/index/teacher',
-                    mat_icon: 'featured_play_list',
-                    choosed: false,
-                    mark: 'check_in',
-                    show: true
-                },
-            ]
-        },
-        {
-            title: '学生管理', icon: '', mat_icon: '', link: 'student', open: false, mark: 'check_in', show: true,
-            children: [
-                {
-                    name: '学生列表',
-                    link: '/index/student',
-                    mat_icon: 'flip_to_front',
-                    choosed: false,
-                    mark: 'check_in',
-                    show: true
-                },
-            ]
-        },
-        {
             title: '课程管理', icon: '', mat_icon: '', link: 'course', open: false, mark: 'check_in', show: true,
             children: [
                 {
                     name: '课程列表',
                     link: '/index/course',
                     mat_icon: 'tv',
+                    choosed: false,
+                    mark: 'check_in',
+                    show: true
+                },
+                {
+                    name: '已选课程',
+                    link: '/index/selectCourse',
+                    mat_icon: 'dashboard',
                     choosed: false,
                     mark: 'check_in',
                     show: true
