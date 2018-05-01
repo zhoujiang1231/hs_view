@@ -30,6 +30,26 @@ export class SysCourseListService {
     return configsObservable
   }
 
+    /**获取已选课程列表：get**/
+    reloadSelectCousrseData(params) {
+        const path = '/course/getAllStudentCourse'
+        const configsObservable = Observable.fromPromise(this.connectionService.get(path, {params: params}))
+        configsObservable.subscribe((page: any) => {
+            if (page.data.result == '0') {
+                //if (page.data.permission === 0) {/*请求数据"成功"*/
+                /*    this.selectCourseData.length = 0
+                    this.selectCourseData.push(...page.data.list)*/
+                //}
+            } else {
+                console.log(page.data)
+                this.connectionService.isLoginByResult(page.data.result, page.data.msg)
+            }
+        }, err => {
+            appAlert.common.actionFailed('课程列表')
+        })
+        return configsObservable
+    }
+
     /**删除课程：post**/
     deleteCourse(id) {
         const path = '/course/deleteCourse/'+id

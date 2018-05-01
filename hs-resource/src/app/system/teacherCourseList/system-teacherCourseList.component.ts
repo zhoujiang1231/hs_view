@@ -37,8 +37,8 @@ export class SystemTeacherCourseListComponent implements OnInit {
         if(this.userType!='2'){
             this.isPermission =1
         }
-        this.reloadCourseListData()
-        if(this.userType == '2'){
+        this.reloadTeacherCourseListData()
+        if(this.userType == '1'){
             this.user = LocalStorage.get('user')
             this.isStudent = 1
         }
@@ -46,10 +46,10 @@ export class SystemTeacherCourseListComponent implements OnInit {
 
 
     /**加载 课程列表 数据**/
-    reloadCourseListData() {
+    reloadTeacherCourseListData() {
         this.isSpinner = 1
         this.loadingIndicator = true
-        this.courseListService.reloadCourseListData(this.params)
+        this.courseListService.reloadTeacherCourseListData(this.params)
             .subscribe(page => {
                 this.isSpinner = 0
                 if (page.data.result == '0') {
@@ -90,19 +90,9 @@ export class SystemTeacherCourseListComponent implements OnInit {
     /**修改每页展示的数据条数pageSize**/
     getLimit(event) {
         Object.assign(this.params, {limit: event})
-        this.reloadCourseListData()
+        this.reloadTeacherCourseListData()
     }
 
-    deleteCourse(row){
-        appAlert.common.remove('课程',() => {
-            this.courseListService.deleteCourse(row.cId)
-                .subscribe(res =>{
-                    if(res.data.result == 0){
-                        this.reloadCourseListData()
-                    }
-                })
-        })
-    }
     /**点击 顶部右侧"新建"按钮**/
     addCourse() {
         this.newDialog()
@@ -115,7 +105,7 @@ export class SystemTeacherCourseListComponent implements OnInit {
         dialogRef.afterClosed().subscribe((result: any) => {
             if (result && result !== 'cancel') {
                 console.log('确定', result)
-                this.reloadCourseListData()
+                this.reloadTeacherCourseListData()
             }
             config.data = {}
             dialogRef = null

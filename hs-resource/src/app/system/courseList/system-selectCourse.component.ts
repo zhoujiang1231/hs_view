@@ -39,7 +39,7 @@ export class SystemSelectCourseComponent implements OnInit {
     reloadSelectCousrseData() {
         this.isSpinner = 1
         this.loadingIndicator = true
-        this.courseListService.reloadCourseListData(this.params)
+        this.courseListService.reloadSelectCousrseData(this.params)
             .subscribe(page => {
                 this.isSpinner = 0
                 if (page.data.result == '0') {
@@ -72,16 +72,6 @@ export class SystemSelectCourseComponent implements OnInit {
         this.reloadSelectCousrseData()
     }
 
-    deleteCourse(row){
-        appAlert.common.remove('课程',() => {
-            this.courseListService.deleteCourse(row.cId)
-                .subscribe(res =>{
-                    if(res.data.result == 0){
-                        this.reloadSelectCousrseData()
-                    }
-                })
-        })
-    }
 
     /**打开 新建dialog**/
     newDialog() {
@@ -95,5 +85,9 @@ export class SystemSelectCourseComponent implements OnInit {
             config.data = {}
             dialogRef = null
         })
+    }
+
+    unchoseCourse(){
+
     }
 }
