@@ -1,7 +1,0 @@
-#system-product-area {
-  height: 100%;
-  position: relative;
-}
-#system-product-area .table-container {
-  height: calc(100% - 70px);
-}

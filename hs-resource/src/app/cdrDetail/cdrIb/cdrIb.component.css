@@ -1,6 +1,0 @@
-#report-router-area {
-  height: 100%;
-}
-#report-router-area .table-container {
-  height: calc(100% - 130px);
-}
