@@ -45,68 +45,6 @@ export class ConstantService {
             ]
         },
         {
-            title: '账户管理', icon: '', mat_icon: '', link: '', open: false, mark: 'customer', show: true,
-            children: [
-                {
-                    name: '直销部门管理',
-                    link: '/index/directDepartmentManage',
-                    mat_icon: 'layers',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {
-                    name: '直销经理管理',
-                    link: '/index/directManagerManage',
-                    mat_icon: 'map',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {
-                    name: '企业管理',
-                    link: '/index/customerManage',
-                    mat_icon: 'tv',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {name: '应用管理', link: '/index/vlinkApp', mat_icon: 'dock', choosed: false, mark: 'customer', show: true},
-                {
-                    name: '消费日志',
-                    link: '/index/paylogs',
-                    mat_icon: 'dashboard',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {
-                    name: '预消费日志',
-                    link: '/index/preDeductLog',
-                    mat_icon: 'flip_to_front',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {
-                    name: '账单统计',
-                    link: '/index/billStatistics',
-                    mat_icon: 'assessment',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {
-                    name: '操作日志',
-                    link: '/index/operationLog',
-                    mat_icon: 'highlight',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-            ]
-        },
-        {
             title: '账户设置', icon: '', mat_icon: '', link: 'account', open: false, show: true,
             children: [
                 {name: '修改密码', link: '/index/account/psw', mat_icon: 'ev_station', choosed: false, show: true},
@@ -132,68 +70,6 @@ export class ConstantService {
                     mat_icon: 'dashboard',
                     choosed: false,
                     mark: 'check_in',
-                    show: true
-                },
-            ]
-        },
-        {
-            title: '账户管理', icon: '', mat_icon: '', link: '', open: false, mark: 'customer', show: true,
-            children: [
-                {
-                    name: '直销部门管理',
-                    link: '/index/directDepartmentManage',
-                    mat_icon: 'layers',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {
-                    name: '直销经理管理',
-                    link: '/index/directManagerManage',
-                    mat_icon: 'map',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {
-                    name: '企业管理',
-                    link: '/index/customerManage',
-                    mat_icon: 'tv',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {name: '应用管理', link: '/index/vlinkApp', mat_icon: 'dock', choosed: false, mark: 'customer', show: true},
-                {
-                    name: '消费日志',
-                    link: '/index/paylogs',
-                    mat_icon: 'dashboard',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {
-                    name: '预消费日志',
-                    link: '/index/preDeductLog',
-                    mat_icon: 'flip_to_front',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {
-                    name: '账单统计',
-                    link: '/index/billStatistics',
-                    mat_icon: 'assessment',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {
-                    name: '操作日志',
-                    link: '/index/operationLog',
-                    mat_icon: 'highlight',
-                    choosed: false,
-                    mark: 'customer',
                     show: true
                 },
             ]
@@ -230,65 +106,15 @@ export class ConstantService {
             ]
         },
         {
-            title: '账户管理', icon: '', mat_icon: '', link: '', open: false, mark: 'customer', show: true,
+            title: '成绩管理', icon: '', mat_icon: '', link: 'grade', open: false, show: true,
             children: [
-                {
-                    name: '直销部门管理',
-                    link: '/index/directDepartmentManage',
-                    mat_icon: 'layers',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {
-                    name: '直销经理管理',
-                    link: '/index/directManagerManage',
-                    mat_icon: 'map',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {
-                    name: '企业管理',
-                    link: '/index/customerManage',
-                    mat_icon: 'tv',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {name: '应用管理', link: '/index/vlinkApp', mat_icon: 'dock', choosed: false, mark: 'customer', show: true},
-                {
-                    name: '消费日志',
-                    link: '/index/paylogs',
-                    mat_icon: 'dashboard',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {
-                    name: '预消费日志',
-                    link: '/index/preDeductLog',
-                    mat_icon: 'flip_to_front',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {
-                    name: '账单统计',
-                    link: '/index/billStatistics',
-                    mat_icon: 'assessment',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
-                {
-                    name: '操作日志',
-                    link: '/index/operationLog',
-                    mat_icon: 'highlight',
-                    choosed: false,
-                    mark: 'customer',
-                    show: true
-                },
+                {name: '我的成绩', link: '/index/myGrade', mat_icon: 'router', choosed: false, show: true},
+            ]
+        },
+        {
+            title: '课表管理', icon: '', mat_icon: '', link: 'grade', open: false, show: true,
+            children: [
+                {name: '我的课表', link: '/index/schedule', mat_icon: 'router', choosed: false, show: true},
             ]
         },
         {
@@ -299,6 +125,19 @@ export class ConstantService {
             ]
         }
     ]
+    static cTimeMonthData = [
+        {value:'星期一'},
+        {value:'星期二'},
+        {value:'星期三'},
+        {value:'星期四'},
+        {value:'星期五'},
+        ]
 
+    static cTimeData = [
+        {value:'第一大节课'},
+        {value:'第二大节课'},
+        {value:'第三大节课'},
+        {value:'第四大节课'},
+    ]
 }
 

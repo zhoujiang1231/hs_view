@@ -11,8 +11,6 @@ import {IndexComponent} from './core/index.component'
 import 'hammerjs'
 import 'rxjs'
 import {SystemModule} from './system/system.module'
-import {CallRecordModule} from './callRecord/callRecord.module'
-import {CdrDetailModule} from './cdrDetail/cdrDetail.module'
 import {ClientAuthModule} from './clientauth/clientauth.module'
 import {AccountModule} from "./system/account/account.module";
 import {HashLocationStrategy, LocationStrategy} from '@angular/common'
@@ -32,8 +30,6 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common'
     MobxAngularModule,
     PaginationModule.forRoot(),
     CoreModule,
-    CallRecordModule,
-    CdrDetailModule,
     SystemModule,
     AppRoutingModule,
     ClientAuthModule,

@@ -2,10 +2,7 @@ import {Component, OnInit} from '@angular/core'
 import {MatDialog} from '@angular/material'
 import appAlert from '../../utils/alert'
 import {SysStudentListService} from "./sys-studentList.service";
-import {SysUserService} from "../user/sys-user.service";
-import {LocalStorage} from "../../core/services/localstorage.service";
 import {Router} from "@angular/router";
-import {SysCustomerManageDialogComponent} from "../customerManage/sys-customerManage.dialog";
 import {SysStudentListDialogComponent} from "./sys-student.dialog";
 
 @Component({

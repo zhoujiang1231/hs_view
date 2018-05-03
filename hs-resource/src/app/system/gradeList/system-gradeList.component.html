@@ -1,12 +1,12 @@
-<div id="system-courseList-area">
-    <app-page-header [title]="'课程列表'"
+<div id="system-gradeList-area">
+    <app-page-header [title]="'成绩管理'"
                      [rightButtons]="[{ title: '新建', action: 'add'}]"
                      (tapRightBtn)="addCourse()"
                      [permission]="isPermission"></app-page-header>
     <div class="h-100 position-relative">
         <div  class="table-container w-100">
             <ngx-datatable class="material striped"
-                           [rows]="courseListData"
+                           [rows]="gradeListData"
                            [headerHeight]="40"
                            [footerHeight]="40"
                            [rowHeight]="40"
@@ -22,7 +22,6 @@
                 <ngx-datatable-column [name]="'编号'" [prop]="'cId'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'名称'" [prop]="'cName'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'教师'" [prop]="'cTeacher'"></ngx-datatable-column>
-                <ngx-datatable-column [name]="'上课时间'" [prop]="'cTime'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'类型'" [prop]="'cTypeDec'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'学时'" [prop]="'cHour'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'学分'" [prop]="'cMark'"></ngx-datatable-column>

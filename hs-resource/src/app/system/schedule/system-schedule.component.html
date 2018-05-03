@@ -1,0 +1,101 @@
+<div id="system-schedule-area">
+    <app-page-header [title]="'我的课表'"
+                     [rightButtons]="[{ title: '导出课表', action: 'add'}]"
+                     (tapRightBtn)="exportSchedule()"
+                     [permission]="isStudent"></app-page-header>
+    <div class="h-100 position-relative">
+        <div *ngIf="isStudent == 1" class="table-container w-100">
+           <!-- <div class="row">
+                <div class="col-4">
+                    <mat-form-field class="w-100">
+                        <mat-select name="serviceId" [formControl]="targetForm.controls['serviceId']"
+                                    [(ngModel)]="data.serviceId" placeholder="业务" required>
+                            <mat-option *ngFor="let item of data?.businessListArr" [value]="item.id">
+                                {{item.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error
+                                *ngIf="targetForm.controls['serviceId'].touched && targetForm.controls['serviceId'].hasError('required')">
+                            字段不能为空！
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field class="w-100">
+                        <mat-select name="trunkGroupId" [formControl]="targetForm.controls['trunkGroupId']"
+                                    [(ngModel)]="data.trunkGroupId" placeholder="中继组" required>
+                            <mat-option *ngFor="let item of dockGroupData" [value]="item.id">
+                                {{item.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error
+                                *ngIf="targetForm.controls['trunkGroupId'].touched && targetForm.controls['trunkGroupId'].hasError('required')">
+                            字段不能为空！
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field class="w-100">
+                        <mat-select name="active" [formControl]="targetForm.controls['active']"
+                                    [(ngModel)]="data.active" placeholder="是否激活" required>
+                            <mat-option *ngFor="let item of [{name: '激活', value: 1}, {name: '未激活', value: 0}]" [value]="item.value">
+                                {{item.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error
+                                *ngIf="targetForm.controls['active'].touched && targetForm.controls['active'].hasError('required')">
+                            字段不能为空！
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field class="w-100">
+                        <input matInput type="text"
+                               name="priority" [formControl]="targetForm.controls['priority']"
+                               [(ngModel)]="data.priority"
+                               placeholder="优先级" required>
+                        <mat-error
+                                *ngIf="targetForm.controls['priority'].touched && targetForm.controls['priority'].hasError('required')">
+                            字段不能为空！
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field class="w-100">
+                        <input matInput type="text"
+                               name="telRegex" [formControl]="targetForm.controls['telRegex']"
+                               [(ngModel)]="data.telRegex"
+                               placeholder="被叫号码(多条数据用'|'分隔)">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field class="w-100">
+                        <input matInput type="text"
+                               name="clidRegex" [formControl]="targetForm.controls['clidRegex']"
+                               [(ngModel)]="data.clidRegex"
+                               placeholder="主叫号码(多条数据用'|'分隔)">
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="w-100">
+                        <input matInput type="text"
+                               name="tags" [formControl]="targetForm.controls['tags']"
+                               [(ngModel)]="data.tags"
+                               placeholder="标签">
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="w-100">
+                        <input matInput type="text"
+                               name="description" [formControl]="targetForm.controls['description']"
+                               [(ngModel)]="data.description"
+                               placeholder="描述">
+                    </mat-form-field>
+                </div>
+            </div>-->
+            <iframe [src]="downiframe" width="0" height="0" style="display: none;"></iframe>
+        </div>
+        <app-loading *ngIf="isSpinner === 1" [top]="'258px'"></app-loading>
+        <app-empty-data *ngIf="isStudent === 0"></app-empty-data>
+    </div>
+</div>

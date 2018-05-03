@@ -1,33 +1,33 @@
 import {Component, OnInit} from '@angular/core'
 import {MatDialog} from '@angular/material'
 import appAlert from '../../utils/alert'
-import {SysCourseListService} from "./sys-courseList.service";
+import {SysGradeListService} from "./sys-gradeList.service";
 import {LocalStorage} from "../../core/services/localstorage.service";
 import {Router} from "@angular/router";
-import {SysCourseListDialogComponent} from "./sys-course.dialog";
+import {SysGradeListDialogComponent} from "./sys-gradeList.dialog";
 
 @Component({
-    selector: 'app-system-courseList',
-    templateUrl: 'system-courseList.component.html',
-    styleUrls: ['system-courseList.component.less']
+    selector: 'app-system-gradeList',
+    templateUrl: 'system-gradeList.component.html',
+    styleUrls: ['system-gradeList.component.less']
 })
 
-export class SystemCourseListComponent implements OnInit {
-    courseListData: any[] = []
-    selectCourseData: any[] = []
+export class SystemGradeListComponent implements OnInit {
+    gradeListData: any[] = []
     params: any = {start:1,limit:20}
     totalCount
     /**请求后端数据的参数**/
     loadingIndicator = true
     isPermission = 0// 是否有权限
     isSpinner // 加载进度
+    rolePermission
     user
     userType
     isStudent = 0
 
     constructor(private router: Router,
                 public _dialog: MatDialog,
-                private courseListService: SysCourseListService) {
+                private courseListService: SysGradeListService) {
     }
 
     ngOnInit() {
@@ -40,7 +40,6 @@ export class SystemCourseListComponent implements OnInit {
         if(this.userType == 2){
             this.user = LocalStorage.get('user')
             this.isStudent = 1
-            this.reloadSelectCousrseData({stuId:this.user.stuId})
         }
         this.reloadCourseListData()
     }
@@ -58,8 +57,8 @@ export class SystemCourseListComponent implements OnInit {
                     // if (page.data.permission === 0) {
                     this.isPermission = 1
                     this.totalCount = page.data.page.total
-                    this.courseListData = [...page.data.list]
-                    this.formatData(this.courseListData)
+                    this.gradeListData = [...page.data.list]
+                    this.formatData(this.gradeListData)
                     this.loadingIndicator = false
                     this.isPermission = 1
                 }
@@ -86,17 +85,6 @@ export class SystemCourseListComponent implements OnInit {
         /**选课**/
         if(checkTarget){
             checkOld = false;
-            let canSelect = true
-            this.selectCourseData.forEach(o=>{
-                if(o.cTime == row.cTime){
-                    canSelect = false
-                }
-            })
-            if(!canSelect){
-                appAlert.common.actionFailed('你已经选择了'+row.cTime+'的课程!')
-                element.srcElement.checked = checkOld
-                return
-            }
             if(row.cChosed>=row.cTotal){
                 appAlert.common.actionFailed('该课程人数已满!')
                 element.srcElement.checked = checkOld
@@ -176,8 +164,8 @@ export class SystemCourseListComponent implements OnInit {
 
     /**打开 新建dialog**/
     newDialog() {
-        const config = SysCourseListDialogComponent.config
-        let dialogRef = this._dialog.open(SysCourseListDialogComponent, config)
+        const config = SysGradeListDialogComponent.config
+        let dialogRef = this._dialog.open(SysGradeListDialogComponent, config)
         dialogRef.afterClosed().subscribe((result: any) => {
             if (result && result !== 'cancel') {
                 console.log('确定', result)
@@ -186,16 +174,5 @@ export class SystemCourseListComponent implements OnInit {
             config.data = {}
             dialogRef = null
         })
-    }
-    /**获取学生已经选择的课程**/
-    reloadSelectCousrseData(params) {
-        this.isSpinner = 1
-        this.loadingIndicator = true
-        this.courseListService.reloadSelectCousrseData(params)
-            .subscribe(page => {
-                if (page.data.result == '0') {
-                    this.selectCourseData = [...page.data.list]
-                }
-            })
     }
 }

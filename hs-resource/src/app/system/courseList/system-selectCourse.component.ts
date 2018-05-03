@@ -20,7 +20,6 @@ export class SystemSelectCourseComponent implements OnInit {
     loadingIndicator = true
     isPermission = 1// 是否有权限
     isSpinner // 加载进度
-    rolePermission
 
     constructor(private router: Router,
                 public _dialog: MatDialog,
@@ -72,22 +71,13 @@ export class SystemSelectCourseComponent implements OnInit {
         this.reloadSelectCousrseData()
     }
 
-
-    /**打开 新建dialog**/
-    newDialog() {
-        const config = SysCourseListDialogComponent.config
-        let dialogRef = this._dialog.open(SysCourseListDialogComponent, config)
-        dialogRef.afterClosed().subscribe((result: any) => {
-            if (result && result !== 'cancel') {
-                console.log('确定', result)
-                this.reloadSelectCousrseData()
-            }
-            config.data = {}
-            dialogRef = null
-        })
-    }
-
-    unchoseCourse(){
-
+    unchoseCourse(row){
+        this.courseListService.unchoseCourse({cId:row.cId})
+            .subscribe(res => {
+                if(res.data.result == '0'){
+                    LocalStorage.set('user',res.data.data)
+                    this.reloadSelectCousrseData()
+                }
+            })
     }
 }

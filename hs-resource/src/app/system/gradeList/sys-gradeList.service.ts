@@ -5,7 +5,7 @@ import appAlert from '../../utils/alert'
 import {ConnectionService} from '../../core/services/connection.service'
 
 @Injectable()
-export class SysCourseListService {
+export class SysGradeListService {
 
   constructor(private connectionService: ConnectionService) {
   }
@@ -41,23 +41,6 @@ export class SysCourseListService {
                     this.selectCourseData.push(...page.data.list)*/
                 //}
             } else {
-                if(page.data.result == '10') {
-                    this.connectionService.isLoginByResult(page.data.result, page.data.msg)
-                }
-            }
-        }, err => {
-            appAlert.common.actionFailed('课程列表')
-        })
-        return configsObservable
-    }
-
-    /**获取所有课程包含已经删除的：get**/
-    reloadAllCourse() {
-        const path = '/course/allCourseNoStatus'
-        const configsObservable = Observable.fromPromise(this.connectionService.get(path))
-        configsObservable.subscribe((page: any) => {
-            if (page.data.result == '0') {
-            } else {
                 console.log(page.data)
                 this.connectionService.isLoginByResult(page.data.result, page.data.msg)
             }
@@ -87,7 +70,7 @@ export class SysCourseListService {
     addCourse(params, dialogRef, disabled?) {
         const path = '/course/addCourse'
         console.log(params)
-        const configsObservable = Observable.fromPromise(this.connectionService.post(path,params))
+        const configsObservable = Observable.fromPromise(this.connectionService.get(path,params))
         configsObservable.subscribe(res => {
             if (res.data.result === '0') {
                 dialogRef.close('success')

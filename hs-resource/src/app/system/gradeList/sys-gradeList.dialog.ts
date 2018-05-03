@@ -1,19 +1,18 @@
 import {Component, Inject, OnInit} from '@angular/core'
 import {MAT_DIALOG_DATA, MatDialogConfig, MatDialogRef} from '@angular/material'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
-import {SysCourseListService} from "./sys-courseList.service";
+import {SysGradeListService} from "./sys-gradeList.service";
 import aliValidators from "../../utils/ali-validators";
 import {SystemTeacherListComponent} from "../teacherList/system-teacherList.component";
 import {SysTeacherListService} from "../teacherList/sys-teacherList.service";
 import {ConstantService} from "../../core/services/constant.service";
 
 @Component({
-    selector: 'app-sys-courseList',
+    selector: 'app-sys-gradeList',
     template: `
         <div class="redefine-dialog">
             <form [formGroup]="targetForm" (ngSubmit)="add(data)">
                 <h1 class="dialog-head">添加课程</h1>
-                <div class="row">
                 <mat-form-field class="w-100">
                     <input matInput type="text"
                            name="cName" [formControl]="targetForm.controls['cName']"
@@ -48,30 +47,18 @@ import {ConstantService} from "../../core/services/constant.service";
                     类型不能为空！
                 </mat-error>
             </mat-form-field>
-                <mat-form-field class="w-50">
-                    <mat-select name="cTimeMonthData" [formControl]="targetForm.controls['cTimeMonthData']"
-                                [(ngModel)]="data.cTimeMonthData" placeholder="上课时间">
-                        <mat-option *ngFor="let item of cTimeMonthData" [value]="item?.value">
+                <mat-form-field class="w-100">
+                    <mat-select name="cTime" [formControl]="targetForm.controls['cTime']"
+                                [(ngModel)]="data.cTime" placeholder="上课时间">
+                        <mat-option *ngFor="let item of cTimeData" [value]="item?.value">
                             {{item?.value}}
                         </mat-option>
                     </mat-select>
                     <mat-error
-                            *ngIf="targetForm.controls['cTimeMonthData'].touched && targetForm.controls['cTimeMonthData'].hasError('required')">
+                            *ngIf="targetForm.controls['cTime'].touched && targetForm.controls['cTime'].hasError('required')">
                         上课时间不能为空！
                     </mat-error>
                 </mat-form-field>
-                    <mat-form-field class="w-50">
-                        <mat-select  name="cTimeData" [formControl]="targetForm.controls['cTimeData']"
-                                    [(ngModel)]="data.cTimeData" placeholder="上课时间">
-                            <mat-option *ngFor="let item of cTimeData" [value]="item?.value">
-                                {{item?.value}}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error
-                                *ngIf="targetForm.controls['cTimeData'].touched && targetForm.controls['cTimeData'].hasError('required')">
-                            上课时间不能为空！
-                        </mat-error>
-                    </mat-form-field>
                 <mat-form-field class="w-100">
                     <input matInput type="text"
                            name="cMark" [formControl]="targetForm.controls['cMark']"
@@ -110,12 +97,11 @@ import {ConstantService} from "../../core/services/constant.service";
                             class="sure">确定
                     </button>
                 </div>
-                </div>
             </form>
         </div>
     `,
 })
-export class SysCourseListDialogComponent implements OnInit {
+export class SysGradeListDialogComponent implements OnInit {
     public static config: MatDialogConfig = {
         disableClose: false,
         width: '500px',
@@ -126,13 +112,12 @@ export class SysCourseListDialogComponent implements OnInit {
     targetForm: FormGroup
     disabled = {value: false}
     cTimeData:any = []
-    cTimeMonthData:any = []
 
     constructor(private fb: FormBuilder,
-                public dialogRef: MatDialogRef<SysCourseListDialogComponent>,
+                public dialogRef: MatDialogRef<SysGradeListDialogComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: any,
                 private sysTeacherListService:SysTeacherListService,
-                private sysCourseListService: SysCourseListService) {
+                private sysCourseListService: SysGradeListService) {
         this.targetForm = fb.group({
             cName: ['', Validators.required],
             cMark: ['', Validators.required],
@@ -140,11 +125,9 @@ export class SysCourseListDialogComponent implements OnInit {
             tId: ['', Validators.required],
             cType: ['', Validators.required],
             cTotal: ['', Validators.required],
-            cTimeData: ['', Validators.required],
-            cTimeMonthData: ['', Validators.required],
+            cTime: ['', Validators.required],
         })
         this.cTimeData = ConstantService.cTimeData
-        this.cTimeMonthData = ConstantService.cTimeMonthData
     }
     ngOnInit(){
         this.sysTeacherListService.reloadTeacherIdAndName()
@@ -160,7 +143,6 @@ export class SysCourseListDialogComponent implements OnInit {
                 data.cTeacher = item.tName
             }
         })
-        data.cTime = data.cTimeMonthData+data.cTimeData
         this.disabled.value = true
         this.sysCourseListService.addCourse(data, this.dialogRef, this.disabled)
     }
