@@ -13,7 +13,7 @@ import {DataService} from "../../core/services/data.service";
 })
 
 export class LoginComponent implements OnInit {
-    public user: any = {}
+    public user: any = {userType:'0'}
     public isClick = false
     private isWriteObj: any = {}
     codePath
@@ -40,16 +40,13 @@ export class LoginComponent implements OnInit {
         params.securityCode = model.securityCode
         params.userType = model.userType
         LocalStorage.remove('user')
-        console.log(params)
         this.connectionService.post(path, params)
             .then(res => {
-                console.log(res)
                 if (res.data.result === '0') {
                     this.connectionService.login()
                     this.router.navigate(['/index'])
                     if (res.data.data) {
                         const user = res.data.data
-                        user.userName = params.userName
                         LocalStorage.set('user', user)
                         LocalStorage.set('userType', user.userType)
                         this.dataService.changRolePermission()
@@ -65,7 +62,6 @@ export class LoginComponent implements OnInit {
                 appAlert.login.failed('登录名或登录密码不正确，请重试！')
                 this.getCode()
             })
-        console.log(path)
     }
 
     /**

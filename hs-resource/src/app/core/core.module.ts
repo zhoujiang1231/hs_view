@@ -48,7 +48,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SideComponent,
     RouterComponent,
     HomeComponent,
-    AppHomeComponent
+    AppHomeComponent,
   ],
   providers: [
     ConstantService,

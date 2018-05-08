@@ -3,13 +3,26 @@
     <a routerLink="/index/home" routerLinkActive="active">
       <img class="logo-header" src="../../../assets/images/logo_header.svg">
     </a>
-    <span class="organ-name">vlink-data</span>
+    <span class="organ-name"></span>
     <span class="fill-remaining"></span>
     <div class="right-buttons" >
-      <span class="username">welcome,&nbsp;{{user?.userName}}</span>
-      <button mat-icon-button (click)="exit()" [matTooltip]="'退出'" style="width:57px;">
+      <span *ngIf="user.userType == 0" class="username">welcome,&nbsp;{{user?.adminName}}</span>
+      <span *ngIf="user.userType == 1"class="username">welcome,&nbsp;{{user?.tName}}</span>
+      <span *ngIf="user.userType == 2"  class="username">welcome,&nbsp;{{user?.stuName}}</span>
+      <!--<button mat-icon-button (click)="exit()" [matTooltip]="'退出'" style="width:57px;">
         <mat-icon>exit_to_app</mat-icon>
-      </button>
+      </button>-->
+      <span [matMenuTriggerFor]="menu" style="cursor: pointer">
+          <mat-icon class="md-24" style="font-size: 16px;">more_vert</mat-icon>
+        </span>
+      <mat-menu #menu="matMenu">
+        <button  mat-icon-button (click)="modifyPassword()" [matTooltip]="'修改密码'" style="width:57px;">
+          <mat-icon>person_outline</mat-icon>
+        </button>
+        <button  mat-icon-button (click)="exit()" [matTooltip]="'退出'" style="width:57px;">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+      </mat-menu>
     </div>
   </div>
 </div>

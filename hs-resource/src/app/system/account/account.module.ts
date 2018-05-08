@@ -6,7 +6,6 @@ import {SharedModule} from '../../shared/shared.module'
 import {AppRoutingModule} from '../../app-routing.module'
 import {CustomizeMaterialModule} from '../../module/customize-material.module'
 import {SystemAccountInfoComponent} from './../account/info/system-accountInfo.component'
-import {SystemAccountPswComponent} from './../account/psw/system-accountPsw.component'
 import {SysAccountService} from './sys-account.service'
 import { TypeaheadModule } from 'ngx-bootstrap';
 
@@ -22,7 +21,6 @@ import { TypeaheadModule } from 'ngx-bootstrap';
   ],
   declarations: [
       SystemAccountInfoComponent,
-      SystemAccountPswComponent,
   ],
   entryComponents: [
   ],

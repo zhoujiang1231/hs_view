@@ -10,7 +10,11 @@
                            [columnMode]="'force'"
                            [scrollbarH]="true"
                            [limit]="params.limit">
-                <ngx-datatable-column [name]="'编号'" [prop]="'cId'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'编号'" [prop]="'cId'">
+                    <ng-template let-row="row" let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+                        <span class="linkSpan" (click)="manageGrade(row)">{{value}}</span>
+                    </ng-template>
+                </ngx-datatable-column>
                 <ngx-datatable-column [name]="'名称'" [prop]="'cName'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'教师'" [prop]="'cTeacher'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'类型'" [prop]="'cTypeDec'"></ngx-datatable-column>

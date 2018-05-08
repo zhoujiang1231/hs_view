@@ -6,6 +6,7 @@ import aliValidators from "../../utils/ali-validators";
 import {SystemTeacherListComponent} from "../teacherList/system-teacherList.component";
 import {SysTeacherListService} from "../teacherList/sys-teacherList.service";
 import {ConstantService} from "../../core/services/constant.service";
+import {LocalStorage} from "../../core/services/localstorage.service";
 
 @Component({
     selector: 'app-sys-courseList',
@@ -24,7 +25,7 @@ import {ConstantService} from "../../core/services/constant.service";
                         课程名不能为空！
                     </mat-error>
                 </mat-form-field>
-                <mat-form-field class="w-100">
+                <mat-form-field *ngIf="isPermission == 1" class="w-100">
                     <mat-select name="tId" [formControl]="targetForm.controls['tId']"
                                 [(ngModel)]="data.tId" placeholder="教师">
                         <mat-option *ngFor="let item of teacherList" [value]="item?.tId">
@@ -122,6 +123,7 @@ export class SysCourseListDialogComponent implements OnInit {
         minHeight: '200px',
         data: {}
     }
+    isPermission = 0
     teacherList: any =[]
     targetForm: FormGroup
     disabled = {value: false}
@@ -137,7 +139,7 @@ export class SysCourseListDialogComponent implements OnInit {
             cName: ['', Validators.required],
             cMark: ['', Validators.required],
             cHour: ['', Validators.required],
-            tId: ['', Validators.required],
+            tId: [''],
             cType: ['', Validators.required],
             cTotal: ['', Validators.required],
             cTimeData: ['', Validators.required],
@@ -147,11 +149,15 @@ export class SysCourseListDialogComponent implements OnInit {
         this.cTimeMonthData = ConstantService.cTimeMonthData
     }
     ngOnInit(){
-        this.sysTeacherListService.reloadTeacherIdAndName()
-            .subscribe(res =>{
-                if(res.data.result == 0)
-                    this.teacherList = [...res.data.list]
-            })
+        let user:any = LocalStorage.get('user')
+        if(user.userType == 0) {
+            this.isPermission = 1
+            this.sysTeacherListService.reloadTeacherIdAndName()
+                .subscribe(res => {
+                    if (res.data.result == 0)
+                        this.teacherList = [...res.data.list]
+                })
+        }
     }
 
     add(data) {

@@ -5,6 +5,7 @@ import {SysGradeListService} from "./sys-gradeList.service";
 import {LocalStorage} from "../../core/services/localstorage.service";
 import {Router} from "@angular/router";
 import {SysGradeListDialogComponent} from "./sys-gradeList.dialog";
+import {SysTeacherCourseDialogComponent} from "../teacherCourseList/sys-teacherCourse.dialog";
 
 @Component({
     selector: 'app-system-gradeList',
@@ -14,42 +15,51 @@ import {SysGradeListDialogComponent} from "./sys-gradeList.dialog";
 
 export class SystemGradeListComponent implements OnInit {
     gradeListData: any[] = []
+    teacherCourses: any[] = []
     params: any = {start:1,limit:20}
     totalCount
     /**请求后端数据的参数**/
     loadingIndicator = true
     isPermission = 0// 是否有权限
     isSpinner // 加载进度
-    rolePermission
     user
     userType
-    isStudent = 0
 
     constructor(private router: Router,
                 public _dialog: MatDialog,
-                private courseListService: SysGradeListService) {
+                private sysGradeListService: SysGradeListService) {
     }
 
     ngOnInit() {
         if(LocalStorage.get('userType')){
             this.userType = LocalStorage.get('userType')
         }
-        if(this.userType ==0 || this.userType ==1){
+        if(this.userType == '1'){
             this.isPermission =1
         }
-        if(this.userType == 2){
-            this.user = LocalStorage.get('user')
-            this.isStudent = 1
+        if(LocalStorage.get('grade_cId')){
+            this.params.cId = LocalStorage.get('grade_cId')
         }
-        this.reloadCourseListData()
+        if(this.params.cId){
+            this.reloadGradeListData()
+        }
     }
 
+    search(){
+        if(!this.params.cId){
+            appAlert.common.confirmWarning('请输入课程编号！')
+            return
+        }
+        else{
+            this.reloadGradeListData()
+        }
+    }
 
-    /**加载 课程列表 数据**/
-    reloadCourseListData() {
+    /**加载 成绩 数据**/
+    reloadGradeListData() {
         this.isSpinner = 1
         this.loadingIndicator = true
-        this.courseListService.reloadCourseListData(this.params)
+        this.sysGradeListService.reloadGradeListData(this.params)
             .subscribe(page => {
                 this.isSpinner = 0
                 if (page.data.result == '0') {
@@ -62,8 +72,39 @@ export class SystemGradeListComponent implements OnInit {
                     this.loadingIndicator = false
                     this.isPermission = 1
                 }
+                else{
+                    this.gradeListData = []
+                }
             })
     }
+
+    operateButton(value,row){
+        /**修改**/
+        if(value == 0){
+            this.newDialog(row)
+        }
+        /**删除**/
+        if(value == 1){
+            appAlert.common.remove('成绩',() => {
+                this.sysGradeListService.deleteGrade(row.gId)
+                    .subscribe(res =>{
+                        if(res.data.result == '0'){
+                            this.reloadGradeListData()
+                        }
+                    })
+            })
+        }
+    }
+
+  /*  /!**加载教师所有的课程数据**!/
+    reloadTeacherCourses() {
+        this.sysGradeListService.reloadTeacherCourseListData()
+            .subscribe(page => {
+                if (page.data.result == '0') {
+                    this.teacherCourses = [...page.data.list]
+                }
+            })
+    }*/
 
     formatData(row){
         row.forEach(item=>{
@@ -76,100 +117,27 @@ export class SystemGradeListComponent implements OnInit {
         })
     }
 
-    /**选课**/
-    choseCourse(element,row){
-        /**获取点击后的checked**/
-        let checkTarget = element.srcElement.checked
-        let checkOld
-        let cId = row.cId
-        /**选课**/
-        if(checkTarget){
-            checkOld = false;
-            if(row.cChosed>=row.cTotal){
-                appAlert.common.actionFailed('该课程人数已满!')
-                element.srcElement.checked = checkOld
-                return
-            }
-            this.courseListService.choseCourse({cId:cId})
-                .subscribe(res => {
-                    if(res.data.result == '0'){
-                        LocalStorage.set('user',res.data.data)
-                        this.user = LocalStorage.get('user')
-                        this.reloadCourseListData()
-                    }
-                    else{
-                        element.srcElement.checked = checkOld
-                    }
-                }, err => {
-                    element.srcElement.checked = checkOld
-                })
-        }/**取消选课**/
-        else{
-            checkOld = true;
-            this.courseListService.unchoseCourse({cId:cId})
-                .subscribe(res => {
-                    if(res.data.result == '0'){
-                        LocalStorage.set('user',res.data.data)
-                        this.user = LocalStorage.get('user')
-                        this.reloadCourseListData()
-                    }
-                    else{
-                        element.srcElement.checked = checkOld
-                    }
-                }, err => {
-                    element.srcElement.checked = checkOld
-                })
-        }
-    }
-
-    courseChecked(cId){
-        let flag = false;
-        this.user.lc.forEach(item =>{
-            if(cId == item.cId){
-                flag = true;
-            }
-        })
-        return flag;
-    }
-    courseUnChecked(cId){
-        let flag = true;
-        this.user.lc.forEach(item =>{
-            if(cId == item.cId){
-                flag = false;
-            }
-        })
-        return flag;
-    }
-
     /**修改每页展示的数据条数pageSize**/
     getLimit(event) {
         Object.assign(this.params, {limit: event})
-        this.reloadCourseListData()
+        this.reloadGradeListData()
     }
 
-    deleteCourse(row){
-        appAlert.common.remove('课程',() => {
-            this.courseListService.deleteCourse(row.cId)
-                .subscribe(res =>{
-                    if(res.data.result == 0){
-                        this.reloadCourseListData()
-                    }
-                })
-        })
-    }
     /**点击 顶部右侧"新建"按钮**/
-    addCourse() {
+    addGrade() {
         this.newDialog()
     }
 
     /**打开 新建dialog**/
-    newDialog() {
+    newDialog(data?) {
         const config = SysGradeListDialogComponent.config
+        if(data){
+            config.data = data
+        }
         let dialogRef = this._dialog.open(SysGradeListDialogComponent, config)
         dialogRef.afterClosed().subscribe((result: any) => {
             if (result && result !== 'cancel') {
-                console.log('确定', result)
-                this.reloadCourseListData()
+                this.reloadGradeListData()
             }
             config.data = {}
             dialogRef = null

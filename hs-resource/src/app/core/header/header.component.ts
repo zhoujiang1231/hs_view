@@ -4,6 +4,8 @@ import {Router} from '@angular/router'
 import {LocalStorage} from '../services/localstorage.service'
 import {ConnectionService} from '../services/connection.service'
 import appAlert from '../../utils/alert'
+import {MatDialog} from "@angular/material"
+import {ModifyPasswordDialogComponent} from "../../system/modifyPassword/modifyPassword.dialog";
 
 @Component({
   selector: 'app-header',
@@ -15,6 +17,7 @@ export class HeaderComponent {
   private user = LocalStorage.get('user')
 
   constructor(private router: Router,
+              public _dialog: MatDialog,
               private connectionService: ConnectionService) {
   }
 
@@ -34,4 +37,14 @@ export class HeaderComponent {
       appAlert.login.failed('退出登录失败，请重试！')
     })
   }
+    modifyPassword(){
+        const config = ModifyPasswordDialogComponent.config
+        let dialogRef = this._dialog.open(ModifyPasswordDialogComponent, config)
+        dialogRef.afterClosed().subscribe((result: any) => {
+            if (result && result !== 'cancel') {
+            }
+            config.data = {}
+            dialogRef = null
+        })
+    }
 }

@@ -6,87 +6,48 @@ import aliValidators from "../../utils/ali-validators";
 import {SystemTeacherListComponent} from "../teacherList/system-teacherList.component";
 import {SysTeacherListService} from "../teacherList/sys-teacherList.service";
 import {ConstantService} from "../../core/services/constant.service";
+import {LocalStorage} from "../../core/services/localstorage.service";
+import {SysStudentListService} from "../studentList/sys-studentList.service";
 
 @Component({
     selector: 'app-sys-gradeList',
     template: `
         <div class="redefine-dialog">
             <form [formGroup]="targetForm" (ngSubmit)="add(data)">
-                <h1 class="dialog-head">添加课程</h1>
+                <h1 *ngIf="!data.stuId" class="dialog-head">添加成绩</h1>
+                <h1 *ngIf="data.stuId" class="dialog-head">修改成绩</h1>
                 <mat-form-field class="w-100">
-                    <input matInput type="text"
-                           name="cName" [formControl]="targetForm.controls['cName']"
-                           [(ngModel)]="data.cName"
-                           placeholder="名称">
-                    <mat-error
-                            *ngIf="targetForm.controls['cName'].touched && targetForm.controls['cName'].hasError('required')">
-                        课程名不能为空！
-                    </mat-error>
-                </mat-form-field>
-                <mat-form-field class="w-100">
-                    <mat-select name="tId" [formControl]="targetForm.controls['tId']"
-                                [(ngModel)]="data.tId" placeholder="教师">
-                        <mat-option *ngFor="let item of teacherList" [value]="item?.tId">
-                            {{item?.tName}}
+                    <mat-select name="cId" [formControl]="targetForm.controls['cId']" (change)="reloadStudentByCourse(data.cId)"
+                                [(ngModel)]="data.cId" placeholder="请选择课程">
+                        <mat-option *ngFor="let item of courseList" [value]="item?.cId">
+                            {{item?.cName}}
                         </mat-option>
                     </mat-select>
                     <mat-error
-                            *ngIf="targetForm.controls['tId'].touched && targetForm.controls['tId'].hasError('required')">
-                        教师不能为空！
+                            *ngIf="targetForm.controls['cId'].touched && targetForm.controls['cId'].hasError('required')">
+                        课程不能为空！
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field class="w-100">
-                <mat-select name="cType" [formControl]="targetForm.controls['cType']"
-                            [(ngModel)]="data.cType" placeholder="类型">
-                    <mat-option *ngFor="let item of [{name:'必修',value:0},{name:'选修',value:1}]" [value]="item?.value">
-                        {{item?.name}}
-                    </mat-option>
-                </mat-select>
-                <mat-error
-                        *ngIf="targetForm.controls['cType'].touched && targetForm.controls['cType'].hasError('required')">
-                    类型不能为空！
-                </mat-error>
-            </mat-form-field>
-                <mat-form-field class="w-100">
-                    <mat-select name="cTime" [formControl]="targetForm.controls['cTime']"
-                                [(ngModel)]="data.cTime" placeholder="上课时间">
-                        <mat-option *ngFor="let item of cTimeData" [value]="item?.value">
-                            {{item?.value}}
+                    <mat-select name="stuId" [formControl]="targetForm.controls['stuId']"
+                                [(ngModel)]="data.stuId" placeholder="请选择学生">
+                        <mat-option *ngFor="let item of studentList" [value]="item?.stuId">
+                            {{item?.stuName}}
                         </mat-option>
                     </mat-select>
                     <mat-error
-                            *ngIf="targetForm.controls['cTime'].touched && targetForm.controls['cTime'].hasError('required')">
-                        上课时间不能为空！
+                            *ngIf="targetForm.controls['stuId'].touched && targetForm.controls['stuId'].hasError('required')">
+                        学生不能为空！
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field class="w-100">
                     <input matInput type="text"
-                           name="cMark" [formControl]="targetForm.controls['cMark']"
-                           [(ngModel)]="data.cMark"
-                           placeholder="学分">
+                           name="grade" [formControl]="targetForm.controls['grade']"
+                           [(ngModel)]="data.grade"
+                           placeholder="成绩">
                     <mat-error
-                            *ngIf="targetForm.controls['cMark'].touched && targetForm.controls['cMark'].hasError('required')">
-                        学分不能为空！
-                    </mat-error>
-                </mat-form-field>
-                <mat-form-field class="w-100">
-                    <input matInput type="text"
-                           name="cHour" [formControl]="targetForm.controls['cHour']"
-                           [(ngModel)]="data.cHour"
-                           placeholder="学时">
-                    <mat-error
-                            *ngIf="targetForm.controls['cHour'].touched && targetForm.controls['cHour'].hasError('required')">
-                        学时不能为空！
-                    </mat-error>
-                </mat-form-field>
-                <mat-form-field class="w-100">
-                    <input matInput type="text"
-                           name="cTotal" [formControl]="targetForm.controls['cTotal']"
-                           [(ngModel)]="data.cTotal"
-                           placeholder="可选人数">
-                    <mat-error
-                            *ngIf="targetForm.controls['cTotal'].touched && targetForm.controls['cTotal'].hasError('email')">
-                        可选人数不能为空！
+                            *ngIf="targetForm.controls['grade'].touched && targetForm.controls['grade'].hasError('required')">
+                        成绩不能为空！
                     </mat-error>
                 </mat-form-field>
                 <div class="dialog-bottom" style="clear:both">
@@ -108,42 +69,92 @@ export class SysGradeListDialogComponent implements OnInit {
         minHeight: '200px',
         data: {}
     }
-    teacherList: any =[]
+    studentList: any =[]
+    courseList: any =[]
+    gradeList: any =[]
     targetForm: FormGroup
     disabled = {value: false}
-    cTimeData:any = []
 
     constructor(private fb: FormBuilder,
                 public dialogRef: MatDialogRef<SysGradeListDialogComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: any,
-                private sysTeacherListService:SysTeacherListService,
-                private sysCourseListService: SysGradeListService) {
+                private sysStudentListService:SysStudentListService,
+                private sysGradeListService: SysGradeListService) {
         this.targetForm = fb.group({
-            cName: ['', Validators.required],
-            cMark: ['', Validators.required],
-            cHour: ['', Validators.required],
-            tId: ['', Validators.required],
-            cType: ['', Validators.required],
-            cTotal: ['', Validators.required],
-            cTime: ['', Validators.required],
+            stuId: ['', Validators.required],
+            cId: ['', Validators.required],
+            grade: ['', Validators.required],
         })
-        this.cTimeData = ConstantService.cTimeData
     }
     ngOnInit(){
-        this.sysTeacherListService.reloadTeacherIdAndName()
+        if(LocalStorage.get('grade_cId')){
+            this.data.cId = LocalStorage.get('grade_cId')
+            LocalStorage.remove('grade_cId')
+        }
+        if(!this.data.stuId) {
+            this.sysGradeListService.reloadTeacherCourseListData()
+                .subscribe(res =>{
+                    if(res.data.result == '0'){
+                        this.courseList = [...res.data.list]
+                    }
+                })
+            if (this.data.cId) {
+                this.reloadStudentByCourse(this.data.cId)
+            }
+            LocalStorage.set('add','add')
+        }else{
+            this.courseList = [{cId:this.data.cId,cName:this.data.cName}]
+            this.studentList = [{stuId:this.data.stuId,stuName:this.data.stuName}]
+            LocalStorage.set('update','update')
+        }
+    }
+
+    reloadStudentByCourse(cId){
+        this.studentList = []
+        this.data.stuId = null
+        this.sysStudentListService.reloadStudentByCourse({cId:cId})
             .subscribe(res =>{
-                if(res.data.result == 0)
-                    this.teacherList = [...res.data.list]
+                if(res.data.result == '0'){
+                    this.studentList = [...res.data.list]
+                    this.sysGradeListService.reloadGradeListData({cId:this.data.cId})
+                        .subscribe(res =>{
+                            if(res.data.result == '0'){
+                                this.gradeList = [...res.data.list]
+                                this.deleteStudentByGrade(this.studentList,this.gradeList)
+
+                            }
+                        })
+                }
             })
     }
 
-    add(data) {
-        this.teacherList.forEach( item=>{
-            if(item.tId == data.tId){
-                data.cTeacher = item.tName
-            }
+    /**根据课程查询学生后删除已经有成绩学生**/
+    deleteStudentByGrade(row,row1){
+        row.forEach(item =>{
+            row1.forEach(item1 =>{
+                if(item.stuId == item1.stuId) {
+                    row.splice(item)
+                }
+            })
         })
+    }
+
+    add(data) {
         this.disabled.value = true
-        this.sysCourseListService.addCourse(data, this.dialogRef, this.disabled)
+        /**添加**/
+        if(LocalStorage.get('add')) {
+            this.studentList.forEach(item => {
+                if (item.tId == data.tId) {
+                    data.cTeacher = item.tName
+                }
+            })
+            this.sysGradeListService.addGrade(data, this.dialogRef, this.disabled)
+            LocalStorage.remove('add')
+        }
+        /**修改**/
+        if(LocalStorage.get('update')) {
+            this.sysGradeListService.updateGrade(data, this.dialogRef, this.disabled)
+            LocalStorage.remove('update')
+        }
     }
 }

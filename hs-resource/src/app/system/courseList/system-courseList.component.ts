@@ -20,9 +20,10 @@ export class SystemCourseListComponent implements OnInit {
     /**请求后端数据的参数**/
     loadingIndicator = true
     isPermission = 0// 是否有权限
+    canDelete = 0
     isSpinner // 加载进度
     user
-    userType
+    userType = '0'
     isStudent = 0
 
     constructor(private router: Router,
@@ -34,10 +35,13 @@ export class SystemCourseListComponent implements OnInit {
         if(LocalStorage.get('userType')){
             this.userType = LocalStorage.get('userType')
         }
-        if(this.userType ==0 || this.userType ==1){
+        if(this.userType == '0'){
+            this.canDelete = 1
+        }
+        if(this.userType == '0' || this.userType == '1'){
             this.isPermission =1
         }
-        if(this.userType == 2){
+        if(this.userType == '2'){
             this.user = LocalStorage.get('user')
             this.isStudent = 1
             this.reloadSelectCousrseData({stuId:this.user.stuId})
@@ -56,12 +60,10 @@ export class SystemCourseListComponent implements OnInit {
                 if (page.data.result == '0') {
                     this.isSpinner = 0
                     // if (page.data.permission === 0) {
-                    this.isPermission = 1
                     this.totalCount = page.data.page.total
                     this.courseListData = [...page.data.list]
                     this.formatData(this.courseListData)
                     this.loadingIndicator = false
-                    this.isPermission = 1
                 }
             })
     }

@@ -21,6 +21,16 @@ import aliValidators from "../../utils/ali-validators";
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field class="w-100">
+                    <input matInput type="text"
+                           name="stuNo" [formControl]="targetForm.controls['stuNo']"
+                           [(ngModel)]="data.stuNo"
+                           placeholder="学号">
+                    <mat-error
+                            *ngIf="targetForm.controls['stuNo'].touched && targetForm.controls['stuNo'].hasError('required')">
+                        学号不能为空！
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100">
                     <mat-select name="stuSex" [formControl]="targetForm.controls['stuSex']"
                                 [(ngModel)]="data.stuSex" placeholder="性别">
                         <mat-option *ngFor="let item of [{name:'男',value:0},{name:'女',value:1}]" [value]="item?.value">
@@ -101,6 +111,7 @@ export class SysStudentListDialogComponent implements OnInit {
                 @Inject(MAT_DIALOG_DATA) public data: any,
                 private sysStudentListService: SysStudentListService) {
         this.targetForm = fb.group({
+            stuNo: ['', Validators.required],
             stuName: ['', Validators.required],
             stuSex: ['', Validators.required],
             stuDepart: [''],

@@ -13,7 +13,7 @@
                            [columnMode]="'force'"
                            [scrollbarH]="true"
                            [limit]="params.limit">
-                <ngx-datatable-column [name]="'学号'" [prop]="'stuId'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'学号'" [prop]="'stuNo'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'姓名'" [prop]="'stuName'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'性别'" [prop]="'stuSexDec'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'邮箱'" [prop]="'stuEmail'"></ngx-datatable-column>
@@ -21,8 +21,8 @@
                 <ngx-datatable-column [name]="'电话'" [prop]="'stuTel'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'身份证'" [prop]="'stuIdcard'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'院系'" [prop]="'stuDepart'"></ngx-datatable-column>
-                <ngx-datatable-column [name]="'创建时间'" [prop]="'creatTime'">
-                    <ng-template let-row="row" ngx-datatable-cell-template>{{row?.creatTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</ng-template>
+                <ngx-datatable-column [name]="'创建时间'" [prop]="'createTime'">
+                    <ng-template let-row="row" ngx-datatable-cell-template>{{row?.createTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</ng-template>
                 </ngx-datatable-column>
                 <ngx-datatable-column [name]="'操作'">
                     <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template >

@@ -5,6 +5,7 @@ import {SysTeacherCourseListService} from "./sys-teacherCourseList.service";
 import {LocalStorage} from "../../core/services/localstorage.service";
 import {Router} from "@angular/router";
 import {SysTeacherCourseDialogComponent} from "./sys-teacherCourse.dialog";
+import {SysCourseListService} from "../courseList/sys-courseList.service";
 
 @Component({
     selector: 'app-system-teacherCourseList',
@@ -20,14 +21,14 @@ export class SystemTeacherCourseListComponent implements OnInit {
     loadingIndicator = true
     isPermission = 0// 是否有权限
     isSpinner // 加载进度
-    rolePermission
     user
     userType
     isStudent = 0
 
     constructor(private router: Router,
                 public _dialog: MatDialog,
-                private courseListService: SysTeacherCourseListService) {
+                private sysTeacherCourseListService: SysTeacherCourseListService,
+                private sysCourseListService:SysCourseListService) {
     }
 
     ngOnInit() {
@@ -49,7 +50,7 @@ export class SystemTeacherCourseListComponent implements OnInit {
     reloadTeacherCourseListData() {
         this.isSpinner = 1
         this.loadingIndicator = true
-        this.courseListService.reloadTeacherCourseListData(this.params)
+        this.sysTeacherCourseListService.reloadTeacherCourseListData(this.params)
             .subscribe(page => {
                 this.isSpinner = 0
                 if (page.data.result == '0') {
@@ -79,11 +80,23 @@ export class SystemTeacherCourseListComponent implements OnInit {
     operateButton(value,row){
         /**修改**/
         if(value == 0){
-
+            let cTime:string = row.cTime
+            let cTimeMonthData = cTime.substr(0,3)
+            let cTimeData = cTime.substr(3,5)
+            row.cTimeMonthData = cTimeMonthData
+            row.cTimeData = cTimeData
+            this.newDialog(row)
         }
         /**删除**/
         if(value == 1){
-
+            appAlert.common.remove('课程',() => {
+                this.sysCourseListService.deleteCourse(row.cId)
+                    .subscribe(res =>{
+                        if(res.data.result == 0){
+                            this.reloadTeacherCourseListData()
+                        }
+                    })
+            })
         }
     }
 
@@ -93,14 +106,10 @@ export class SystemTeacherCourseListComponent implements OnInit {
         this.reloadTeacherCourseListData()
     }
 
-    /**点击 顶部右侧"新建"按钮**/
-    addCourse() {
-        this.newDialog()
-    }
-
     /**打开 新建dialog**/
-    newDialog() {
+    newDialog(data) {
         const config = SysTeacherCourseDialogComponent.config
+        config.data = data
         let dialogRef = this._dialog.open(SysTeacherCourseDialogComponent, config)
         dialogRef.afterClosed().subscribe((result: any) => {
             if (result && result !== 'cancel') {
@@ -110,5 +119,10 @@ export class SystemTeacherCourseListComponent implements OnInit {
             config.data = {}
             dialogRef = null
         })
+    }
+
+    manageGrade(row){
+        this.router.navigate(['/index/studentGrade'])
+        LocalStorage.set('grade_cId', row.cId)
     }
 }

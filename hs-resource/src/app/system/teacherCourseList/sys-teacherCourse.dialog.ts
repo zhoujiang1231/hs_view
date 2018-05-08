@@ -5,13 +5,15 @@ import {SysTeacherCourseListService} from "./sys-teacherCourseList.service";
 import aliValidators from "../../utils/ali-validators";
 import {SystemTeacherListComponent} from "../teacherList/system-teacherList.component";
 import {SysTeacherListService} from "../teacherList/sys-teacherList.service";
+import {ConstantService} from "../../core/services/constant.service";
 
 @Component({
     selector: 'app-sys-teacherCourse',
     template: `
         <div class="redefine-dialog">
-            <form [formGroup]="targetForm" (ngSubmit)="add(data)">
-                <h1 class="dialog-head">添加课程</h1>
+            <form [formGroup]="targetForm" (ngSubmit)="update(data)">
+                <h1 class="dialog-head">修改课程信息</h1>
+                <div class="row">
                 <mat-form-field class="w-100">
                     <input matInput type="text"
                            name="cName" [formControl]="targetForm.controls['cName']"
@@ -23,19 +25,7 @@ import {SysTeacherListService} from "../teacherList/sys-teacherList.service";
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field class="w-100">
-                    <mat-select name="tId" [formControl]="targetForm.controls['tId']"
-                                [(ngModel)]="data.tId" placeholder="教师">
-                        <mat-option *ngFor="let item of teacherList" [value]="item?.tId">
-                            {{item?.tName}}
-                        </mat-option>
-                    </mat-select>
-                    <mat-error
-                            *ngIf="targetForm.controls['tId'].touched && targetForm.controls['tId'].hasError('required')">
-                        教师不能为空！
-                    </mat-error>
-                </mat-form-field>
-                <mat-form-field class="w-100">
-                    <mat-select name="stuSex" [formControl]="targetForm.controls['cType']"
+                    <mat-select name="cType" [formControl]="targetForm.controls['cType']"
                                 [(ngModel)]="data.cType" placeholder="类型">
                         <mat-option *ngFor="let item of [{name:'必修',value:0},{name:'选修',value:1}]" [value]="item?.value">
                             {{item?.name}}
@@ -46,6 +36,30 @@ import {SysTeacherListService} from "../teacherList/sys-teacherList.service";
                         类型不能为空！
                     </mat-error>
                 </mat-form-field>
+                    <mat-form-field class="w-50">
+                        <mat-select name="cTimeMonthData" [formControl]="targetForm.controls['cTimeMonthData']"
+                                    [(ngModel)]="data.cTimeMonthData" placeholder="上课时间">
+                            <mat-option *ngFor="let item of cTimeMonthData" [value]="item?.value">
+                                {{item?.value}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error
+                                *ngIf="targetForm.controls['cTimeMonthData'].touched && targetForm.controls['cTimeMonthData'].hasError('required')">
+                            上课时间不能为空！
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-50">
+                        <mat-select  name="cTimeData" [formControl]="targetForm.controls['cTimeData']"
+                                     [(ngModel)]="data.cTimeData" placeholder="上课时间">
+                            <mat-option *ngFor="let item of cTimeData" [value]="item?.value">
+                                {{item?.value}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error
+                                *ngIf="targetForm.controls['cTimeData'].touched && targetForm.controls['cTimeData'].hasError('required')">
+                            上课时间不能为空！
+                        </mat-error>
+                    </mat-form-field>
                 <mat-form-field class="w-100">
                     <input matInput type="text"
                            name="cMark" [formControl]="targetForm.controls['cMark']"
@@ -84,6 +98,7 @@ import {SysTeacherListService} from "../teacherList/sys-teacherList.service";
                             class="sure">确定
                     </button>
                 </div>
+                </div>
             </form>
         </div>
     `,
@@ -95,9 +110,10 @@ export class SysTeacherCourseDialogComponent implements OnInit {
         minHeight: '200px',
         data: {}
     }
-    teacherList: any =[]
     targetForm: FormGroup
     disabled = {value: false}
+    cTimeData:any = []
+    cTimeMonthData:any = []
 
     constructor(private fb: FormBuilder,
                 public dialogRef: MatDialogRef<SysTeacherCourseDialogComponent>,
@@ -108,26 +124,20 @@ export class SysTeacherCourseDialogComponent implements OnInit {
             cName: ['', Validators.required],
             cMark: ['', Validators.required],
             cHour: ['', Validators.required],
-            tId: ['', Validators.required],
             cType: ['', Validators.required],
             cTotal: ['', Validators.required],
+            cTimeData: ['', Validators.required],
+            cTimeMonthData: ['', Validators.required],
         })
+        this.cTimeData = ConstantService.cTimeData
+        this.cTimeMonthData = ConstantService.cTimeMonthData
     }
     ngOnInit(){
-        this.sysTeacherListService.reloadTeacherIdAndName()
-            .subscribe(res =>{
-                if(res.data.result == 0)
-                    this.teacherList = [...res.data.list]
-            })
     }
 
-    add(data) {
-        this.teacherList.forEach( item=>{
-            if(item.tId == data.tId){
-                data.cTeacher = item.tName
-            }
-        })
+    update(data) {
+        data.cTime = data.cTimeMonthData+data.cTimeData
         this.disabled.value = true
-        this.sysTeacherCourseListService.addCourse(data, this.dialogRef, this.disabled)
+        this.sysTeacherCourseListService.updateCourse(data, this.dialogRef, this.disabled)
     }
 }

@@ -31,7 +31,7 @@
                 <ngx-datatable-column [name]="'创建时间'" [prop]="'createTime'">
                     <ng-template let-row="row" ngx-datatable-cell-template>{{row?.createTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column *ngIf="isPermission == 1" [name]="'操作'">
+                <ngx-datatable-column *ngIf="canDelete == 1" [name]="'操作'">
                     <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template >
                         <span  class="linkSpan" (click)="deleteCourse(row)">删除</span>
                     </ng-template>

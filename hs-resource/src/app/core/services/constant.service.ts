@@ -3,7 +3,6 @@ import {Injectable} from '@angular/core'
 @Injectable()
 export class ConstantService {
     static HOST = 'http://localhost:8080'
-    static vocp_api_vlink = 'http://api.vlink.cn/'
     static navTabs: any[] = [
         {
             title: '教师管理', icon: '', mat_icon: '', link: 'teacher', open: false, mark: 'check_in', show: true,
@@ -11,7 +10,7 @@ export class ConstantService {
                 {
                     name: '教师列表',
                     link: '/index/teacher',
-                    mat_icon: 'featured_play_list',
+                    mat_icon: 'assessment',
                     choosed: false,
                     mark: 'check_in',
                     show: true
@@ -24,7 +23,7 @@ export class ConstantService {
                 {
                     name: '学生列表',
                     link: '/index/student',
-                    mat_icon: 'flip_to_front',
+                    mat_icon: 'layers',
                     choosed: false,
                     mark: 'check_in',
                     show: true
@@ -44,12 +43,6 @@ export class ConstantService {
                 },
             ]
         },
-        {
-            title: '账户设置', icon: '', mat_icon: '', link: 'account', open: false, show: true,
-            children: [
-                {name: '修改密码', link: '/index/account/psw', mat_icon: 'ev_station', choosed: false, show: true},
-            ]
-        }
     ]
 
     static navTabsTeacher: any[] = [
@@ -59,7 +52,7 @@ export class ConstantService {
                 {
                     name: '课程列表',
                     link: '/index/course',
-                    mat_icon: 'tv',
+                    mat_icon: 'map',
                     choosed: false,
                     mark: 'check_in',
                     show: true
@@ -75,11 +68,18 @@ export class ConstantService {
             ]
         },
         {
-            title: '账户设置', icon: '', mat_icon: '', link: 'account', open: false, show: true,
+            title: '成绩管理', icon: '', mat_icon: '', link: 'grade', open: false, mark: 'check_in', show: true,
             children: [
-                {name: '修改密码', link: '/index/account/psw', mat_icon: 'ev_station', choosed: false, show: true},
+                {
+                    name: '学生成绩',
+                    link: '/index/studentGrade',
+                    mat_icon: 'map',
+                    choosed: false,
+                    mark: 'check_in',
+                    show: true
+                },
             ]
-        }
+        },
     ]
 
 
@@ -90,7 +90,7 @@ export class ConstantService {
                 {
                     name: '课程列表',
                     link: '/index/course',
-                    mat_icon: 'tv',
+                    mat_icon: 'map',
                     choosed: false,
                     mark: 'check_in',
                     show: true
@@ -98,7 +98,7 @@ export class ConstantService {
                 {
                     name: '已选课程',
                     link: '/index/selectCourse',
-                    mat_icon: 'dashboard',
+                    mat_icon: 'highlight',
                     choosed: false,
                     mark: 'check_in',
                     show: true
@@ -108,20 +108,19 @@ export class ConstantService {
         {
             title: '成绩管理', icon: '', mat_icon: '', link: 'grade', open: false, show: true,
             children: [
-                {name: '我的成绩', link: '/index/myGrade', mat_icon: 'router', choosed: false, show: true},
+                {name: '我的成绩', link: '/index/myGrade', mat_icon: 'ev_station', choosed: false, show: true},
             ]
         },
         {
             title: '课表管理', icon: '', mat_icon: '', link: 'grade', open: false, show: true,
             children: [
-                {name: '我的课表', link: '/index/schedule', mat_icon: 'router', choosed: false, show: true},
+                {name: '我的课表', link: '/index/schedule', mat_icon: 'flip_to_front', choosed: false, show: true},
             ]
         },
         {
             title: '账户设置', icon: '', mat_icon: '', link: 'account', open: false, show: true,
             children: [
                 {name: '个人信息', link: '/index/account/info', mat_icon: 'router', choosed: false, show: true},
-                {name: '修改密码', link: '/index/account/psw', mat_icon: 'ev_station', choosed: false, show: true},
             ]
         }
     ]

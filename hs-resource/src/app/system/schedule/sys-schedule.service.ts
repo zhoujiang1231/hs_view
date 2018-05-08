@@ -12,7 +12,7 @@ export class SysScheduleService {
 
     /**获取已选课程列表：get**/
     reloadSelectCousrseData(params) {
-        const path = '/course/getAllStudentCourse'
+        const path = '/schedule/mySchedule'
         const configsObservable = Observable.fromPromise(this.connectionService.get(path, {params: params}))
         configsObservable.subscribe((page: any) => {
             if (page.data.result == '0') {

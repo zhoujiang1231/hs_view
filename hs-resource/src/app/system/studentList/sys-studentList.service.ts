@@ -28,6 +28,23 @@ export class SysStudentListService {
     return configsObservable
   }
 
+    /**获取选择某门课的所有学生：get**/
+    reloadStudentByCourse(params) {
+        const path = '/student/getStudentByCourse'
+        const configsObservable = Observable.fromPromise(this.connectionService.get(path, {params: params}))
+        configsObservable.subscribe((page: any) => {
+            console.log(page.data)
+            if (page.data.result == '0') {
+            } else {
+                if(page.data.result == '10') {
+                    this.connectionService.isLoginByResult(page.data.result, page.data.msg)
+                }
+            }
+        }, err => {
+        })
+        return configsObservable
+    }
+
     /**删除学生：post**/
     deleteStudent(id) {
         const path = '/student/deleteStudent/' + id

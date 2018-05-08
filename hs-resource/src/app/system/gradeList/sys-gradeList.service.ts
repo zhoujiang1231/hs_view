@@ -11,8 +11,8 @@ export class SysGradeListService {
   }
 
   /**获取课程列表：get**/
-  reloadCourseListData(params) {
-    const path = '/course/getAllCourse'
+  reloadGradeListData(params) {
+    const path = '/courseGrade'
     const configsObservable = Observable.fromPromise(this.connectionService.get(path, {params: params}))
     configsObservable.subscribe((page: any) => {
       if (page.data.result == '0') {
@@ -21,38 +21,18 @@ export class SysGradeListService {
           this.selectCourseData.push(...page.data.list)*/
         //}
       } else {
-          console.log(page.data)
-        this.connectionService.isLoginByResult(page.data.result, page.data.msg)
+          if(page.data.result == '10') {
+              this.connectionService.isLoginByResult(page.data.result, page.data.msg)
+          }
       }
     }, err => {
       appAlert.common.actionFailed('课程列表')
     })
     return configsObservable
   }
-
-    /**获取已选课程列表：get**/
-    reloadSelectCousrseData(params) {
-        const path = '/course/getAllStudentCourse'
-        const configsObservable = Observable.fromPromise(this.connectionService.get(path, {params: params}))
-        configsObservable.subscribe((page: any) => {
-            if (page.data.result == '0') {
-                //if (page.data.permission === 0) {/*请求数据"成功"*/
-                /*    this.selectCourseData.length = 0
-                    this.selectCourseData.push(...page.data.list)*/
-                //}
-            } else {
-                console.log(page.data)
-                this.connectionService.isLoginByResult(page.data.result, page.data.msg)
-            }
-        }, err => {
-            appAlert.common.actionFailed('课程列表')
-        })
-        return configsObservable
-    }
-
-    /**删除课程：post**/
-    deleteCourse(id) {
-        const path = '/course/deleteCourse/'+id
+    /**删除成绩：delete**/
+    deleteGrade(id) {
+        const path = '/courseGrade/'+id
         const configsObservable = Observable.fromPromise(this.connectionService.delete(path))
         configsObservable.subscribe(res => {
             if (res.data.result === '0') {
@@ -66,11 +46,11 @@ export class SysGradeListService {
         return configsObservable
     }
 
-    /**添加课程：post**/
-    addCourse(params, dialogRef, disabled?) {
-        const path = '/course/addCourse'
+    /**添加成绩：post**/
+    addGrade(params, dialogRef, disabled?) {
+        const path = '/studentGrade'
         console.log(params)
-        const configsObservable = Observable.fromPromise(this.connectionService.get(path,params))
+        const configsObservable = Observable.fromPromise(this.connectionService.post(path,params))
         configsObservable.subscribe(res => {
             if (res.data.result === '0') {
                 dialogRef.close('success')
@@ -85,34 +65,41 @@ export class SysGradeListService {
         return configsObservable
     }
 
-    /**选课：get**/
-    choseCourse(params) {
-        const path = '/course/choseCourse'
-        const configsObservable = Observable.fromPromise(this.connectionService.post(path,params))
+    /**修改成绩：post**/
+    updateGrade(params, dialogRef, disabled?) {
+        const path = '/studentGrade'
+        console.log(params)
+        const configsObservable = Observable.fromPromise(this.connectionService.put(path,params))
         configsObservable.subscribe(res => {
             if (res.data.result === '0') {
-                appAlert.common.actionSuccess('选课成功')
+                dialogRef.close('success')
+                appAlert.common.actionSuccess('修改成功')
             } else {
+                if (disabled) {disabled.value = false}
                 appAlert.common.actionFailed(res.data.msg)
             }
         }, err => {
-            appAlert.common.actionFailed('选课失败')
+            appAlert.common.actionFailed('修改失败')
         })
         return configsObservable
     }
 
-    /**取消选课：get**/
-    unchoseCourse(params) {
-        const path = '/course/unchoseCourse'
-        const configsObservable = Observable.fromPromise(this.connectionService.post(path,params))
-        configsObservable.subscribe(res => {
-            if (res.data.result === '0') {
-                appAlert.common.actionSuccess('取消选课成功')
+    /**获取教师所有的课程：get**/
+    reloadTeacherCourseListData() {
+        const path = '/course/getAllTeacherCourseNoPage'
+        const configsObservable = Observable.fromPromise(this.connectionService.get(path))
+        configsObservable.subscribe((page: any) => {
+            if (page.data.result == '0') {
+                //if (page.data.permission === 0) {/*请求数据"成功"*/
+                /*    this.selectCourseData.length = 0
+                    this.selectCourseData.push(...page.data.list)*/
+                //}
             } else {
-                appAlert.common.actionFailed(res.data.msg)
+                console.log(page.data)
+                this.connectionService.isLoginByResult(page.data.result, page.data.msg)
             }
         }, err => {
-            appAlert.common.actionFailed('取消选课失败')
+            appAlert.common.actionFailed('课程列表')
         })
         return configsObservable
     }

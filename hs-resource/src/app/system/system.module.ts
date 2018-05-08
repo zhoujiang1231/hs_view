@@ -28,6 +28,7 @@ import {SysGradeListService} from "./gradeList/sys-gradeList.service";
 import {SystemGradeListComponent} from "./gradeList/system-gradeList.component";
 import {SystemScheduleComponent} from "./schedule/system-schedule.component";
 import {SysScheduleService} from "./schedule/sys-schedule.service";
+import {ModifyPasswordDialogComponent} from "./modifyPassword/modifyPassword.dialog";
 
 @NgModule({
   imports: [
@@ -54,6 +55,7 @@ import {SysScheduleService} from "./schedule/sys-schedule.service";
     SystemGradeListComponent,
     SystemScheduleComponent,
     SystemStudentListComponent,
+    ModifyPasswordDialogComponent,
   ],
   entryComponents: [
     SysStudentListDialogComponent,
@@ -61,6 +63,7 @@ import {SysScheduleService} from "./schedule/sys-schedule.service";
     SysCourseListDialogComponent,
     SysTeacherCourseDialogComponent,
     SysGradeListDialogComponent,
+    ModifyPasswordDialogComponent,
   ],
   exports: [],
   providers: [

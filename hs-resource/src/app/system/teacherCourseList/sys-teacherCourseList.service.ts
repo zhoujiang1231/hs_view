@@ -30,21 +30,21 @@ export class SysTeacherCourseListService {
     return configsObservable
   }
 
-    /**添加课程：post**/
-    addCourse(params, dialogRef, disabled?) {
-        const path = '/course/addCourse'
+    /**修改课程：put**/
+    updateCourse(params, dialogRef, disabled?) {
+        const path = '/course/updateCourse'
         console.log(params)
-        const configsObservable = Observable.fromPromise(this.connectionService.get(path,params))
+        const configsObservable = Observable.fromPromise(this.connectionService.put(path,params))
         configsObservable.subscribe(res => {
             if (res.data.result === '0') {
                 dialogRef.close('success')
-                appAlert.common.actionSuccess('添加成功')
+                appAlert.common.actionSuccess('修改成功')
             } else {
                 if (disabled) {disabled.value = false}
                 appAlert.common.actionFailed(res.data.msg)
             }
         }, err => {
-            appAlert.common.actionFailed('添加失败')
+            appAlert.common.actionFailed('修改失败')
         })
         return configsObservable
     }

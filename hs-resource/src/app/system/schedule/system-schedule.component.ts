@@ -13,9 +13,8 @@ import {ConstantService} from "../../core/services/constant.service";
 })
 
 export class SystemScheduleComponent implements OnInit {
-    courseListData: any[] = []
-    params: any = {start:1,limit:20}
-    totalCount
+    scheduleListData: any[] = []
+    params: any = {}
     /**请求后端数据的参数**/
     loadingIndicator = true
     isSpinner // 加载进度
@@ -52,25 +51,12 @@ export class SystemScheduleComponent implements OnInit {
                 this.isSpinner = 0
                 if (page.data.result == '0') {
                     this.isSpinner = 0
-                    // if (page.data.permission === 0) {
-                    this.totalCount = page.data.page.total
-                    this.courseListData = [...page.data.list]
-                    this.formatData(this.courseListData)
+                    this.scheduleListData = [...page.data.list]
                     this.loadingIndicator = false
                 }
             })
     }
 
-    formatData(row){
-        row.forEach(item=>{
-            if(item.cType == 0){
-                item.cTypeDec = '必修'
-            }
-            if(item.cType == 1){
-                item.cTypeDec = '选修'
-            }
-        })
-    }
     /**导出课表**/
     exportSchedule(){
         this.downiframe = this.sanitizer.bypassSecurityTrustResourceUrl(ConstantService.HOST+'/schedule/exportSchedule')

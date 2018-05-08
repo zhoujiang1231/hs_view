@@ -22,6 +22,16 @@ import aliValidators from "../../utils/ali-validators";
                 </mat-form-field>
                 <mat-form-field class="w-100">
                     <input matInput type="text"
+                           name="userName" [formControl]="targetForm.controls['userName']"
+                           [(ngModel)]="data.userName"
+                           placeholder="登录名">
+                    <mat-error
+                            *ngIf="targetForm.controls['userName'].touched && targetForm.controls['userName'].hasError('required')">
+                        登录名不能为空！
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                    <input matInput type="text"
                            name="tPassword" [formControl]="targetForm.controls['tPassword']"
                            [(ngModel)]="data.tPassword"
                            placeholder="密码">
@@ -53,6 +63,7 @@ export class SysTeacherListDialogComponent implements OnInit {
                 @Inject(MAT_DIALOG_DATA) public data: any,
                 private sysTeacherListService: SysTeacherListService) {
         this.targetForm = fb.group({
+            userName: ['', Validators.required],
             tPassword: [''],
             tName: ['', Validators.required],
         })
