@@ -5,6 +5,8 @@ import {SysCourseListService} from "./sys-courseList.service";
 import {LocalStorage} from "../../core/services/localstorage.service";
 import {Router} from "@angular/router";
 import {SysCourseListDialogComponent} from "./sys-course.dialog";
+import {SysTeacherCourseListService} from "../teacherCourseList/sys-teacherCourseList.service";
+import {SysTeacherListService} from "../teacherList/sys-teacherList.service";
 
 @Component({
     selector: 'app-system-courseList',
@@ -17,6 +19,7 @@ export class SystemCourseListComponent implements OnInit {
     selectCourseData: any[] = []
     params: any = {start:1,limit:20}
     totalCount
+    teacherIdList: any[] = []
     /**请求后端数据的参数**/
     loadingIndicator = true
     isPermission = 0// 是否有权限
@@ -28,7 +31,8 @@ export class SystemCourseListComponent implements OnInit {
 
     constructor(private router: Router,
                 public _dialog: MatDialog,
-                private courseListService: SysCourseListService) {
+                private courseListService: SysCourseListService,
+                private teacherService: SysTeacherListService) {
     }
 
     ngOnInit() {
@@ -47,6 +51,7 @@ export class SystemCourseListComponent implements OnInit {
             this.reloadSelectCousrseData({stuId:this.user.stuId})
         }
         this.reloadCourseListData()
+        this.reloadTeacherList()
     }
 
 
@@ -197,6 +202,19 @@ export class SystemCourseListComponent implements OnInit {
             .subscribe(page => {
                 if (page.data.result == '0') {
                     this.selectCourseData = [...page.data.list]
+                }
+            })
+    }
+
+    /**获取教师**/
+    reloadTeacherList() {
+        this.isSpinner = 1
+        this.loadingIndicator = true
+        this.teacherService.reloadTeacherIdAndName()
+            .subscribe(page => {
+                if (page.data.result == '0') {
+                    this.teacherIdList = [...page.data.list]
+                    this.teacherIdList.unshift({tId:-1,tName:'全部'})
                 }
             })
     }

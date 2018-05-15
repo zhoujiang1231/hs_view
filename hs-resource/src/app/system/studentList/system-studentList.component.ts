@@ -13,6 +13,7 @@ import {SysStudentListDialogComponent} from "./sys-student.dialog";
 
 export class SystemStudentListComponent implements OnInit {
     studentListData: any[] = []
+    departData: any[] = []
     params: any = {start:1,limit:20}
     totalCount
     /**请求后端数据的参数**/
@@ -29,6 +30,7 @@ export class SystemStudentListComponent implements OnInit {
 
     ngOnInit() {
         this.reloadStudentListData()
+        this.reloadDepartData()
     }
 
 
@@ -49,6 +51,14 @@ export class SystemStudentListComponent implements OnInit {
                     this.loadingIndicator = false
                     this.isPermission = 1
                 }
+            })
+    }
+
+    /**获取所有部门**/
+    reloadDepartData() {
+        this.studentListService.reloadDepartData()
+            .subscribe(page => {
+                this.departData = [...page.data.list]
             })
     }
 
@@ -75,6 +85,7 @@ export class SystemStudentListComponent implements OnInit {
                 .subscribe(res =>{
                     if(res.data.result == 0){
                         this.reloadStudentListData()
+                        this.reloadDepartData()
                     }
                 })
         })
@@ -90,8 +101,8 @@ export class SystemStudentListComponent implements OnInit {
         let dialogRef = this._dialog.open(SysStudentListDialogComponent, config)
         dialogRef.afterClosed().subscribe((result: any) => {
             if (result && result !== 'cancel') {
-                console.log('确定', result)
                 this.reloadStudentListData()
+                this.reloadDepartData()
             }
             config.data = {}
             dialogRef = null

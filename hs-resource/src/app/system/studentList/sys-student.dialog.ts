@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogConfig, MatDialogRef} from '@angular/material'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {SysStudentListService} from "./sys-studentList.service";
 import aliValidators from "../../utils/ali-validators";
+import {ConstantService} from "../../core/services/constant.service";
 
 @Component({
     selector: 'app-sys-studentList',
@@ -43,10 +44,12 @@ import aliValidators from "../../utils/ali-validators";
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field class="w-100">
-                    <input matInput type="text"
-                           name="stuDepart" [formControl]="targetForm.controls['stuDepart']"
-                           [(ngModel)]="data.stuDepart"
-                           placeholder="院系">
+                    <mat-select name="stuDepart" [formControl]="targetForm.controls['stuDepart']"
+                                [(ngModel)]="data.stuDepart" placeholder="院系">
+                        <mat-option *ngFor="let item of departList" [value]="item?.value">
+                            {{item?.value}}
+                        </mat-option>
+                    </mat-select>
                     <mat-error
                             *ngIf="targetForm.controls['stuDepart'].touched && targetForm.controls['stuDepart'].hasError('required')">
                         院系不能为空！
@@ -105,6 +108,7 @@ export class SysStudentListDialogComponent implements OnInit {
     }
     targetForm: FormGroup
     disabled = {value: false}
+    departList: any [] = []
 
     constructor(private fb: FormBuilder,
                 public dialogRef: MatDialogRef<SysStudentListDialogComponent>,
@@ -122,6 +126,7 @@ export class SysStudentListDialogComponent implements OnInit {
         })
     }
     ngOnInit(){
+        this.departList = ConstantService.departList
     }
 
     add(data) {

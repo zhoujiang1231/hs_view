@@ -4,6 +4,21 @@
                      (tapRightBtn)="addTeacher()"
                      [permission]="isPermission"></app-page-header>
     <div class="h-100 position-relative">
+        <div class="row head-search-container">
+            <div class="col-2 container-input">
+                <dl>
+                    <dt>教师名:</dt>
+                    <dd>
+                        <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                            <input matInput placeholder="请输入" [(ngModel)]="params.tName">
+                        </mat-form-field>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-3">
+                <button mat-button class="search-button" (click)="reloadTeacherListData()">搜索</button>
+            </div>
+        </div>
         <div *ngIf="isPermission === 1" class="table-container w-100">
             <ngx-datatable class="material striped"
                            [rows]="TeacherListData"
@@ -15,6 +30,7 @@
                            [limit]="params.limit">
                 <ngx-datatable-column [name]="'ID'" [prop]="'tId'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'姓名'" [prop]="'tName'"></ngx-datatable-column>
+                <ngx-datatable-column [name]="'登录名'" [prop]="'userName'"></ngx-datatable-column>
                 <ngx-datatable-column [name]="'创建时间'" [prop]="'createTime'">
                     <ng-template let-row="row" ngx-datatable-cell-template>{{row?.createTime | dateFormat:'YYYY-MM-DD HH:mm:ss'}}</ng-template>
                 </ngx-datatable-column>

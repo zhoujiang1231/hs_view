@@ -5,6 +5,49 @@
                      [permission]="isPermission"></app-page-header>
     <div class="h-100 position-relative">
         <div  class="table-container w-100">
+            <div class="row head-search-container">
+                <div class="col-2 container-input">
+                    <dl>
+                        <dt>课程名:</dt>
+                        <dd>
+                            <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                                <input matInput placeholder="请输入" [(ngModel)]="params.cName">
+                            </mat-form-field>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-2 container-input">
+                    <dl>
+                        <dt>课程类型:</dt>
+                        <dd>
+                            <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                                <mat-select [(ngModel)]="params.cType" placeholder="请选择">
+                                    <mat-option *ngFor="let item of [{name:'全部',value:10},{name:'必修',value:0},{name:'选修',value:1}]" [value]="item?.value">
+                                        {{item?.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-2 container-input">
+                    <dl>
+                        <dt>课程教师:</dt>
+                        <dd>
+                            <mat-form-field class="right-input" [floatPlaceholder]="'never'">
+                                <mat-select [(ngModel)]="params.tId" placeholder="请选择">
+                                    <mat-option *ngFor="let item of teacherIdList" [value]="item?.tId">
+                                        {{item?.tName}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-3">
+                    <button mat-button class="search-button" (click)="reloadCourseListData()">搜索</button>
+                </div>
+            </div>
             <ngx-datatable class="material striped"
                            [rows]="courseListData"
                            [headerHeight]="40"

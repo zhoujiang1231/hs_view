@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core'
 
 @Injectable()
 export class ConstantService {
-    static HOST = 'http://localhost:8080'
+    static HOST = 'http://azhou.top:8080'
     static navTabs: any[] = [
         {
             title: '教师管理', icon: '', mat_icon: '', link: 'teacher', open: false, mark: 'check_in', show: true,
@@ -137,6 +137,27 @@ export class ConstantService {
         {value:'第二大节课'},
         {value:'第三大节课'},
         {value:'第四大节课'},
+    ]
+
+    static departList = [
+        {value:'文学院'},
+        {value:'政法学院'},
+        {value:'外国语学院'},
+        {value:'商学院'},
+        {value:'美术学院'},
+        {value:'音乐学院'},
+        {value:'计算机学院'},
+        {value:'数理学院'},
+        {value:'生命科学学院'},
+        {value:'化学化工学院'},
+        {value:'体育学院'},
+        {value:'新闻与传播学院'},
+        {value:'旅游文化与地理科学学院'},
+        {value:'机电工程学院'},
+        {value:'电子信息学院'},
+        {value:'建筑学院'},
+        {value:'交通学院'},
+        {value:'国际教育学院'},
     ]
 }
 
